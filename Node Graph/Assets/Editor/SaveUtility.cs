@@ -12,7 +12,7 @@ using UnityEngine.UIElements;
 public class SaveUtility
 {
     private GraphLayout _targetGraphView;
-    private DialogueContainer _containerCache;
+    private GraphContainer _containerCache;
 
     private List<Edge> Edges => _targetGraphView.edges.ToList();
     private List<AINode> Nodes => _targetGraphView.nodes.ToList().Cast<AINode>().ToList();
@@ -27,9 +27,9 @@ public class SaveUtility
 
     public void SaveGraph(string fileName)
     {
-        var container = ScriptableObject.CreateInstance<DialogueContainer>();
+        var container = ScriptableObject.CreateInstance<GraphContainer>();
         if (!SaveNodes(container)) return;
-        SaveExposedProperties(container);
+        //SaveExposedProperties(container);
 
         //Auto creates folders if they do not exist
         if (!AssetDatabase.IsValidFolder(path: "Assets/Resources"))
@@ -41,31 +41,31 @@ public class SaveUtility
         AssetDatabase.SaveAssets();
     }
 
-    private bool SaveNodes(DialogueContainer container)
+    private bool SaveNodes(GraphContainer container)
     {
         if (!Edges.Any()) return false;
 
-        var dialogueContainer = ScriptableObject.CreateInstance<DialogueContainer>();
+        var dialogueContainer = ScriptableObject.CreateInstance<GraphContainer>();
         var connectedSockets = Edges.Where(x => x.input.node != null).ToArray();
 
         for (var i = 0; i < connectedSockets.Count(); i++)
         {
-            var outputNode = (connectedSockets[i].output.node as DialogueNode);
-            var inputNode = (connectedSockets[i].input.node as DialogueNode);
-            dialogueContainer.NodeLink.Add(new NodeLinkData
+            var outputNode = (connectedSockets[i].output.node as AINode);
+            var inputNode = (connectedSockets[i].input.node as AINode);
+            dialogueContainer.NodeLink.Add(new NodeEdge
             {
-                BaseNodeGUID = outputNode.GUID,
+                BaseNodeGUID = outputNode._GUID,
                 PortName = connectedSockets[i].output.portName,
-                TargetNodeGUID = inputNode.GUID
+                TargetNodeGUID = inputNode._GUID
             });
         }
 
         foreach (var AINode in Nodes.Where(node => !node._entryPoint))
         {
-            dialogueContainer.DialogueNodeData.Add(item: new DialogueNodeData
+            dialogueContainer.DialogueNodeData.Add(item: new NodeData
             {
-                NodeGUID =AINode.GUID,
-                DialogueText = AINode.DialogueText,
+                NodeGUID =AINode._GUID,
+                //DialogueText = AINode._DialogueText,
                 Position = AINode.GetPosition().position
 
             });
@@ -77,7 +77,7 @@ public class SaveUtility
 
     public void LoadGraph(string fileName)
     {
-        _containerCache = Resources.Load<DialogueContainer>(fileName);
+        _containerCache = Resources.Load<GraphContainer>(fileName);
 
         if (_containerCache == null)
         {
@@ -94,18 +94,17 @@ public class SaveUtility
     {
         for (var i = 0; i < Nodes.Count; i++)
         {
-            var connections = _containerCache.NodeLink.Where(x => x.BaseNodeGUID == Nodes[i].GUID).ToList();
+            var connections = _containerCache.NodeLink.Where(x => x.BaseNodeGUID == Nodes[i]._GUID).ToList();
 
             for (var j = 0; j < connections.Count; j++)
             {
                 var targetNodeGuid = connections[j].TargetNodeGUID;
-                var targetNode = Nodes.First(x => x.GUID == targetNodeGuid);
+                var targetNode = Nodes.First(x => x._GUID == targetNodeGuid);
                 LinkedNodes(Nodes[i].outputContainer[j].Q<Port>(), (Port)targetNode.inputContainer[0]);
 
                 targetNode.SetPosition(new Rect(_containerCache.DialogueNodeData.First(x => x.NodeGUID == targetNodeGuid).Position,
                     _targetGraphView.defaultNodeSize
                     ));
-
             }
         }
 
@@ -129,12 +128,11 @@ public class SaveUtility
         foreach (var nodeData in _containerCache.DialogueNodeData)
         {
             //Pass position on later, so vec2 used as position for now
-            var tempNode = _targetGraphView.CreateNode(nodeData.DialogueText, Vector2.zero);
+            var tempNode = _targetGraphView.CreateNewNode(nodeData.DialogueText, Vector2.zero);
             tempNode._GUID = nodeData.NodeGUID;
             _targetGraphView.AddElement(tempNode);
 
             var nodePorts = _containerCache.NodeLink.Where(x => x.BaseNodeGUID == nodeData.NodeGUID).ToList();
-            nodePorts.ForEach(x => _targetGraphView.AddChoicePort(tempNode, x.PortName));
         }
 
     }

@@ -101,11 +101,11 @@ public class GraphLayout : GraphView
     //Add the node to graph
     public void CreateNode(string nodeName, Vector2 position)
     {
-        AddElement(CreateSelectorNode(nodeName, position));
+        AddElement(CreateNewNode(nodeName, position));
     }
 
     //Creat the Dialogue node with input/output ports, textfields and the name of the node
-    public SelectorNode CreateSelectorNode(string nodeName, Vector2 position)
+    public AINode CreateNewNode(string nodeName, Vector2 position)
     {
         var selectorNode = new SelectorNode
         {

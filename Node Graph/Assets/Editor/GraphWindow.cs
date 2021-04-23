@@ -80,8 +80,8 @@ public class GraphWindow : EditorWindow
         fileNameTextField.RegisterCallback((EventCallback<ChangeEvent<string>>)(evt => _fileName = evt.newValue));
         toolbar.Add(fileNameTextField);
 
-        //toolbar.Add(child: new Button(clickEvent: () => RequestDataOperation(save: true)) { text = "Save Data" });
-        //toolbar.Add(child: new Button(clickEvent: () => RequestDataOperation(save: false)) { text = "Load Data" });
+        toolbar.Add(child: new Button(clickEvent: () => RequestDataOperation(save: true)) { text = "Save Data" });
+        toolbar.Add(child: new Button(clickEvent: () => RequestDataOperation(save: false)) { text = "Load Data" });
 
 
         rootVisualElement.Add(toolbar);
@@ -96,16 +96,16 @@ public class GraphWindow : EditorWindow
             return;
         }
 
-        //var saveUtility = GraphSaveUtility.GetInstance(_graphView);
+        var saveUtility = SaveUtility.GetInstance(_graphView);
 
-        //if (save)
-        //{
-        //    saveUtility.SaveGraph(_fileName);
-        //}
-        //else
-        //{
-        //    saveUtility.LoadGraph(_fileName);
-        //}
+        if (save)
+        {
+            saveUtility.SaveGraph(_fileName);
+        }
+        else
+        {
+            saveUtility.LoadGraph(_fileName);
+        }
     }
 
     private void OnDisable()
