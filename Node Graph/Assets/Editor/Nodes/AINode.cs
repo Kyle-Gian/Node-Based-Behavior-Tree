@@ -7,10 +7,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 using UnityEditor.Experimental.GraphView;
+using UnityEngine.UIElements;
+using UnityEditor.UIElements;
 
 public class AINode : Node
 {
+    public readonly Vector2 defaultNodeSize = new Vector2(x: 150, y: 200);
+
     public string _GUID;
     public string _funcionOfNodeName;
 
