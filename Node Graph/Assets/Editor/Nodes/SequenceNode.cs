@@ -24,5 +24,40 @@ public class SequenceNode : AINode
 
     }
 
+    public SequenceNode CreateSequenceNode(string nodeName, Vector2 position)
+    {
+        SequenceNode newSequenceNode = new SequenceNode();
+
+        newSequenceNode.title = "Sequence";
+
+
+        var inputPort = GeneratePort(newSequenceNode, Direction.Input);
+        inputPort.portName = "Input";
+        newSequenceNode.inputContainer.Add(inputPort);
+
+        // Add stylesheet to the node colors
+        newSequenceNode.styleSheets.Add(Resources.Load<StyleSheet>("Node"));
+
+        var textField = new TextField(string.Empty);
+
+        textField.RegisterValueChangedCallback(evt =>
+        {
+            newSequenceNode._functionOfNodeName = evt.newValue;
+            newSequenceNode.title = evt.newValue;
+        });
+
+        textField.SetValueWithoutNotify(newSequenceNode.title);
+        newSequenceNode.mainContainer.Add(textField);
+
+        var addOutput = GeneratePort(newSequenceNode, Direction.Output);
+        addOutput.portName = "Output";
+        newSequenceNode.outputContainer.Add(addOutput);
+
+        newSequenceNode.RefreshExpandedState();
+        newSequenceNode.RefreshPorts();
+        newSequenceNode.SetPosition(new Rect(position, defaultNodeSize));
+
+        return newSequenceNode;
+    }
 
 }

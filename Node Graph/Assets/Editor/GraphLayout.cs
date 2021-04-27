@@ -19,7 +19,11 @@ public class GraphLayout : GraphView
     public readonly Vector2 defaultNodeSize = new Vector2(x: 150, y: 200);
     //public Blackboard blackboard;
     private NodeSearchWindow _searchWindow;
-
+    LeafNode leafNode = new LeafNode();
+    RootNode rootNode = new RootNode();
+    SelectorNode selectorNode = new SelectorNode();
+    SequenceNode sequenceNode = new SequenceNode();
+    DecoratorNode decoratorNode = new DecoratorNode();
     public GraphLayout(EditorWindow editorWindow)
     {
         //Adds functionality to the Graph 
@@ -34,7 +38,7 @@ public class GraphLayout : GraphView
         Insert(index: 0, grid);
         grid.StretchToParentSize();
 
-        AddElement(GenerateEntryPointNode());
+        AddElement(rootNode.GenerateEntryPointNode());
         AddSearchWindow(editorWindow);
     }
 
@@ -61,48 +65,28 @@ public class GraphLayout : GraphView
 
     }
 
-    private Port GeneratePort(AINode node, Direction portDirection)
-    {
-        Port.Capacity capacity;
-        //Checks the node type based off the node passed through and changes if the node needs to have multi ports or just single
-        if (node.GetType() == typeof(SelectorNode) || node.GetType() == typeof(RootNode) || node.GetType() == typeof(SequenceNode))
-        {
-            capacity = Port.Capacity.Multi;
-            return node.InstantiatePort(Orientation.Horizontal, portDirection, capacity, typeof(float));
-        }
-        else
-        {
-            capacity = Port.Capacity.Single;
-            return node.InstantiatePort(Orientation.Horizontal, portDirection, capacity, typeof(float));
-        }
-
-    }
-
     //Add the node to graph
     public void CreateNode(string nodeName, Vector2 position)
     {
-
         if (nodeName == "SelectorNode")
         {
-            AddElement(CreateSelectorNode(nodeName, position));
+            AddElement(selectorNode.CreateSelectorNode(nodeName, position));
 
         }
-
         if (nodeName == "SequenceNode")
         {
-            AddElement(CreateSequenceNode(nodeName, position));
+            AddElement(sequenceNode.CreateSequenceNode(nodeName, position));
 
         }
-
         if (nodeName == "DecoratorNode")
         {
-            AddElement(CreateDecoratorNode(nodeName, position));
+            AddElement(decoratorNode.CreateDecoratorNode(nodeName, position));
 
         }
-
         if (nodeName == "LeafNode")
         {
-            AddElement(CreateLeafNode(nodeName, position));
+
+            AddElement(leafNode.CreateLeafNode(nodeName, position));
 
         }
     }
@@ -113,211 +97,75 @@ public class GraphLayout : GraphView
         var selectorNode = new SelectorNode
         {
             title = nodeName,
-            _funcionOfNodeName = nodeName,
+            _functionOfNodeName = nodeName,
             _GUID = Guid.NewGuid().ToString()
         };
 
-        var inputPort = GeneratePort(selectorNode, Direction.Input);
-        inputPort.portName = "Input";
-        selectorNode.inputContainer.Add(inputPort);
-        
-        // Add stylesheet to the node colors
-        selectorNode.styleSheets.Add(Resources.Load<StyleSheet>("Node"));
+        //var inputPort = GeneratePort(selectorNode, Direction.Input);
+        //inputPort.portName = "Input";
+        //selectorNode.inputContainer.Add(inputPort);
 
-        var textField = new TextField(string.Empty);
+        //// Add stylesheet to the node colors
+        //selectorNode.styleSheets.Add(Resources.Load<StyleSheet>("Node"));
 
-        textField.RegisterValueChangedCallback(evt =>
-        {
-            selectorNode._funcionOfNodeName = evt.newValue;
-            selectorNode.title = evt.newValue;
-        });
+        //var textField = new TextField(string.Empty);
 
-        ObjectField objectField = new ObjectField();
+        //textField.RegisterValueChangedCallback(evt =>
+        //{
+        //    selectorNode._functionOfNodeName = evt.newValue;
+        //    selectorNode.title = evt.newValue;
+        //});
 
-        textField.SetValueWithoutNotify(selectorNode.title);
-        selectorNode.mainContainer.Add(textField);
-        selectorNode.mainContainer.Add(objectField);
+        //ObjectField objectField = new ObjectField();
+
+        //textField.SetValueWithoutNotify(selectorNode.title);
+        //selectorNode.mainContainer.Add(textField);
+        //selectorNode.mainContainer.Add(objectField);
 
 
-        selectorNode.RefreshExpandedState();
-        selectorNode.RefreshPorts();
-        selectorNode.SetPosition(new Rect(position: position, defaultNodeSize));
+        //selectorNode.RefreshExpandedState();
+        //selectorNode.RefreshPorts();
+        //selectorNode.SetPosition(new Rect(position: position, defaultNodeSize));
         return selectorNode;
     }
 
-    public void AddNewPort(AINode AINode, string overriddenPortName = "")
-    {
-        var generatedPort = GeneratePort(AINode, Direction.Output);
+    //public void AddNewPort(AINode AINode, string overriddenPortName = "")
+    //{
+    //    var generatedPort = GeneratePort(AINode, Direction.Output);
 
-        var oldLabel = generatedPort.contentContainer.Q<Label>("type");
-        generatedPort.contentContainer.Remove(oldLabel);
+    //    var oldLabel = generatedPort.contentContainer.Q<Label>("type");
+    //    generatedPort.contentContainer.Remove(oldLabel);
 
-        var outputPortCount = AINode.outputContainer.Query(name: "connector").ToList().Count;
+    //    var outputPortCount = AINode.outputContainer.Query(name: "connector").ToList().Count;
 
-        //Increase port count on node by 1 unless name is overwritten manually
-        var choicePortName = string.IsNullOrEmpty(overriddenPortName) ? $"Choice {outputPortCount + 1}" : overriddenPortName;
+    //    //Increase port count on node by 1 unless name is overwritten manually
+    //    var choicePortName = string.IsNullOrEmpty(overriddenPortName) ? $"Choice {outputPortCount + 1}" : overriddenPortName;
 
-        var textField = new TextField
-        {
-            name = string.Empty,
-            value = choicePortName
-        };
-        textField.RegisterValueChangedCallback(evt => generatedPort.portName = evt.newValue);
-        generatedPort.contentContainer.Add(new Label("  "));
-        generatedPort.contentContainer.Add(textField);
+    //    var textField = new TextField
+    //    {
+    //        name = string.Empty,
+    //        value = choicePortName
+    //    };
+    //    textField.RegisterValueChangedCallback(evt => generatedPort.portName = evt.newValue);
+    //    generatedPort.contentContainer.Add(new Label("  "));
+    //    generatedPort.contentContainer.Add(textField);
 
-        generatedPort.portName = choicePortName;
-        AINode.outputContainer.Add(generatedPort);
-        AINode.RefreshPorts();
-        AINode.RefreshExpandedState();
-    }
+    //    generatedPort.portName = choicePortName;
+    //    AINode.outputContainer.Add(generatedPort);
+    //    AINode.RefreshPorts();
+    //    AINode.RefreshExpandedState();
+    //}
 
     #region Create Nodes
 
     //Creates the start node for the graph
-    private RootNode GenerateEntryPointNode()
-    {
-        var node = new RootNode
-        {
-            title = "Root Node",
-            _funcionOfNodeName = "Start",
-            _GUID = Guid.NewGuid().ToString(),
-            _entryPoint = true
-        };
-        var generatedPort = GeneratePort(node, Direction.Output);
-        generatedPort.portName = "Next";
-        node.outputContainer.Add(generatedPort);
+   
+   
 
-        node.capabilities &= ~Capabilities.Movable;
-        node.capabilities &= ~Capabilities.Deletable;
-
-        node.SetPosition(new Rect(x: 100, y: 200, width: 100, height: 150));
-        return node;
-    }
-
-    public SelectorNode CreateSelectorNode(string nodeName, Vector2 position)
-    {
-        SelectorNode newSelectorNode = new SelectorNode();
-
-        var inputPort = GeneratePort(newSelectorNode, Direction.Input);
-        inputPort.portName = "Input";
-        newSelectorNode.inputContainer.Add(inputPort);
-
-        // Add stylesheet to the node colors
-        newSelectorNode.styleSheets.Add(Resources.Load<StyleSheet>("Node"));
-
-        var textField = new TextField(string.Empty);
-
-        textField.RegisterValueChangedCallback(evt =>
-        {
-            newSelectorNode._funcionOfNodeName = evt.newValue;
-            newSelectorNode.title = evt.newValue;
-        });
-
-        textField.SetValueWithoutNotify(newSelectorNode.title);
-        newSelectorNode.mainContainer.Add(textField);
+    
 
 
-        newSelectorNode.RefreshExpandedState();
-        newSelectorNode.RefreshPorts();
-        newSelectorNode.SetPosition(new Rect(position, defaultNodeSize));
-
-        return newSelectorNode;
-    }
-
-    public SequenceNode CreateSequenceNode(string nodeName, Vector2 position)
-    {
-        SequenceNode newSequenceNode = new SequenceNode();
-
-        var inputPort = GeneratePort(newSequenceNode, Direction.Input);
-        inputPort.portName = "Input";
-        newSequenceNode.inputContainer.Add(inputPort);
-
-        // Add stylesheet to the node colors
-        newSequenceNode.styleSheets.Add(Resources.Load<StyleSheet>("Node"));
-
-        var textField = new TextField(string.Empty);
-
-        textField.RegisterValueChangedCallback(evt =>
-        {
-            newSequenceNode._funcionOfNodeName = evt.newValue;
-            newSequenceNode.title = evt.newValue;
-        });
-
-        textField.SetValueWithoutNotify(newSequenceNode.title);
-        newSequenceNode.mainContainer.Add(textField);
-
-
-        newSequenceNode.RefreshExpandedState();
-        newSequenceNode.RefreshPorts();
-        newSequenceNode.SetPosition(new Rect(position, defaultNodeSize));
-
-        return newSequenceNode;
-    }
-
-    public LeafNode CreateLeafNode(string nodeName, Vector2 position)
-    {
-        LeafNode newLeafNode = new LeafNode();
-
-        var inputPort = GeneratePort(newLeafNode, Direction.Input);
-        inputPort.portName = "Input";
-        newLeafNode.inputContainer.Add(inputPort);
-
-        // Add stylesheet to the node colors
-        newLeafNode.styleSheets.Add(Resources.Load<StyleSheet>("Node"));
-
-        var textField = new TextField(string.Empty);
-
-        textField.RegisterValueChangedCallback(evt =>
-        {
-            newLeafNode._funcionOfNodeName = evt.newValue;
-            newLeafNode.title = evt.newValue;
-        });
-
-        ObjectField objectField = new ObjectField();
-
-
-        textField.SetValueWithoutNotify(newLeafNode.title);
-        newLeafNode.mainContainer.Add(textField);
-        newLeafNode.mainContainer.Add(objectField);
-
-
-        newLeafNode.RefreshExpandedState();
-        newLeafNode.RefreshPorts();
-        newLeafNode.SetPosition(new Rect(position, defaultNodeSize));
-
-        return newLeafNode;
-    }
-
-    public DecoratorNode CreateDecoratorNode(string nodeName, Vector2 position)
-    {
-        DecoratorNode newDecoratorNode = new DecoratorNode();
-
-        var inputPort = GeneratePort(newDecoratorNode, Direction.Input);
-        inputPort.portName = "Input";
-        newDecoratorNode.inputContainer.Add(inputPort);
-
-        // Add stylesheet to the node colors
-        newDecoratorNode.styleSheets.Add(Resources.Load<StyleSheet>("Node"));
-
-        var textField = new TextField(string.Empty);
-
-        textField.RegisterValueChangedCallback(evt =>
-        {
-            newDecoratorNode._funcionOfNodeName = evt.newValue;
-            newDecoratorNode.title = evt.newValue;
-        });
-
-        textField.SetValueWithoutNotify(newDecoratorNode.title);
-        newDecoratorNode.mainContainer.Add(textField);
-
-
-        newDecoratorNode.RefreshExpandedState();
-        newDecoratorNode.RefreshPorts();
-        newDecoratorNode.SetPosition(new Rect(position, defaultNodeSize));
-
-        return newDecoratorNode;
-    }
+    
     #endregion
 
 
