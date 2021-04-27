@@ -28,19 +28,12 @@ public class LeafNode : AINode
         newLeafNode.styleSheets.Add(Resources.Load<StyleSheet>("Node"));
 
         var textField = new TextField(string.Empty);
+        textField.SetValueWithoutNotify("Node Name");
 
-        textField.RegisterValueChangedCallback(evt =>
-        {
-            newLeafNode._functionOfNodeName = evt.newValue;
-            newLeafNode.title = evt.newValue;
-        });
 
         ObjectField objectField = new ObjectField();
         objectField.label = "Script to Check:";
         objectField.objectType = typeof(NodeCheck);
-
-
-        textField.SetValueWithoutNotify(newLeafNode.title);
 
         newLeafNode.titleContainer.Add(textField);
         newLeafNode.mainContainer.Add(objectField);

@@ -5,5 +5,5 @@ using UnityEngine;
 public class GraphContainer : ScriptableObject
 {
     public List<NodeEdge> NodeLink = new List<NodeEdge>();
-    public List<NodeData> DialogueNodeData = new List<NodeData>();
+    public List<NodeData> NodeData = new List<NodeData>();
 }

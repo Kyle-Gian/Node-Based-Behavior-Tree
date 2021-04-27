@@ -17,7 +17,9 @@ using System.Linq;
 public class GraphLayout : GraphView
 {
     public readonly Vector2 defaultNodeSize = new Vector2(x: 150, y: 200);
-    //public Blackboard blackboard;
+    public List<ExposedProperty> exposedProperties = new List<ExposedProperty>();
+
+    public Blackboard blackboard;
     private NodeSearchWindow _searchWindow;
     LeafNode leafNode = new LeafNode();
     RootNode rootNode = new RootNode();
@@ -156,17 +158,42 @@ public class GraphLayout : GraphView
     //    AINode.RefreshExpandedState();
     //}
 
-    #region Create Nodes
+    public void ClearBlackBoardAndExposedProperties()
+    {
+        exposedProperties.Clear();
+        blackboard.Clear();
+    }
+    public void AddPropertyToBlackBoard(ExposedProperty exposedProperty)
+    {
+        var localPropertyName = exposedProperty.PropertyName;
+        var localPropertyValue = exposedProperty.PropertyValue;
+        while (exposedProperties.Any(X => X.PropertyValue == localPropertyName))
+            localPropertyName = $"{localPropertyName}(1)";
+        var property = new ExposedProperty();
+        property.PropertyName = localPropertyName;
+        property.PropertyValue = localPropertyValue;
 
-    //Creates the start node for the graph
-   
-   
+        exposedProperties.Add(property);
 
-    
+        var container = new VisualElement();
+        var blackBoardField = new BlackboardField { text = property.PropertyName, typeText = "string" };
+        container.Add(blackBoardField);
+
+        var propertyValueTextField = new TextField("Value")
+        {
+            value = localPropertyValue
+        };
+        propertyValueTextField.RegisterValueChangedCallback(evt =>
+        {
+            var changingPropertyIndex = exposedProperties.FindIndex(x => x.PropertyName == property.PropertyName);
+            exposedProperties[changingPropertyIndex].PropertyValue = evt.newValue;
+        });
+        var blackBoardValueRow = new BlackboardRow(blackBoardField, propertyValueTextField);
+        container.Add(blackBoardValueRow);
 
 
-    
-    #endregion
+        blackboard.Add(container);
+    }
 
 
 }

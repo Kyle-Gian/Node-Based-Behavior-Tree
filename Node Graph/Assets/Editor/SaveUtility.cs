@@ -45,14 +45,14 @@ public class SaveUtility
     {
         if (!Edges.Any()) return false;
 
-        var dialogueContainer = ScriptableObject.CreateInstance<GraphContainer>();
+        var nodeContainer = ScriptableObject.CreateInstance<GraphContainer>();
         var connectedSockets = Edges.Where(x => x.input.node != null).ToArray();
 
         for (var i = 0; i < connectedSockets.Count(); i++)
         {
             var outputNode = (connectedSockets[i].output.node as AINode);
             var inputNode = (connectedSockets[i].input.node as AINode);
-            dialogueContainer.NodeLink.Add(new NodeEdge
+            nodeContainer.NodeLink.Add(new NodeEdge
             {
                 BaseNodeGUID = outputNode._GUID,
                 PortName = connectedSockets[i].output.portName,
@@ -62,7 +62,7 @@ public class SaveUtility
 
         foreach (var AINode in Nodes.Where(node => !node._entryPoint))
         {
-            dialogueContainer.DialogueNodeData.Add(item: new NodeData
+            nodeContainer.NodeData.Add(item: new NodeData
             {
                 NodeGUID =AINode._GUID,
                 //DialogueText = AINode._DialogueText,
@@ -102,7 +102,7 @@ public class SaveUtility
                 var targetNode = Nodes.First(x => x._GUID == targetNodeGuid);
                 LinkedNodes(Nodes[i].outputContainer[j].Q<Port>(), (Port)targetNode.inputContainer[0]);
 
-                targetNode.SetPosition(new Rect(_containerCache.DialogueNodeData.First(x => x.NodeGUID == targetNodeGuid).Position,
+                targetNode.SetPosition(new Rect(_containerCache.NodeData.First(x => x.NodeGUID == targetNodeGuid).Position,
                     _targetGraphView.defaultNodeSize
                     ));
             }
@@ -125,7 +125,7 @@ public class SaveUtility
 
     private void CreateNodes()
     {
-        foreach (var nodeData in _containerCache.DialogueNodeData)
+        foreach (var nodeData in _containerCache.NodeData)
         {
             //Pass position on later, so vec2 used as position for now
             var tempNode = _targetGraphView.CreateNewNode(nodeData.DialogueText, Vector2.zero);

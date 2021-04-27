@@ -41,22 +41,22 @@ public class GraphWindow : EditorWindow
         ConstructGraphView();
         GenerateToolbar();
         GenerateMiniMap();
-        //GenerateBlackBoard();
+        GenerateBlackBoard();
     }
 
-    //private void GenerateBlackBoard()
-    //{
-    //    var blackBoard = new Blackboard(_graphView);
-    //    blackBoard.Add(new BlackboardSection { title = "Exposed Properties" });
-    //    blackBoard.editTextRequested = (blackBoard1, element, newValue) =>
-    //    {
-    //        var oldPropertyName = ((BlackboardField)element).text;
-    //        ((BlackboardField)element).text = newValue;
-    //    };
-    //    blackBoard.SetPosition(new Rect(10, 30, 200, 300));
-    //    _graphView.Add(blackBoard);
-    //    //_graphView.blackboard = blackBoard;
-    //}
+    private void GenerateBlackBoard()
+    {
+        var blackBoard = new Blackboard(_graphView);
+        blackBoard.Add(new BlackboardSection { title = "Exposed Properties" });
+        blackBoard.editTextRequested = (blackBoard1, element, newValue) =>
+        {
+            var oldPropertyName = ((BlackboardField)element).text;
+            ((BlackboardField)element).text = newValue;
+        };
+        blackBoard.SetPosition(new Rect(10, 30, 200, 300));
+        _graphView.Add(blackBoard);
+        _graphView.blackboard = blackBoard;
+    }
 
     // create the minimap at the top of the graph
     private void GenerateMiniMap()
