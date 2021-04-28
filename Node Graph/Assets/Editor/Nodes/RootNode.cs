@@ -13,7 +13,7 @@ public class RootNode : AINode
         var node = new RootNode
         {
             title = "Root Node",
-            _functionOfNodeName = "Start",
+            _NodeType = "Start",
             _GUID = Guid.NewGuid().ToString(),
             _entryPoint = true
         };

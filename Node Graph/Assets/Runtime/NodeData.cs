@@ -6,6 +6,6 @@ using UnityEngine;
 public class NodeData 
 {
     public string NodeGUID;
-    public string DialogueText;
     public Vector2 Position;
+    public string NodeType;
 }

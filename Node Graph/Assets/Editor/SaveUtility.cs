@@ -3,8 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net;
-using System.Text;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -28,7 +26,7 @@ public class SaveUtility
     public void SaveGraph(string fileName)
     {
         var container = ScriptableObject.CreateInstance<GraphContainer>();
-        if (!SaveNodes(container)) return;
+        if (!SaveNodes(fileName,container)) return;
         //SaveExposedProperties(container);
 
         //Auto creates folders if they do not exist
@@ -41,18 +39,17 @@ public class SaveUtility
         AssetDatabase.SaveAssets();
     }
 
-    private bool SaveNodes(GraphContainer container)
+    private bool SaveNodes(string fileName, GraphContainer container)
     {
         if (!Edges.Any()) return false;
 
-        var nodeContainer = ScriptableObject.CreateInstance<GraphContainer>();
         var connectedSockets = Edges.Where(x => x.input.node != null).ToArray();
 
         for (var i = 0; i < connectedSockets.Count(); i++)
         {
             var outputNode = (connectedSockets[i].output.node as AINode);
             var inputNode = (connectedSockets[i].input.node as AINode);
-            nodeContainer.NodeLink.Add(new NodeEdge
+            container.NodeLink.Add(new NodeEdge
             {
                 BaseNodeGUID = outputNode._GUID,
                 PortName = connectedSockets[i].output.portName,
@@ -62,17 +59,15 @@ public class SaveUtility
 
         foreach (var AINode in Nodes.Where(node => !node._entryPoint))
         {
-            nodeContainer.NodeData.Add(item: new NodeData
+            container.NodeData.Add(item: new NodeData
             {
-                NodeGUID =AINode._GUID,
-                //DialogueText = AINode._DialogueText,
-                Position = AINode.GetPosition().position
+                NodeGUID = AINode._GUID,
+                Position = AINode.GetPosition().position,
+                NodeType = AINode._NodeType
 
             });
         }
         return true;
-
-
     }
 
     public void LoadGraph(string fileName)
@@ -128,11 +123,11 @@ public class SaveUtility
         foreach (var nodeData in _containerCache.NodeData)
         {
             //Pass position on later, so vec2 used as position for now
-            var tempNode = _targetGraphView.CreateNewNode(nodeData.DialogueText, Vector2.zero);
-            tempNode._GUID = nodeData.NodeGUID;
-            _targetGraphView.AddElement(tempNode);
+            _targetGraphView.LoadNode(nodeData.NodeType, nodeData.Position, nodeData.NodeGUID);
 
             var nodePorts = _containerCache.NodeLink.Where(x => x.BaseNodeGUID == nodeData.NodeGUID).ToList();
+            //tempNode._GUID = nodeData.NodeGUID;
+            //_targetGraphView.AddElement(tempNode);
         }
 
     }

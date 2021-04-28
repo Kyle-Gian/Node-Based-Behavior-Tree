@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c34db39198860fd4bb7bba2499a21ccd, type: 3}
+  m_Name: Nodes
+  m_EditorClassIdentifier: 
+  NodeLink:
+  - BaseNodeGUID: 6738a7e6-0c65-4d35-9021-6aab51551fb0
+    PortName: Next
+    TargetNodeGUID: 069d4cef-67ed-4023-9e50-a9b61ae22207
+  - BaseNodeGUID: 6738a7e6-0c65-4d35-9021-6aab51551fb0
+    PortName: Next
+    TargetNodeGUID: b576e4bc-223b-400d-90ff-ac2139a37926
+  - BaseNodeGUID: b576e4bc-223b-400d-90ff-ac2139a37926
+    PortName: Output
+    TargetNodeGUID: 0e3232b9-9585-497b-b067-98df4a2d65ad
+  - BaseNodeGUID: 0e3232b9-9585-497b-b067-98df4a2d65ad
+    PortName: Output
+    TargetNodeGUID: b5be35c5-a34f-4c9f-ace9-279d18047b2d
+  NodeData:
+  - NodeGUID: 069d4cef-67ed-4023-9e50-a9b61ae22207
+    Position: {x: 396, y: 163}
+    NodeType: SequenceNode
+  - NodeGUID: b576e4bc-223b-400d-90ff-ac2139a37926
+    Position: {x: 402, y: 310}
+    NodeType: SelectorNode
+  - NodeGUID: 0e3232b9-9585-497b-b067-98df4a2d65ad
+    Position: {x: 631, y: 380}
+    NodeType: LeafNode
+  - NodeGUID: b5be35c5-a34f-4c9f-ace9-279d18047b2d
+    Position: {x: 1135, y: 383}
+    NodeType: DecoratorNode

@@ -5,6 +5,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
@@ -18,7 +19,8 @@ public class LeafNode : AINode
         LeafNode newLeafNode = new LeafNode();
 
         newLeafNode.title = "Leaf";
-
+        newLeafNode._GUID = Guid.NewGuid().ToString();
+        newLeafNode._NodeType = GetType().ToString();
 
         var inputPort = GeneratePort(newLeafNode, Direction.Input);
         inputPort.portName = "Input";

@@ -12,13 +12,13 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine.UIElements;
 using UnityEditor.UIElements;
 
+[System.Serializable]
 public class AINode : Node
 {
     public readonly Vector2 defaultNodeSize = new Vector2(x: 150, y: 200);
 
     public string _GUID;
-    public string _functionOfNodeName;
-
+    public string _NodeType;
     public bool _entryPoint = false;
 
     enum NodeStatus
@@ -41,6 +41,19 @@ public class AINode : Node
             capacity = Port.Capacity.Single;
             return node.InstantiatePort(Orientation.Horizontal, portDirection, capacity, typeof(float));
         }
+
+    }
+
+    public List<Edge> GetOutputEdgeList(Port a_outputPort)
+    {
+        List<Edge> edges = new List<Edge>();
+
+        foreach (var edge in a_outputPort.connections)
+        {
+            edges.Add(edge);
+        }
+
+        return edges;
 
     }
 

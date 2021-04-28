@@ -1,7 +1,7 @@
 ﻿//Author: Kyle Gian
 //Date Created: 23/04/2021
 //Last Modified: 23/04/2021
-
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,24 +12,14 @@ using UnityEditor.UIElements;
 
 public class SequenceNode : AINode
 {
-    List<AINode> _children = new List<AINode>();
-
-    private void CheckChildrenStatus()
-    {
-
-    }
-
-    public void GetEdges()
-    {
-
-    }
 
     public SequenceNode CreateSequenceNode(string nodeName, Vector2 position)
     {
         SequenceNode newSequenceNode = new SequenceNode();
 
         newSequenceNode.title = "Sequence";
-
+        newSequenceNode._GUID = Guid.NewGuid().ToString();
+        newSequenceNode._NodeType = GetType().ToString();
 
         var inputPort = GeneratePort(newSequenceNode, Direction.Input);
         inputPort.portName = "Input";
@@ -42,7 +32,7 @@ public class SequenceNode : AINode
 
         textField.RegisterValueChangedCallback(evt =>
         {
-            newSequenceNode._functionOfNodeName = evt.newValue;
+            newSequenceNode._NodeType = evt.newValue;
             newSequenceNode.title = evt.newValue;
         });
 

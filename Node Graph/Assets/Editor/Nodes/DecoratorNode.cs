@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -13,6 +14,9 @@ public class DecoratorNode : AINode
         DecoratorNode newDecoratorNode = new DecoratorNode();
 
         newDecoratorNode.title = "Decorator";
+        newDecoratorNode._GUID = Guid.NewGuid().ToString();
+        newDecoratorNode._NodeType = GetType().ToString();
+
 
 
         var inputPort = GeneratePort(newDecoratorNode, Direction.Input);
@@ -27,7 +31,7 @@ public class DecoratorNode : AINode
 
         textField.RegisterValueChangedCallback(evt =>
         {
-            newDecoratorNode._functionOfNodeName = evt.newValue;
+            newDecoratorNode._NodeType = evt.newValue;
             newDecoratorNode.title = evt.newValue;
         });
 

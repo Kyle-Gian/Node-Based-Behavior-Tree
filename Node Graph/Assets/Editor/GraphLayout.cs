@@ -93,42 +93,29 @@ public class GraphLayout : GraphView
         }
     }
 
-    //Creat the Dialogue node with input/output ports, textfields and the name of the node
-    public AINode CreateNewNode(string nodeName, Vector2 position)
+    public void LoadNode(string nodeName, Vector2 position, string a_guid)
     {
-        var selectorNode = new SelectorNode
+        if (nodeName == "SelectorNode")
         {
-            title = nodeName,
-            _functionOfNodeName = nodeName,
-            _GUID = Guid.NewGuid().ToString()
-        };
+            AddElement(selectorNode.CreateSelectorNode(nodeName, position));
 
-        //var inputPort = GeneratePort(selectorNode, Direction.Input);
-        //inputPort.portName = "Input";
-        //selectorNode.inputContainer.Add(inputPort);
+        }
+        if (nodeName == "SequenceNode")
+        {
+            AddElement(sequenceNode.CreateSequenceNode(nodeName, position));
 
-        //// Add stylesheet to the node colors
-        //selectorNode.styleSheets.Add(Resources.Load<StyleSheet>("Node"));
+        }
+        if (nodeName == "DecoratorNode")
+        {
+            AddElement(decoratorNode.CreateDecoratorNode(nodeName, position));
 
-        //var textField = new TextField(string.Empty);
+        }
+        if (nodeName == "LeafNode")
+        {
 
-        //textField.RegisterValueChangedCallback(evt =>
-        //{
-        //    selectorNode._functionOfNodeName = evt.newValue;
-        //    selectorNode.title = evt.newValue;
-        //});
+            AddElement(leafNode.CreateLeafNode(nodeName, position));
 
-        //ObjectField objectField = new ObjectField();
-
-        //textField.SetValueWithoutNotify(selectorNode.title);
-        //selectorNode.mainContainer.Add(textField);
-        //selectorNode.mainContainer.Add(objectField);
-
-
-        //selectorNode.RefreshExpandedState();
-        //selectorNode.RefreshPorts();
-        //selectorNode.SetPosition(new Rect(position: position, defaultNodeSize));
-        return selectorNode;
+        }
     }
 
     //public void AddNewPort(AINode AINode, string overriddenPortName = "")

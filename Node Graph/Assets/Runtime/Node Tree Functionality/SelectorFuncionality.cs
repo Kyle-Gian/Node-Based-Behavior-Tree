@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor.Experimental.GraphView;
 
-public class SelectorFuncionality : MonoBehaviour
+
+public class SelectorFuncionality : NodeFunctionality
 {
     // Start is called before the first frame update
     void Start()

@@ -2,6 +2,7 @@
 //Date Created: 23/04/2021
 //Last Modified: 23/04/2021
 
+using System;
 
 using System.Collections;
 using System.Collections.Generic;
@@ -13,21 +14,12 @@ using UnityEditor.UIElements;
 
 public class SelectorNode : AINode
 {
-    List<AINode> _children = new List<AINode>();
-
-    private void CheckChildrenStatus()
-    {
-
-    }
-
-    public void GetEdges()
-    {
-
-    }
     public SelectorNode CreateSelectorNode(string nodeName, Vector2 position)
     {
         SelectorNode newSelectorNode = new SelectorNode();
         newSelectorNode.title = "Selector";
+        newSelectorNode._GUID = Guid.NewGuid().ToString();
+        newSelectorNode._NodeType = GetType().ToString();
 
         var inputPort = GeneratePort(newSelectorNode, Direction.Input);
         inputPort.portName = "Input";
@@ -40,7 +32,7 @@ public class SelectorNode : AINode
 
         textField.RegisterValueChangedCallback(evt =>
         {
-            newSelectorNode._functionOfNodeName = evt.newValue;
+            newSelectorNode._NodeType = evt.newValue;
             newSelectorNode.title = evt.newValue;
         });
 
