@@ -1,17 +1,14 @@
 ﻿//Author: Kyle Gian
 //Date Created: 23/04/2021
-//Last Modified: 23/04/2021
+//Last Modified: 29/04/2021
 
 //The funcionality and tools of the graph enabling the ability to add nodes and manipulators which gives basic graph funcionality
 
-using System.Collections;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine.UIElements;
-using UnityEditor.UIElements;
 using System.Linq;
 
 public class GraphLayout : GraphView

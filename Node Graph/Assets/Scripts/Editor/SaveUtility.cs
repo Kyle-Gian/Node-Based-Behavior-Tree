@@ -1,7 +1,10 @@
-﻿using System;
-using System.Collections;
+﻿//Author: Kyle Gian
+//Date Created: 25/04/2021
+//Last Modified: 29/04/2021
+
+
+//Saves/Loads nodes and edges to scriptable objects to and from the graph view
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;

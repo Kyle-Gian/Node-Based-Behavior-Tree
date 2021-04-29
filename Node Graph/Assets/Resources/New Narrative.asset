@@ -29,9 +29,6 @@ MonoBehaviour:
     PortName: Output
     TargetNodeGUID: ce0cf9a9-0f14-4843-b457-5fc11094bdc4
   NodeData:
-  - NodeGUID: 8ddeb5cd-f64a-42f5-830e-314f49914213
-    Position: {x: 658, y: -117}
-    NodeType: LeafNode
   - NodeGUID: da446e5b-2115-4ef2-b962-129d4811f905
     Position: {x: 1179, y: -36}
     NodeType: LeafNode
@@ -44,3 +41,6 @@ MonoBehaviour:
   - NodeGUID: ce0cf9a9-0f14-4843-b457-5fc11094bdc4
     Position: {x: 1291, y: 107}
     NodeType: SequenceNode
+  - NodeGUID: 8ddeb5cd-f64a-42f5-830e-314f49914213
+    Position: {x: 718, y: -203}
+    NodeType: LeafNode

@@ -1,6 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿//Author: Kyle Gian
+//Date Created: 25/04/2021
+//Last Modified: 25/04/2021
+
 
 [System.Serializable]
 public class NodeEdge

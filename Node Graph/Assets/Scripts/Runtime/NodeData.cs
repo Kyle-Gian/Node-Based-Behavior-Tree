@@ -1,5 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿//Author: Kyle Gian
+//Date Created: 25/04/2021
+//Last Modified: 25/04/2021
+
 using UnityEngine;
 
 [System.Serializable]

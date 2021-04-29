@@ -1,8 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿//Author: Kyle Gian
+//Date Created: 25/04/2021
+//Last Modified: 29/04/2021
+
+
+using System;
 using UnityEngine;
-using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine.UIElements;
 using UnityEditor.UIElements;
@@ -13,8 +15,6 @@ public class DecoratorNode : AINode
     {
         _NodeType = "decoratornode";
         _GUID = Guid.NewGuid().ToString();
-
-
     }
 
     DecoratorNode(string nodeName, Vector2 position, string guid)
