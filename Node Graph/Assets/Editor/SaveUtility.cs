@@ -123,11 +123,12 @@ public class SaveUtility
         foreach (var nodeData in _containerCache.NodeData)
         {
             //Pass position on later, so vec2 used as position for now
-            _targetGraphView.LoadNode(nodeData.NodeType, nodeData.Position, nodeData.NodeGUID);
+           var tempNode = _targetGraphView.LoadNode(nodeData.NodeType, nodeData.Position, nodeData.NodeGUID);
 
             var nodePorts = _containerCache.NodeLink.Where(x => x.BaseNodeGUID == nodeData.NodeGUID).ToList();
-            //tempNode._GUID = nodeData.NodeGUID;
-            //_targetGraphView.AddElement(tempNode);
+            tempNode._GUID = nodeData.NodeGUID;
+
+            _targetGraphView.AddElement(tempNode);
         }
 
     }

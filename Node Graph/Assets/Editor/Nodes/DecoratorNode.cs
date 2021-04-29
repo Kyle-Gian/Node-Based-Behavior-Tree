@@ -9,12 +9,31 @@ using UnityEditor.UIElements;
 
 public class DecoratorNode : AINode
 {
-    public DecoratorNode CreateDecoratorNode(string nodeName, Vector2 position)
+    public DecoratorNode()
+    {
+        _NodeType = "decoratornode";
+        _GUID = Guid.NewGuid().ToString();
+
+
+    }
+
+    DecoratorNode(string nodeName, Vector2 position, string guid)
+    {
+        _NodeType = nodeName;
+        _position = position;
+        _GUID = guid;
+    }
+
+    public DecoratorNode CreateDecoratorNode(string nodeName, Vector2 position, string guid)
     {
         DecoratorNode newDecoratorNode = new DecoratorNode();
 
         newDecoratorNode.title = "Decorator";
-        newDecoratorNode._GUID = Guid.NewGuid().ToString();
+        if (guid == null)
+        {
+            newDecoratorNode._GUID = Guid.NewGuid().ToString();
+
+        }
         newDecoratorNode._NodeType = GetType().ToString();
 
 

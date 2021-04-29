@@ -3,7 +3,7 @@
 //Last Modified: 23/04/2021
 
 
-
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,7 +19,19 @@ public class AINode : Node
 
     public string _GUID;
     public string _NodeType;
+    public Vector2 _position;
     public bool _entryPoint = false;
+
+    public enum NodeType
+    {
+        Null = 0,
+        Leaf,
+        Sequence,
+        Selector,
+        Decorator,
+        Root
+    }
+    public NodeType nt;
 
     enum NodeStatus
     {
@@ -55,6 +67,96 @@ public class AINode : Node
 
         return edges;
 
+    }
+
+    public NodeType NodeSetter(string nodeName)
+    {
+
+        switch (nodeName.ToLower())
+        {
+            case "leafnode":
+                return NodeType.Leaf;
+            case "selector":
+                return NodeType.Selector;
+            case "sequence":
+                return NodeType.Sequence;
+            case "decorator":
+                return NodeType.Decorator;
+            default:
+                Debug.LogError("Bad Node Creation");
+                return NodeType.Null;
+        }
+           
+    }
+
+    public AINode NodeClass(string nodeName)
+    {
+        switch (nodeName.ToLower())
+        {
+            case "leafnode":
+                return new LeafNode();
+            case "selectornode":
+                return new SelectorNode();
+            case "sequencenode":
+                return new SequenceNode();
+            case "decoratornode":
+                return new DecoratorNode();
+            default:
+                Debug.LogError("Bad Node Creation");
+                return new AINode();
+        }
+    }
+
+    public AINode CreateNode(string nodeName, Vector2 position, string guid)
+    {
+       //NodeClass(nodeName);
+
+        AINode newNode = NodeClass(nodeName);
+
+        newNode.title = nodeName;
+
+        if (guid == null)
+        {
+            newNode._GUID = Guid.NewGuid().ToString();
+        }
+        newNode._NodeType = nodeName;
+
+        var inputPort = GeneratePort(newNode, Direction.Input);
+        inputPort.portName = "Input";
+        newNode.inputContainer.Add(inputPort);
+
+        // Add stylesheet to the node colors
+        newNode.styleSheets.Add(Resources.Load<StyleSheet>("Node"));
+
+        var textField = new TextField(string.Empty);
+        textField.SetValueWithoutNotify("Node Name");
+
+        if (nodeName == "LeafNode" || nodeName == "DecoratorNode")
+        {
+            newNode.mainContainer.Add(AddObjectField());
+        }
+
+
+        newNode.titleContainer.Add(textField);
+
+        var addOutput = GeneratePort(newNode, Direction.Output);
+        addOutput.portName = "Output";
+        newNode.outputContainer.Add(addOutput);
+
+        newNode.RefreshExpandedState();
+        newNode.RefreshPorts();
+        newNode.SetPosition(new Rect(position, defaultNodeSize));
+
+        return newNode;
+    }
+    
+    public ObjectField AddObjectField()
+    {
+        ObjectField objectField = new ObjectField();
+        objectField.label = "Script to Check:";
+        objectField.objectType = typeof(NodeCheck);
+
+        return objectField;
     }
 
 }

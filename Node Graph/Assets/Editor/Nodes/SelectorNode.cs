@@ -14,11 +14,29 @@ using UnityEditor.UIElements;
 
 public class SelectorNode : AINode
 {
-    public SelectorNode CreateSelectorNode(string nodeName, Vector2 position)
+    public SelectorNode()
+    {
+        _NodeType = "selectornode";
+        _GUID = Guid.NewGuid().ToString();
+
+    }
+
+    SelectorNode(string nodeName, Vector2 position, string guid)
+    {
+        _NodeType = nodeName;
+        _position = position;
+        _GUID = guid;
+    }
+
+    public SelectorNode CreateSelectorNode(string nodeName, Vector2 position, string guid)
     {
         SelectorNode newSelectorNode = new SelectorNode();
         newSelectorNode.title = "Selector";
-        newSelectorNode._GUID = Guid.NewGuid().ToString();
+        if (guid == null)
+        {
+            newSelectorNode._GUID = Guid.NewGuid().ToString();
+
+        }
         newSelectorNode._NodeType = GetType().ToString();
 
         var inputPort = GeneratePort(newSelectorNode, Direction.Input);

@@ -14,12 +14,37 @@ using UnityEditor.UIElements;
 
 public class LeafNode : AINode
 {
-    public LeafNode CreateLeafNode(string nodeName, Vector2 position)
+    public LeafNode()
+    {
+        _NodeType = "leafnode";
+        _GUID = Guid.NewGuid().ToString();
+
+    }
+
+    LeafNode(string nodeName, Vector2 position, string guid)
+    {
+        _NodeType = nodeName;
+        _position = position;
+        _GUID = guid;
+    }
+
+    public AINode CreateNode(Vector2 position, string guid)
+    {
+        nt = NodeType.Leaf;
+        return this;
+    }
+
+    public LeafNode CreateLeafNode(string nodeName, Vector2 position , string guid)
     {
         LeafNode newLeafNode = new LeafNode();
 
         newLeafNode.title = "Leaf";
-        newLeafNode._GUID = Guid.NewGuid().ToString();
+
+        if (guid == null)
+        {
+            newLeafNode._GUID = Guid.NewGuid().ToString();
+
+        }
         newLeafNode._NodeType = GetType().ToString();
 
         var inputPort = GeneratePort(newLeafNode, Direction.Input);

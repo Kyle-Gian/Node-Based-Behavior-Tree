@@ -21,11 +21,8 @@ public class GraphLayout : GraphView
 
     public Blackboard blackboard;
     private NodeSearchWindow _searchWindow;
-    LeafNode leafNode = new LeafNode();
+    AINode node = new AINode();
     RootNode rootNode = new RootNode();
-    SelectorNode selectorNode = new SelectorNode();
-    SequenceNode sequenceNode = new SequenceNode();
-    DecoratorNode decoratorNode = new DecoratorNode();
     public GraphLayout(EditorWindow editorWindow)
     {
         //Adds functionality to the Graph 
@@ -70,52 +67,20 @@ public class GraphLayout : GraphView
     //Add the node to graph
     public void CreateNode(string nodeName, Vector2 position)
     {
-        if (nodeName == "SelectorNode")
-        {
-            AddElement(selectorNode.CreateSelectorNode(nodeName, position));
+        string guid = null;
+        var newNode = node.CreateNode(nodeName, position, guid);
+        AddElement(newNode);
 
-        }
-        if (nodeName == "SequenceNode")
-        {
-            AddElement(sequenceNode.CreateSequenceNode(nodeName, position));
-
-        }
-        if (nodeName == "DecoratorNode")
-        {
-            AddElement(decoratorNode.CreateDecoratorNode(nodeName, position));
-
-        }
-        if (nodeName == "LeafNode")
-        {
-
-            AddElement(leafNode.CreateLeafNode(nodeName, position));
-
-        }
     }
 
-    public void LoadNode(string nodeName, Vector2 position, string a_guid)
+    public AINode LoadNode(string nodeName, Vector2 position, string a_guid)
     {
-        if (nodeName == "SelectorNode")
-        {
-            AddElement(selectorNode.CreateSelectorNode(nodeName, position));
 
-        }
-        if (nodeName == "SequenceNode")
-        {
-            AddElement(sequenceNode.CreateSequenceNode(nodeName, position));
+        var newNode = node.CreateNode(nodeName, position, a_guid);
+        AddElement(newNode);
 
-        }
-        if (nodeName == "DecoratorNode")
-        {
-            AddElement(decoratorNode.CreateDecoratorNode(nodeName, position));
+        return newNode;
 
-        }
-        if (nodeName == "LeafNode")
-        {
-
-            AddElement(leafNode.CreateLeafNode(nodeName, position));
-
-        }
     }
 
     //public void AddNewPort(AINode AINode, string overriddenPortName = "")

@@ -12,6 +12,7 @@ using UnityEditor;
 using UnityEngine.UIElements;
 using UnityEditor.Experimental.GraphView;
 
+
 public class NodeSearchWindow : ScriptableObject, ISearchWindowProvider
 {
     private GraphLayout _graphView;

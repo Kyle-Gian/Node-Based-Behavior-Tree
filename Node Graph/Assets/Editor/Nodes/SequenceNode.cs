@@ -12,13 +12,29 @@ using UnityEditor.UIElements;
 
 public class SequenceNode : AINode
 {
+    public SequenceNode()
+    {
+        _NodeType = "sequenceNode";
+        _GUID = Guid.NewGuid().ToString();
 
-    public SequenceNode CreateSequenceNode(string nodeName, Vector2 position)
+    }
+
+    SequenceNode(string nodeName, Vector2 position, string guid)
+    {
+        _NodeType = nodeName;
+        _position = position;
+        _GUID = guid;
+    }
+    public SequenceNode CreateSequenceNode(string nodeName, Vector2 position , string guid)
     {
         SequenceNode newSequenceNode = new SequenceNode();
 
         newSequenceNode.title = "Sequence";
-        newSequenceNode._GUID = Guid.NewGuid().ToString();
+        if (guid == null)
+        {
+            newSequenceNode._GUID = Guid.NewGuid().ToString();
+
+        }
         newSequenceNode._NodeType = GetType().ToString();
 
         var inputPort = GeneratePort(newSequenceNode, Direction.Input);
