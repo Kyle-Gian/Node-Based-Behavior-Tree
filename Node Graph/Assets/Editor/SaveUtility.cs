@@ -42,11 +42,11 @@ public class SaveUtility
     private bool SaveNodes(string fileName, GraphContainer container)
     {
         if (!Edges.Any()) return false;
-
         var connectedSockets = Edges.Where(x => x.input.node != null).ToArray();
 
         for (var i = 0; i < connectedSockets.Count(); i++)
         {
+
             var outputNode = (connectedSockets[i].output.node as AINode);
             var inputNode = (connectedSockets[i].input.node as AINode);
             container.NodeLink.Add(new NodeEdge
@@ -89,17 +89,18 @@ public class SaveUtility
     {
         for (var i = 0; i < Nodes.Count; i++)
         {
+            var k = i; //Prevent access to modified closure
             var connections = _containerCache.NodeLink.Where(x => x.BaseNodeGUID == Nodes[i]._GUID).ToList();
 
-            for (var j = 0; j < connections.Count; j++)
+            for (var j = 0; j < connections.Count(); j++)
             {
-                var targetNodeGuid = connections[j].TargetNodeGUID;
-                var targetNode = Nodes.First(x => x._GUID == targetNodeGuid);
-                LinkedNodes(Nodes[i].outputContainer[j].Q<Port>(), (Port)targetNode.inputContainer[0]);
+                var targetNodeGUID = connections[j].TargetNodeGUID;
+                var targetNode = Nodes.First(x => x._GUID == targetNodeGUID);
+                LinkedNodes(Nodes[i].outputContainer[0].Q<Port>(), (Port)targetNode.inputContainer[0]);
 
-                targetNode.SetPosition(new Rect(_containerCache.NodeData.First(x => x.NodeGUID == targetNodeGuid).Position,
-                    _targetGraphView.defaultNodeSize
-                    ));
+                targetNode.SetPosition(new Rect(
+                    _containerCache.NodeData.First(x => x.NodeGUID == targetNodeGUID).Position,
+                    _targetGraphView.defaultNodeSize));
             }
         }
 
