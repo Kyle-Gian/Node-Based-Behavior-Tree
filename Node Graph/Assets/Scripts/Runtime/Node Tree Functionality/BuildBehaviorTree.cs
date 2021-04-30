@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿//Author: Kyle Gian
+//Date Created: 30/04/2021
+//Last Modified: 30/04/2021
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
@@ -45,13 +49,13 @@ public class BuildBehaviorTree : MonoBehaviour
                     {
                         if (nodeToCheck._linksToChildren == null)
                         {
-                            
+                            nodeToCheck.NodeFunction();
                         }
                         else
                         {
-                            foreach (var item in nodeToCheck._linksToChildren)
+                            foreach (var node in nodeToCheck._linksToChildren)
                             {
-
+                                
                             }
 
                         }

@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿//Author: Kyle Gian
+//Date Created: 30/04/2021
+//Last Modified: 30/04/2021
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,26 +13,15 @@ using UnityEditor.UIElements;
 #endif
 public class NodeFunctionality : MonoBehaviour
 {
-    List<Edge> connectedOutputEdges;
-
-
-    public void CreateNewOutputList()
+    public TreeNode.Status ReturnStatus()
     {
-        connectedOutputEdges = new List<Edge>();
+        return TreeNode.Status.PROCESSING;
     }
 
-    public Edge GetOutputEdge(int a_location)
+    public virtual void RunFunction()
     {
-        return connectedOutputEdges[a_location];
-    }
-    public List<Edge> GetOutputEdge()
-    {
-        return connectedOutputEdges;
-    }
 
-    public void SetOutputList(List<Edge> a_nodeOutputEdges)
-    {
-       connectedOutputEdges = a_nodeOutputEdges;
     }
+        
 
 }

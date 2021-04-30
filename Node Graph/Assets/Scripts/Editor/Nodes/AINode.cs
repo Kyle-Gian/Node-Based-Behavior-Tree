@@ -1,6 +1,6 @@
 ﻿//Author: Kyle Gian
 //Date Created: 23/04/2021
-//Last Modified: 29/04/2021
+//Last Modified: 30/04/2021
 
 
 using System;
@@ -129,7 +129,7 @@ public class AINode : Node
         var textField = new TextField(string.Empty);
         textField.SetValueWithoutNotify("Node Name");
 
-        if (nodeName == "LeafNode" || nodeName == "DecoratorNode")
+        if (nodeName != "RootNode" )
         {
             newNode.mainContainer.Add(AddObjectField());
         }

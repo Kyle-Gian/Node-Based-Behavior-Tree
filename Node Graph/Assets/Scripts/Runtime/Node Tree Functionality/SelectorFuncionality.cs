@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿//Author: Kyle Gian
+//Date Created: 30/04/2021
+//Last Modified: 30/04/2021
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor.Experimental.GraphView;
@@ -6,15 +10,8 @@ using UnityEditor.Experimental.GraphView;
 
 public class SelectorFuncionality : NodeFunctionality
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void RunFunction()
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

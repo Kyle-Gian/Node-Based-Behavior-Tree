@@ -7,6 +7,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
+using UnityEditor.UIElements;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -66,9 +67,10 @@ public class SaveUtility
             {
                 NodeGUID = AINode._GUID,
                 Position = AINode.GetPosition().position,
-                NodeType = AINode._NodeType
+                NodeType = AINode._NodeType,
+                NodeFunction = AINode.mainContainer.GetFirstOfType<ObjectField>().name
 
-            });
+            }) ;
         }
         return true;
     }
