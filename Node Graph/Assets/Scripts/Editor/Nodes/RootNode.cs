@@ -24,7 +24,7 @@ public class RootNode : AINode
         node.capabilities &= ~Capabilities.Movable;
         node.capabilities &= ~Capabilities.Deletable;
 
-        node.SetPosition(new Rect(x: 100, y: 200, width: 100, height: 150));
+        node.SetPosition(new Rect(x: 0, y: 0, width: 100, height: 150));
         return node;
     }
 
