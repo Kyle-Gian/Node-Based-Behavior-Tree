@@ -10,5 +10,5 @@ public class NodeData
     public string NodeGUID;
     public Vector2 Position;
     public string NodeType;
-    public string NodeFunction = "null";
+    public ScriptContainer NodeFunction;
 }

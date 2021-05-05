@@ -30,7 +30,7 @@ public class SaveUtility
     public void SaveGraph(string fileName)
     {
         var container = ScriptableObject.CreateInstance<GraphContainer>();
-        if (!SaveNodes(fileName,container)) return;
+        if (!SaveNodes(fileName, container)) return;
         //SaveExposedProperties(container);
 
         //Auto creates folders if they do not exist
@@ -63,12 +63,23 @@ public class SaveUtility
 
         foreach (var AINode in Nodes.Where(node => !node._entryPoint))
         {
+            ScriptContainer functionName;
+            ObjectField function = (ObjectField)AINode.mainContainer.ElementAt(2);
+
+            Debug.Log(function.value.GetType());
+
+            if (function.value != null)
+            {
+                functionName = function.value.GetType();
+            }
+
+            Debug.Log(function.Children().ElementAt(1));
             container.NodeData.Add(item: new NodeData
             {
                 NodeGUID = AINode._GUID,
                 Position = AINode.GetPosition().position,
-                NodeType = AINode._NodeType,
-                NodeFunction = AINode.mainContainer.GetFirstOfType<ObjectField>().name
+                NodeType = AINode._NodeType,                  
+                NodeFunction = functionName
 
             }) ;
         }
@@ -129,7 +140,7 @@ public class SaveUtility
         foreach (var nodeData in _containerCache.NodeData)
         {
             //Pass position on later, so vec2 used as position for now
-           var tempNode = _targetGraphView.LoadNode(nodeData.NodeType, nodeData.Position, nodeData.NodeGUID);
+            var tempNode = _targetGraphView.LoadNode(nodeData.NodeType, nodeData.Position, nodeData.NodeGUID, nodeData.NodeFunction);
 
             var nodePorts = _containerCache.NodeLink.Where(x => x.BaseNodeGUID == nodeData.NodeGUID).ToList();
             tempNode._GUID = nodeData.NodeGUID;

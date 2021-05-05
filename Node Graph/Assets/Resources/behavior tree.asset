@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c34db39198860fd4bb7bba2499a21ccd, type: 3}
+  m_Name: behavior tree
+  m_EditorClassIdentifier: 
+  NodeLink:
+  - BaseNodeGUID: cd31d1ae-8a0d-4ead-894d-16ff3285e2af
+    PortName: Next
+    TargetNodeGUID: 35be2f41-189f-4138-ac8c-254d5d61438c
+  NodeData:
+  - NodeGUID: 35be2f41-189f-4138-ac8c-254d5d61438c
+    Position: {x: 311, y: 130}
+    NodeType: SequenceNode
+    NodeFunction: "using System.Collections;\r\nusing System.Collections.Generic;\r\nusing
+      UnityEngine;\r\n\r\npublic class TestCheck : NodeCheck\r\n{\r\n    // Start
+      is called before the first frame update\r\n    void Start()\r\n    {\r\n       
+      \r\n    }\r\n\r\n    // Update is called once per frame\r\n    void Update()\r\n   
+      {\r\n        \r\n    }\r\n}\r\n"

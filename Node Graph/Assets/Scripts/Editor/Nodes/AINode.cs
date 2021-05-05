@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine.UIElements;
 using UnityEditor.UIElements;
@@ -105,7 +106,7 @@ public class AINode : Node
         }
     }
 
-    public AINode CreateNode(string nodeName, Vector2 position, string guid)
+    public AINode CreateNode(string nodeName, Vector2 position, string guid, ScriptContainer a_function)
     {
        //NodeClass(nodeName);
 
@@ -125,7 +126,7 @@ public class AINode : Node
 
         // Add stylesheet to the node colors
         newNode.styleSheets.Add(Resources.Load<StyleSheet>("Node"));
-
+        
         var textField = new TextField(string.Empty);
         textField.SetValueWithoutNotify("Node Name");
 
@@ -133,7 +134,6 @@ public class AINode : Node
         {
             newNode.mainContainer.Add(AddObjectField());
         }
-
 
         newNode.titleContainer.Add(textField);
 
@@ -152,8 +152,8 @@ public class AINode : Node
     {
         ObjectField objectField = new ObjectField();
         objectField.label = "Script to Check:";
-        objectField.objectType = typeof(NodeCheck);
-
+        objectField.name = "Function";
+        objectField.objectType = typeof(ScriptContainer);
         return objectField;
     }
 

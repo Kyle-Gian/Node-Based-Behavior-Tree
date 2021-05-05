@@ -9,85 +9,31 @@ using System.IO;
 using System.Linq;
 using System;
 
-public class BuildBehaviorTree : MonoBehaviour
+public class BuildBehaviorTree
 {
-    [SerializeField]
-    GraphContainer _savedGraph;
-
-    RootTreeNode _rootTreeNode; 
-
-    List<TreeNode> _treeNodes = new List<TreeNode>();
-    List<NodeEdge> _nodeLinks = new List<NodeEdge>();
     
 
-    // Start is called before the first frame update
-    void Start()
+    public void LoadTree(GraphContainer _graph, RootTreeNode _rootTreeNode, List<TreeNode> _treeNodes, List<NodeEdge> _nodeLinks)
     {
-        if (_savedGraph != null)
-        {
-            LoadTree();
 
-        }
-        else
-        {
-            Debug.LogError("No Graph Loaded");
-        }
-    }
+        _rootTreeNode._GUID =  Guid.NewGuid().ToString();
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (_savedGraph != null)
-        {
-            foreach (var link in _rootTreeNode._linksToChildren)
-            {
-                if (_rootTreeNode._linksToChildren != null)
-                {
-                    var nodeToCheck = ReturnChildNode(link.TargetNodeGUID);
-
-                    if (nodeToCheck._currentStatus == TreeNode.Status.PROCESSING)
-                    {
-                        if (nodeToCheck._linksToChildren == null)
-                        {
-                            nodeToCheck.NodeFunction();
-                        }
-                        else
-                        {
-                            foreach (var node in nodeToCheck._linksToChildren)
-                            {
-                                
-                            }
-
-                        }
-   
-
-                    }
-
-                }
-                
-            }
-        }
-
-    }
-
-    public void LoadTree()
-    {
-        _rootTreeNode = new RootTreeNode(Guid.NewGuid().ToString(), Vector2.zero);
-        if (_savedGraph == null)
+        if (_graph == null)
         {
             Debug.LogError("File not found!");
             return;
         }
 
-        foreach (var node in _savedGraph.NodeData)
+        foreach (var node in _graph.NodeData)
         {
-            CreateNodes(node);
+            var newNode = CreateNodeType(node);
 
+            _treeNodes.Add(newNode);
         }
 
-        for (int i = 0; i < _savedGraph.NodeLink.Count; i++)
+        for (int i = 0; i < _graph.NodeLink.Count; i++)
         {
-            _nodeLinks.Add(_savedGraph.NodeLink[i]);
+            _nodeLinks.Add(_graph.NodeLink[i]);
         }
 
         foreach (var node in _treeNodes)
@@ -113,17 +59,6 @@ public class BuildBehaviorTree : MonoBehaviour
         }
 
     }
-
-
-
-    public void CreateNodes(NodeData nodeType)
-    {
-        var newNode = CreateNodeType(nodeType);
-
-        _treeNodes.Add(newNode);
-
-    }
-
     public TreeNode CreateNodeType(NodeData a_nodeType)
     {
         switch (a_nodeType.NodeType.ToLower())
@@ -162,16 +97,5 @@ public class BuildBehaviorTree : MonoBehaviour
 
     }
 
-    public TreeNode ReturnChildNode(string a_nodeGuid)
-    {
-        foreach (var node in _treeNodes)
-        {
-            if (a_nodeGuid == node._GUID)
-            {
-                return node;
-            }
-        }
 
-        return null;
-    }
 }

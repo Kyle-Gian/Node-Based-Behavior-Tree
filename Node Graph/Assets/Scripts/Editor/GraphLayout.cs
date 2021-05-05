@@ -64,49 +64,20 @@ public class GraphLayout : GraphView
     //Add the node to graph
     public void CreateNode(string nodeName, Vector2 position)
     {
+        ScriptContainer scriptContainer = new ScriptContainer();
         string guid = null;
-        var newNode = node.CreateNode(nodeName, position, guid);
+        var newNode = node.CreateNode(nodeName, position, guid, scriptContainer);
         AddElement(newNode);
 
     }
 
-    public AINode LoadNode(string nodeName, Vector2 position, string a_guid)
+    public AINode LoadNode(string nodeName, Vector2 position, string a_guid, ScriptContainer a_function)
     {
-
-        var newNode = node.CreateNode(nodeName, position, a_guid);
+        var newNode = node.CreateNode(nodeName, position, a_guid, a_function);
         AddElement(newNode);
 
         return newNode;
-
     }
-
-    //public void AddNewPort(AINode AINode, string overriddenPortName = "")
-    //{
-    //    var generatedPort = GeneratePort(AINode, Direction.Output);
-
-    //    var oldLabel = generatedPort.contentContainer.Q<Label>("type");
-    //    generatedPort.contentContainer.Remove(oldLabel);
-
-    //    var outputPortCount = AINode.outputContainer.Query(name: "connector").ToList().Count;
-
-    //    //Increase port count on node by 1 unless name is overwritten manually
-    //    var choicePortName = string.IsNullOrEmpty(overriddenPortName) ? $"Choice {outputPortCount + 1}" : overriddenPortName;
-
-    //    var textField = new TextField
-    //    {
-    //        name = string.Empty,
-    //        value = choicePortName
-    //    };
-    //    textField.RegisterValueChangedCallback(evt => generatedPort.portName = evt.newValue);
-    //    generatedPort.contentContainer.Add(new Label("  "));
-    //    generatedPort.contentContainer.Add(textField);
-
-    //    generatedPort.portName = choicePortName;
-    //    AINode.outputContainer.Add(generatedPort);
-    //    AINode.RefreshPorts();
-    //    AINode.RefreshExpandedState();
-    //}
-
     public void ClearBlackBoardAndExposedProperties()
     {
         exposedProperties.Clear();

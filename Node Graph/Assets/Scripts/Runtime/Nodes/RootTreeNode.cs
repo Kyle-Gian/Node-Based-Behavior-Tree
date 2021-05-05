@@ -18,6 +18,15 @@ public class RootTreeNode : TreeNode
         _function = new RootFunctionality();
     }
 
+    public RootTreeNode()
+    {
+        _nodeType = "rootnode";
+        _position = Vector2.zero;
+        _entryPoint = true;
+        _linksToChildren = new List<NodeEdge>();
+        _function = new RootFunctionality();
+    }
+
     public override void NodeFunction()
     {
         this._function.RunFunction();

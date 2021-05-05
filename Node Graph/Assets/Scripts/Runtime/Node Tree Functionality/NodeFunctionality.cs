@@ -11,7 +11,7 @@ using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
 #endif
-public class NodeFunctionality : MonoBehaviour
+public class NodeFunctionality
 {
     public TreeNode.Status ReturnStatus()
     {
