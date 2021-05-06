@@ -8,13 +8,15 @@ using UnityEngine;
 
 public class DecoratorTreeNode : TreeNode
 {
-    public DecoratorTreeNode(string a_guid, Vector2 a_position)
+    ScriptContainer _scriptToBeChecked;
+
+    public DecoratorTreeNode(string a_guid, Vector2 a_position, ScriptContainer script)
     {
         _nodeType = "decoratornode";
         _GUID = a_guid;
         _position = a_position;
         _function = new DecoratorFunctionality();
-
+        _scriptToBeChecked = script;
     }
 
     public override void NodeFunction()

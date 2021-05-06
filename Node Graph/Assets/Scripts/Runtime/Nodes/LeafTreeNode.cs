@@ -8,13 +8,16 @@ using UnityEngine;
 
 public class LeafTreeNode : TreeNode
 {
-    public LeafTreeNode(string a_guid, Vector2 a_position)
+    public ScriptContainer _scriptToBeChecked;
+    public LeafTreeNode(string a_guid, Vector2 a_position, ScriptContainer script)
     {
         _nodeType = "leafnode";
         _GUID = a_guid;
         _position = a_position;
         _linksToChildren = new List<NodeEdge>();
         _function = new LeafFunctionality();
+        _scriptToBeChecked = script;
+        
     }
     public override void NodeFunction()
     {

@@ -44,6 +44,7 @@ public class BuildBehaviorTree
                 if (edge.PortName == "Next")
                 {
                     edge.BaseNodeGUID = _rootTreeNode._GUID;
+                    _rootTreeNode._linksToChildren.Add(edge);
                 }
                 if (edge.BaseNodeGUID == node._GUID)
                 {
@@ -64,7 +65,7 @@ public class BuildBehaviorTree
         switch (a_nodeType.NodeType.ToLower())
         {
             case "leafnode":
-                LeafTreeNode leafNode = new LeafTreeNode(a_nodeType.NodeGUID, a_nodeType.Position);
+                LeafTreeNode leafNode = new LeafTreeNode(a_nodeType.NodeGUID, a_nodeType.Position, a_nodeType.NodeFunction);
                 return leafNode;
             case "sequencenode":
                 SequenceTreeNode sequenceNode = new SequenceTreeNode(a_nodeType.NodeGUID, a_nodeType.Position);
@@ -73,7 +74,7 @@ public class BuildBehaviorTree
                 SelectorTreeNode selectorNode = new SelectorTreeNode(a_nodeType.NodeGUID, a_nodeType.Position);
                 return selectorNode;
             case "decoratornode":
-                DecoratorTreeNode decoratorNode = new DecoratorTreeNode(a_nodeType.NodeGUID, a_nodeType.Position);
+                DecoratorTreeNode decoratorNode = new DecoratorTreeNode(a_nodeType.NodeGUID, a_nodeType.Position, a_nodeType.NodeFunction);
                 return decoratorNode;
             case "rootnode":
                 RootTreeNode rootNode = new RootTreeNode(a_nodeType.NodeGUID, a_nodeType.Position);
@@ -88,14 +89,15 @@ public class BuildBehaviorTree
     public void AddOutputEdgeToNode<T>(T node,NodeEdge link) where T:TreeNode
     {
         node._linksToChildren.Add(link);
-        link.Child = node;
+        link.Parent = node;
 
     }
 
     private void AddInputEdgeToNode<T>(T node, NodeEdge edge) where T : TreeNode
     {
         node._ParentEdge = edge;
-        edge.Parent = node;
+        edge.Child = node;
+
 
     }
 

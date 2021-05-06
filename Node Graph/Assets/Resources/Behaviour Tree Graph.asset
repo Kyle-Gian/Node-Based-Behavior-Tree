@@ -13,18 +13,32 @@ MonoBehaviour:
   m_Name: Behaviour Tree Graph
   m_EditorClassIdentifier: 
   NodeLink:
-  - BaseNodeGUID: e31d47c7-f89a-4dd8-8389-5c68732cbe20
+  - BaseNodeGUID: 4c9893a0-8e08-4703-8fe9-ac6718e93f0f
     PortName: Next
     TargetNodeGUID: b44ddae6-2db1-455f-966f-4c5f74fad88e
-  - BaseNodeGUID: e31d47c7-f89a-4dd8-8389-5c68732cbe20
+  - BaseNodeGUID: 4c9893a0-8e08-4703-8fe9-ac6718e93f0f
     PortName: Next
     TargetNodeGUID: 269e6cb6-5293-4a5e-b928-ad829acf9fb9
+  - BaseNodeGUID: 269e6cb6-5293-4a5e-b928-ad829acf9fb9
+    PortName: Output
+    TargetNodeGUID: 072e76ae-1b05-4f07-a28d-492948289c20
+  - BaseNodeGUID: b44ddae6-2db1-455f-966f-4c5f74fad88e
+    PortName: Output
+    TargetNodeGUID: 9da70822-10ce-4fa8-aae6-ea6785055651
   NodeData:
-  - NodeGUID: b44ddae6-2db1-455f-966f-4c5f74fad88e
-    Position: {x: 289, y: -136}
-    NodeType: SequenceNode
-    NodeFunction: {fileID: 0}
   - NodeGUID: 269e6cb6-5293-4a5e-b928-ad829acf9fb9
     Position: {x: 283, y: 165}
     NodeType: SequenceNode
     NodeFunction: {fileID: 11400000, guid: e33aaefdb0cc4d44f9d4472555b5fa9d, type: 2}
+  - NodeGUID: 072e76ae-1b05-4f07-a28d-492948289c20
+    Position: {x: 802, y: 360}
+    NodeType: LeafNode
+    NodeFunction: {fileID: 11400000, guid: 50418185eba34af4a818c2651d6c77f2, type: 2}
+  - NodeGUID: b44ddae6-2db1-455f-966f-4c5f74fad88e
+    Position: {x: 289, y: -136}
+    NodeType: SequenceNode
+    NodeFunction: {fileID: 11400000, guid: e33aaefdb0cc4d44f9d4472555b5fa9d, type: 2}
+  - NodeGUID: 9da70822-10ce-4fa8-aae6-ea6785055651
+    Position: {x: 892, y: -58}
+    NodeType: LeafNode
+    NodeFunction: {fileID: 11400000, guid: 50418185eba34af4a818c2651d6c77f2, type: 2}

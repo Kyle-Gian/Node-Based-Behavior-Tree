@@ -6,18 +6,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
-public class NodeCheck : MonoBehaviour
+[System.Serializable]
+public class NodeCheck
 {
-    // Start is called before the first frame update
-    void Start()
+
+    public void CheckCondition()
     {
-        
+        if (true)
+        {
+
+        }
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

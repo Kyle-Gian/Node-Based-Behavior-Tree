@@ -39,21 +39,21 @@ public class BehaviourTree : MonoBehaviour
     void RunBehaviourTree()
     {
 
-        foreach (var link in _rootTreeNode._linksToChildren)
+        for (int i = 0; i < _rootTreeNode._linksToChildren.Count; i++)
         {
             if (_rootTreeNode._linksToChildren != null)
             {
                 //Get first node in list of root nodes outputs
-                var nodeToCheck = ReturnChildNode(link.TargetNodeGUID);
+                var nodeToCheck = ReturnChildNode(_rootTreeNode._linksToChildren[i].TargetNodeGUID);
 
                 if (nodeToCheck._linksToChildren != null)
                 {
-                    //Get the firs node in list of roots child node
-                    foreach (var child in nodeToCheck._linksToChildren)
+                    //Get the first node in list of roots child node
+                    for (int j = 0; j < nodeToCheck._linksToChildren.Count; j++)
                     {
                         if (nodeToCheck._currentStatus == TreeNode.Status.PROCESSING)
                         {
-                            if (nodeToCheck._linksToChildren == null)
+                            if (nodeToCheck._linksToChildren[j].Child != null)
                             {
                                 nodeToCheck.NodeFunction();
                             }
