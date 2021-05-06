@@ -13,7 +13,7 @@ using UnityEditor.UIElements;
 
 public class SequenceFunctionality : NodeFunctionality
 {
-    public override void RunFunction()
+    public override void RunFunction(List<NodeEdge> nodeEdges)
     {
 
     }

@@ -20,6 +20,6 @@ public class SelectorTreeNode : TreeNode
 
     public override void NodeFunction()
     {
-        this._function.RunFunction();
+        this._function.RunFunction(this._linksToChildren);
     }
 }

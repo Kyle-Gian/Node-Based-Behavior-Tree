@@ -18,7 +18,7 @@ public class GraphWindow : EditorWindow
 {
     
     private GraphLayout _graphView;
-    private string _fileName = "New Narrative";
+    private string _fileName = "Behaviour Tree Graph";
 
     [MenuItem("Graph/AI Node Window")]
     public static void OpenGraphWindow()

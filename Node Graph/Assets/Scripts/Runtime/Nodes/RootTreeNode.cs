@@ -29,6 +29,6 @@ public class RootTreeNode : TreeNode
 
     public override void NodeFunction()
     {
-        this._function.RunFunction();
+        this._function.RunFunction(this._linksToChildren);
     }
 }

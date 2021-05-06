@@ -9,7 +9,7 @@ using UnityEditor.Experimental.GraphView;
 
 public class RootFunctionality : NodeFunctionality
 {
-    public override void RunFunction()
+    public override void RunFunction(List<NodeEdge> nodeEdges)
     {
 
     }

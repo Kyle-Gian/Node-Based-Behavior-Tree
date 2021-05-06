@@ -88,12 +88,14 @@ public class BuildBehaviorTree
     public void AddOutputEdgeToNode<T>(T node,NodeEdge link) where T:TreeNode
     {
         node._linksToChildren.Add(link);
+        link.Child = node;
 
     }
 
     private void AddInputEdgeToNode<T>(T node, NodeEdge edge) where T : TreeNode
     {
         node._ParentEdge = edge;
+        edge.Parent = node;
 
     }
 

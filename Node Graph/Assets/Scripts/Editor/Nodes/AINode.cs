@@ -132,8 +132,9 @@ public class AINode : Node
 
         if (nodeName != "RootNode" )
         {
-            newNode.mainContainer.Add(AddObjectField());
+            newNode.mainContainer.Add(AddObjectField(a_function));
         }
+
 
         newNode.titleContainer.Add(textField);
 
@@ -148,12 +149,19 @@ public class AINode : Node
         return newNode;
     }
     
-    public ObjectField AddObjectField()
+    public ObjectField AddObjectField(ScriptContainer function)
     {
         ObjectField objectField = new ObjectField();
         objectField.label = "Script to Check:";
         objectField.name = "Function";
         objectField.objectType = typeof(ScriptContainer);
+        objectField.allowSceneObjects = false;
+        if (function != null)
+        {
+            objectField.value = function;
+
+        }
+
         return objectField;
     }
 

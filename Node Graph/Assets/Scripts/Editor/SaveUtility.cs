@@ -63,17 +63,18 @@ public class SaveUtility
 
         foreach (var AINode in Nodes.Where(node => !node._entryPoint))
         {
-            ScriptContainer functionName;
+            ScriptContainer functionName = null;
             ObjectField function = (ObjectField)AINode.mainContainer.ElementAt(2);
-
-            Debug.Log(function.value.GetType());
 
             if (function.value != null)
             {
-                functionName = function.value.GetType();
+                functionName = (ScriptContainer)function.value;
             }
-
-            Debug.Log(function.Children().ElementAt(1));
+            else
+            {
+                Debug.Log("No function Attached");
+            }
+            
             container.NodeData.Add(item: new NodeData
             {
                 NodeGUID = AINode._GUID,

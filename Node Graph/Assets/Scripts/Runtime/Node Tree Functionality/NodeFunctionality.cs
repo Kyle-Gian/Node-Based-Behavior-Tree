@@ -18,7 +18,7 @@ public class NodeFunctionality
         return TreeNode.Status.PROCESSING;
     }
 
-    public virtual void RunFunction()
+    public virtual void RunFunction(List<NodeEdge> nodeEdges)
     {
 
     }

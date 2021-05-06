@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class LeafFunctionality : NodeFunctionality
 {
-    public override void RunFunction()
+    public override void RunFunction(List<NodeEdge> nodeEdges)
     {
 
     }
