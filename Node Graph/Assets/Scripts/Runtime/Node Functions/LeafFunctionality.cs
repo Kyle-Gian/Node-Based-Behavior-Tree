@@ -11,7 +11,7 @@ public class LeafFunctionality : NodeFunctionality
 
     public override void RunFunction(LeafTreeNode node)
     {
-
+        node._scriptToBeChecked.nodeCheck.GetClass().GetMethod("CheckCondition");
     }
 
 }

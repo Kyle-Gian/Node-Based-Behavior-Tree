@@ -14,10 +14,7 @@ public class NodeCheck
 
     public void CheckCondition()
     {
-        if (true)
-        {
-
-        }
+        Debug.Log("Node Check Run");
 
     }
 

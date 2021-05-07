@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 884b18b3b239e794daf133d36bdd74cb, type: 3}
   m_Name: Leaf
   m_EditorClassIdentifier: 
-  nodeCheck:
-    NodeCheck: []
+  nodeCheck: {fileID: 11500000, guid: 4e81850883e87fb4fb09b0a8afb27018, type: 3}

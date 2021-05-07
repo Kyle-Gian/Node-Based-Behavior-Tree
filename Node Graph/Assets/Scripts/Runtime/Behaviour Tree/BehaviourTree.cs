@@ -12,6 +12,10 @@ public class BehaviourTree : MonoBehaviour
 
     [SerializeField]
     public GraphContainer _savedGraph;
+    [SerializeField]
+    GameObject _enemyTeam;
+
+    List<GameObject> _enemyList = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +27,14 @@ public class BehaviourTree : MonoBehaviour
         else
         {
             Debug.LogError("No Graph Loaded");
+        }
+
+        if (_enemyTeam != null)
+        {
+            for (int i = 0; i < _enemyTeam.transform.childCount; i++)
+            {
+                _enemyList.Add(_enemyTeam.);
+            }
         }
     }
 

@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestCheck : ScriptableObject
+public class TestCheck : NodeCheck
 {
-    TestCheck()
+    public void CheckCondition()
     {
-        
+        Debug.Log("Test Check Run");
     }
 }
