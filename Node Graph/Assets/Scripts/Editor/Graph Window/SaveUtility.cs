@@ -63,12 +63,14 @@ public class SaveUtility
 
         foreach (var AINode in Nodes.Where(node => !node._entryPoint))
         {
-            ScriptContainer functionName = null;
+            ScriptContainer scriptContainer = null;
+            string functionName = "Null";
             ObjectField function = (ObjectField)AINode.mainContainer.ElementAt(2);
 
             if (function.value != null)
             {
-                functionName = (ScriptContainer)function.value;
+                scriptContainer = (ScriptContainer)function.value;
+                functionName = scriptContainer.nodeCheck.GetClass().ToString();
             }
             else
             {
@@ -80,7 +82,8 @@ public class SaveUtility
                 NodeGUID = AINode._GUID,
                 Position = AINode.GetPosition().position,
                 NodeType = AINode._NodeType,                  
-                NodeFunction = functionName
+                NodeFunction = scriptContainer,
+                FunctionName = functionName
 
             }) ;
         }

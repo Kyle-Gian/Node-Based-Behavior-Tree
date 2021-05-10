@@ -27,7 +27,7 @@ public class BuildBehaviorTree
         foreach (var node in _graph.NodeData)
         {
             var newNode = CreateNodeType(node);
-
+            
             _treeNodes.Add(newNode);
         }
 
@@ -98,8 +98,5 @@ public class BuildBehaviorTree
         node._ParentEdge = edge;
         edge.Child = node;
 
-
     }
-
-
 }

@@ -132,7 +132,7 @@ public class AINode : Node
 
         if (nodeName != "RootNode" )
         {
-            newNode.mainContainer.Add(AddObjectField(a_function));
+            newNode.mainContainer.Add(AddObjectField());
         }
 
 
@@ -149,18 +149,12 @@ public class AINode : Node
         return newNode;
     }
     
-    public ObjectField AddObjectField(ScriptContainer function)
+    public ObjectField AddObjectField()
     {
         ObjectField objectField = new ObjectField();
         objectField.label = "Script to Check:";
         objectField.name = "Function";
-        objectField.objectType = typeof(ScriptContainer);
-        objectField.allowSceneObjects = false;
-        if (function != null)
-        {
-            objectField.value = function;
-
-        }
+        objectField.objectType = typeof(MonoBehaviour);
 
         return objectField;
     }

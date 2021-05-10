@@ -9,14 +9,11 @@ using UnityEngine;
 using UnityEditor;
 
 [System.Serializable]
-public class NodeCheck
+public class NodeCheck : MonoBehaviour
 {
-
     public void CheckCondition()
     {
         Debug.Log("Node Check Run");
 
     }
-
-
 }

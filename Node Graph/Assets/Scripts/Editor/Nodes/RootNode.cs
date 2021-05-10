@@ -20,6 +20,7 @@ public class RootNode : AINode
         var generatedPort = GeneratePort(node, Direction.Output);
         generatedPort.portName = "Next";
         node.outputContainer.Add(generatedPort);
+        node.mainContainer.Add(AddObjectField());
 
         node.capabilities &= ~Capabilities.Movable;
         node.capabilities &= ~Capabilities.Deletable;

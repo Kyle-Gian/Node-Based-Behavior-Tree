@@ -9,18 +9,21 @@ public class BehaviourTree : MonoBehaviour
 
     List<TreeNode> _treeNodes = new List<TreeNode>();
     List<NodeEdge> _nodeLinks = new List<NodeEdge>();
+    private static MonoBehaviour[] _scripts;
 
     [SerializeField]
     public GraphContainer _savedGraph;
     [SerializeField]
     GameObject _enemyTeam;
 
-    List<GameObject> _enemyList = new List<GameObject>();
+    List<Transform> _enemyList = new List<Transform>();
     // Start is called before the first frame update
     void Start()
     {
         if (_savedGraph != null)
         {
+            _scripts = this.GetComponents<MonoBehaviour>();
+
             buildTree.LoadTree(_savedGraph, _rootTreeNode, _treeNodes, _nodeLinks);
 
         }
@@ -33,8 +36,12 @@ public class BehaviourTree : MonoBehaviour
         {
             for (int i = 0; i < _enemyTeam.transform.childCount; i++)
             {
-                _enemyList.Add(_enemyTeam.);
+                _enemyList.Add(_enemyTeam.transform.GetChild(i));
             }
+        }
+        else
+        {
+            Debug.LogError("No AI have been added to the list");
         }
     }
 
@@ -91,5 +98,16 @@ public class BehaviourTree : MonoBehaviour
         }
 
         return null;
+    }
+
+    public static void RunMethodFromScriptOnObject(string className, string methodName)
+    {
+        foreach (var script in _scripts)
+        {
+            if (script.ToString().Contains(className))
+            {
+                script.Invoke(methodName, 0);
+            }
+        }
     }
 }

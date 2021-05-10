@@ -3,15 +3,14 @@
 //Last Modified: 30/04/2021
 
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class LeafFunctionality : NodeFunctionality
 {
-
     public override void RunFunction(LeafTreeNode node)
     {
-        node._scriptToBeChecked.nodeCheck.GetClass().GetMethod("CheckCondition");
+        BehaviourTree.RunMethodFromScriptOnObject(node._scriptToBeChecked.nodeCheck.GetClass().ToString(), "CheckCondition");
     }
-
 }
