@@ -106,7 +106,7 @@ public class AINode : Node
         }
     }
 
-    public AINode CreateNode(string nodeName, Vector2 position, string guid, ScriptContainer a_function)
+    public AINode CreateNode(string nodeName, Vector2 position, string guid, MonoBehaviour a_function)
     {
        //NodeClass(nodeName);
 
@@ -130,9 +130,9 @@ public class AINode : Node
         var textField = new TextField(string.Empty);
         textField.SetValueWithoutNotify("Node Name");
 
-        if (nodeName != "RootNode" )
+        if (nodeName == "LeafNode" || nodeName == "DecoratorNode")
         {
-            newNode.mainContainer.Add(AddObjectField());
+            newNode.mainContainer.Add(AddObjectField(a_function));
         }
 
 
@@ -149,12 +149,17 @@ public class AINode : Node
         return newNode;
     }
     
-    public ObjectField AddObjectField()
+    public ObjectField AddObjectField(MonoBehaviour function)
     {
         ObjectField objectField = new ObjectField();
         objectField.label = "Script to Check:";
         objectField.name = "Function";
-        objectField.objectType = typeof(MonoBehaviour);
+        objectField.objectType = typeof(NodeCheck);
+
+        if (function != null)
+        {
+            objectField.value = function;
+        }
 
         return objectField;
     }

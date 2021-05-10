@@ -11,6 +11,6 @@ public class LeafFunctionality : NodeFunctionality
 {
     public override void RunFunction(LeafTreeNode node)
     {
-        BehaviourTree.RunMethodFromScriptOnObject(node._scriptToBeChecked.nodeCheck.GetClass().ToString(), "CheckCondition");
+        //node._scriptToBeChecked.Invoke("CheckCondition",0f);
     }
 }

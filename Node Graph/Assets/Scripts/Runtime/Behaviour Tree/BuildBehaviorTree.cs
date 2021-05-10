@@ -1,6 +1,8 @@
 ﻿//Author: Kyle Gian
 //Date Created: 30/04/2021
-//Last Modified: 30/04/2021
+//Last Modified: 11/05/2021
+
+//Builds the behaviour tree based off the NodeData and NodeEdge containers, then links them together ready for runtime
 
 using System.Collections;
 using System.Collections.Generic;
@@ -24,18 +26,20 @@ public class BuildBehaviorTree
             return;
         }
 
+        //Create the nodes based of the type, add to node list
         foreach (var node in _graph.NodeData)
         {
             var newNode = CreateNodeType(node);
             
             _treeNodes.Add(newNode);
         }
-
+        // get the edges and their data, add to edge list
         for (int i = 0; i < _graph.NodeLink.Count; i++)
         {
             _nodeLinks.Add(_graph.NodeLink[i]);
         }
 
+        //Connect each nod based of the target and base guid
         foreach (var node in _treeNodes)
         {
 
@@ -62,10 +66,11 @@ public class BuildBehaviorTree
     }
     public TreeNode CreateNodeType(NodeData a_nodeType)
     {
+        //Creates the nodes based off the given node type string from Nodedata class
         switch (a_nodeType.NodeType.ToLower())
         {
             case "leafnode":
-                LeafTreeNode leafNode = new LeafTreeNode(a_nodeType.NodeGUID, a_nodeType.Position, a_nodeType.NodeFunction);
+                LeafTreeNode leafNode = new LeafTreeNode(a_nodeType.NodeGUID, a_nodeType.Position, a_nodeType.FunctionName);
                 return leafNode;
             case "sequencenode":
                 SequenceTreeNode sequenceNode = new SequenceTreeNode(a_nodeType.NodeGUID, a_nodeType.Position);
@@ -74,7 +79,7 @@ public class BuildBehaviorTree
                 SelectorTreeNode selectorNode = new SelectorTreeNode(a_nodeType.NodeGUID, a_nodeType.Position);
                 return selectorNode;
             case "decoratornode":
-                DecoratorTreeNode decoratorNode = new DecoratorTreeNode(a_nodeType.NodeGUID, a_nodeType.Position, a_nodeType.NodeFunction);
+                DecoratorTreeNode decoratorNode = new DecoratorTreeNode(a_nodeType.NodeGUID, a_nodeType.Position, a_nodeType.FunctionName);
                 return decoratorNode;
             case "rootnode":
                 RootTreeNode rootNode = new RootTreeNode(a_nodeType.NodeGUID, a_nodeType.Position);

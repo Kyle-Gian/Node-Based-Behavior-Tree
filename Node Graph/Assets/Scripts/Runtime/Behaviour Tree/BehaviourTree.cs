@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿//Author: Kyle Gian
+//Date Created: 02/05/2021
+//Last Modified: 11/05/2021
+
+//This is used to run the tree from the root node checking waiting for the behaviour to pass through to the AI
+
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

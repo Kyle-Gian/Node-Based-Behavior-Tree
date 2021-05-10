@@ -13,36 +13,20 @@ MonoBehaviour:
   m_Name: Behaviour Tree Graph
   m_EditorClassIdentifier: 
   NodeLink:
-  - BaseNodeGUID: 4c9893a0-8e08-4703-8fe9-ac6718e93f0f
+  - BaseNodeGUID: b2b13e71-4d00-4f12-957d-538c3a6336c8
     PortName: Next
-    TargetNodeGUID: b44ddae6-2db1-455f-966f-4c5f74fad88e
-  - BaseNodeGUID: 4c9893a0-8e08-4703-8fe9-ac6718e93f0f
+    TargetNodeGUID: 3b99da6e-f663-404d-9bd7-504ea521cbb0
+  - BaseNodeGUID: b2b13e71-4d00-4f12-957d-538c3a6336c8
     PortName: Next
-    TargetNodeGUID: 269e6cb6-5293-4a5e-b928-ad829acf9fb9
-  - BaseNodeGUID: 269e6cb6-5293-4a5e-b928-ad829acf9fb9
-    PortName: Output
-    TargetNodeGUID: 072e76ae-1b05-4f07-a28d-492948289c20
-  - BaseNodeGUID: b44ddae6-2db1-455f-966f-4c5f74fad88e
-    PortName: Output
-    TargetNodeGUID: 9da70822-10ce-4fa8-aae6-ea6785055651
+    TargetNodeGUID: c5f383d3-1105-4256-84c6-c3c8d17a0fef
   NodeData:
-  - NodeGUID: 269e6cb6-5293-4a5e-b928-ad829acf9fb9
-    Position: {x: 283, y: 165}
-    NodeType: SequenceNode
-    NodeFunction: {fileID: 11400000, guid: e33aaefdb0cc4d44f9d4472555b5fa9d, type: 2}
-    FunctionName: NodeCheck
-  - NodeGUID: 072e76ae-1b05-4f07-a28d-492948289c20
-    Position: {x: 802, y: 360}
-    NodeType: LeafNode
-    NodeFunction: {fileID: 11400000, guid: 50418185eba34af4a818c2651d6c77f2, type: 2}
+  - NodeGUID: 3b99da6e-f663-404d-9bd7-504ea521cbb0
+    Position: {x: 440, y: -12}
+    NodeType: DecoratorNode
+    NodeFunction: {fileID: 0}
     FunctionName: TestCheck
-  - NodeGUID: b44ddae6-2db1-455f-966f-4c5f74fad88e
-    Position: {x: 289, y: -136}
+  - NodeGUID: c5f383d3-1105-4256-84c6-c3c8d17a0fef
+    Position: {x: 588, y: -150}
     NodeType: SequenceNode
-    NodeFunction: {fileID: 11400000, guid: e33aaefdb0cc4d44f9d4472555b5fa9d, type: 2}
-    FunctionName: NodeCheck
-  - NodeGUID: 9da70822-10ce-4fa8-aae6-ea6785055651
-    Position: {x: 892, y: -58}
-    NodeType: LeafNode
-    NodeFunction: {fileID: 11400000, guid: 50418185eba34af4a818c2651d6c77f2, type: 2}
-    FunctionName: TestCheck
+    NodeFunction: {fileID: 0}
+    FunctionName: Null
