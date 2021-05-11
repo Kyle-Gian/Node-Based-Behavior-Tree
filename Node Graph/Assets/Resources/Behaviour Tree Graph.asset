@@ -13,20 +13,36 @@ MonoBehaviour:
   m_Name: Behaviour Tree Graph
   m_EditorClassIdentifier: 
   NodeLink:
-  - BaseNodeGUID: b2b13e71-4d00-4f12-957d-538c3a6336c8
+  - BaseNodeGUID: e2f23aa3-fa2b-4f4a-a59b-50c740422baf
     PortName: Next
-    TargetNodeGUID: 3b99da6e-f663-404d-9bd7-504ea521cbb0
-  - BaseNodeGUID: b2b13e71-4d00-4f12-957d-538c3a6336c8
+    TargetNodeGUID: 2f6037b2-d4c7-49cc-bfb0-8441622ff8ba
+  - BaseNodeGUID: e2f23aa3-fa2b-4f4a-a59b-50c740422baf
     PortName: Next
-    TargetNodeGUID: c5f383d3-1105-4256-84c6-c3c8d17a0fef
+    TargetNodeGUID: 59ee1518-40f2-4ba6-9b41-3476e95a9f09
+  - BaseNodeGUID: 59ee1518-40f2-4ba6-9b41-3476e95a9f09
+    PortName: Output
+    TargetNodeGUID: 00ff30d1-9a49-4d3c-aa2c-3fe1fa32888d
+  - BaseNodeGUID: 59ee1518-40f2-4ba6-9b41-3476e95a9f09
+    PortName: Output
+    TargetNodeGUID: f80e035e-cac1-48b3-951c-8be562337fdd
   NodeData:
-  - NodeGUID: 3b99da6e-f663-404d-9bd7-504ea521cbb0
-    Position: {x: 440, y: -12}
-    NodeType: DecoratorNode
+  - NodeGUID: 2f6037b2-d4c7-49cc-bfb0-8441622ff8ba
+    Position: {x: 303, y: -228}
+    NodeType: LeafNode
     NodeFunction: {fileID: 0}
     FunctionName: TestCheck
-  - NodeGUID: c5f383d3-1105-4256-84c6-c3c8d17a0fef
-    Position: {x: 588, y: -150}
-    NodeType: SequenceNode
+  - NodeGUID: 59ee1518-40f2-4ba6-9b41-3476e95a9f09
+    Position: {x: 199, y: 101}
+    NodeType: SelectorNode
     NodeFunction: {fileID: 0}
     FunctionName: Null
+  - NodeGUID: 00ff30d1-9a49-4d3c-aa2c-3fe1fa32888d
+    Position: {x: 624, y: 246}
+    NodeType: LeafNode
+    NodeFunction: {fileID: 0}
+    FunctionName: TestCheck
+  - NodeGUID: f80e035e-cac1-48b3-951c-8be562337fdd
+    Position: {x: 617, y: 135}
+    NodeType: LeafNode
+    NodeFunction: {fileID: 0}
+    FunctionName: TestCheck

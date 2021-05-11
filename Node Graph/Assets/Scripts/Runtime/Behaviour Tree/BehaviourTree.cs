@@ -16,17 +16,19 @@ public class BehaviourTree : MonoBehaviour
 
     List<TreeNode> _treeNodes = new List<TreeNode>();
     List<NodeEdge> _nodeLinks = new List<NodeEdge>();
-    private static MonoBehaviour[] _scripts;
+    public static MonoBehaviour[] _scripts;
 
     [SerializeField]
     public GraphContainer _savedGraph;
     [SerializeField]
-    GameObject _enemyTeam;
+    GameObject _enemyTeam = null;
+    static GameObject _brain;
 
     List<Transform> _enemyList = new List<Transform>();
     // Start is called before the first frame update
     void Start()
     {
+        _brain = this.gameObject;
         if (_savedGraph != null)
         {
             _scripts = this.GetComponents<MonoBehaviour>();
@@ -106,15 +108,16 @@ public class BehaviourTree : MonoBehaviour
 
         return null;
     }
-
-    public static void RunMethodFromScriptOnObject(string className, string methodName)
+    public static MonoBehaviour GetScriptOnObject(string className)
     {
         foreach (var script in _scripts)
         {
             if (script.ToString().Contains(className))
             {
-                script.Invoke(methodName, 0);
+                var getScript = _brain.GetComponent<NodeCheck>();
+                return script;
             }
         }
+        return null;
     }
 }

@@ -275,7 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ce9702ea774db94ea56004c4e838ba0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _savedGraph: {fileID: 0}
+  _savedGraph: {fileID: 11400000, guid: 8a32430f9ac888e4a9fedfab608d96aa, type: 2}
   _enemyTeam: {fileID: 1627708690}
 --- !u!114 &690602474
 MonoBehaviour:
@@ -987,6 +987,7 @@ GameObject:
   - component: {fileID: 1852427026}
   - component: {fileID: 1852427029}
   - component: {fileID: 1852427028}
+  - component: {fileID: 1852427030}
   m_Layer: 0
   m_Name: AI Brain 2
   m_TagString: Untagged
@@ -1006,7 +1007,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ce9702ea774db94ea56004c4e838ba0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _savedGraph: {fileID: 0}
+  _savedGraph: {fileID: 11400000, guid: 8a32430f9ac888e4a9fedfab608d96aa, type: 2}
   _enemyTeam: {fileID: 488151706}
 --- !u!4 &1852427027
 Transform:
@@ -1044,6 +1045,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46311c979975fdf41a86bdd819806535, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1852427030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852427025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a15840fb428db84dbab52e47bf2b778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1886394846 stripped

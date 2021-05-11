@@ -73,7 +73,7 @@ public class SaveUtility
                 if (function.value != null)
                 {
                     scriptContainer = (NodeCheck)function.value;
-                    functionName = scriptContainer.GetType().ToString();
+                    functionName = scriptContainer.GetType().Name;
                 }
 
             }
