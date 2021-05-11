@@ -106,7 +106,7 @@ public class AINode : Node
         }
     }
 
-    public AINode CreateNode(string nodeName, Vector2 position, string guid, MonoBehaviour a_function)
+    public AINode CreateNode(string nodeName, Vector2 position, string guid, MonoScript a_function)
     {
        //NodeClass(nodeName);
 
@@ -149,12 +149,12 @@ public class AINode : Node
         return newNode;
     }
     
-    public ObjectField AddObjectField(MonoBehaviour function)
+    public ObjectField AddObjectField(MonoScript function)
     {
         ObjectField objectField = new ObjectField();
         objectField.label = "Script to Check:";
         objectField.name = "Function";
-        objectField.objectType = typeof(NodeCheck);
+        objectField.objectType = typeof(MonoScript);
 
         if (function != null)
         {

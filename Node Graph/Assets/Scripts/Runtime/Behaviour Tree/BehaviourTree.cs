@@ -31,8 +31,10 @@ public class BehaviourTree : MonoBehaviour
         _brain = this.gameObject;
         if (_savedGraph != null)
         {
+            //Get the scripts attached to this object
             _scripts = this.GetComponents<MonoBehaviour>();
 
+            //Make the tree
             buildTree.LoadTree(_savedGraph, _rootTreeNode, _treeNodes, _nodeLinks);
 
         }
@@ -41,6 +43,7 @@ public class BehaviourTree : MonoBehaviour
             Debug.LogError("No Graph Loaded");
         }
 
+        //Create the list of AI
         if (_enemyTeam != null)
         {
             for (int i = 0; i < _enemyTeam.transform.childCount; i++)
@@ -66,33 +69,36 @@ public class BehaviourTree : MonoBehaviour
 
     void RunBehaviourTree()
     {
-
-        for (int i = 0; i < _rootTreeNode._linksToChildren.Count; i++)
+        foreach (var AI in _enemyList)
         {
-            if (_rootTreeNode._linksToChildren != null)
-            {
-                //Get first node in list of root nodes outputs
-                var nodeToCheck = ReturnChildNode(_rootTreeNode._linksToChildren[i].TargetNodeGUID);
 
-                if (nodeToCheck._linksToChildren != null)
+            for (int i = 0; i < _rootTreeNode._linksToChildren.Count; i++)
+            {
+                if (_rootTreeNode._linksToChildren != null)
                 {
-                    //Get the first node in list of roots child node
-                    for (int j = 0; j < nodeToCheck._linksToChildren.Count; j++)
+                    //Get first node in list of root nodes outputs
+                    var nodeToCheck = ReturnChildNode(_rootTreeNode._linksToChildren[i].TargetNodeGUID);
+
+                    if (nodeToCheck._linksToChildren != null)
                     {
-                        if (nodeToCheck._currentStatus == TreeNode.Status.PROCESSING)
+                        //Get the first node in list of roots child node
+                        for (int j = 0; j < nodeToCheck._linksToChildren.Count; j++)
                         {
-                            if (nodeToCheck._linksToChildren[j].Child != null)
+                            if (nodeToCheck._currentStatus == TreeNode.Status.PROCESSING)
                             {
-                                nodeToCheck.NodeFunction();
+                                if (nodeToCheck._linksToChildren[j].Child != null)
+                                {
+                                    nodeToCheck.NodeFunction();
+                                }
+
                             }
 
                         }
-
                     }
+
                 }
 
             }
-
         }
 
     }

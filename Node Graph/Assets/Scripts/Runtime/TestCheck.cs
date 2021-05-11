@@ -4,8 +4,20 @@ using UnityEngine;
 
 public class TestCheck : NodeCheck
 {
-    public void CheckCondition()
+    GameObject _player;
+
+    private void Start()
     {
-        Debug.Log("Test Check Run");
+        _player = GameObject.FindGameObjectWithTag("Player");
+    }
+    public TreeNode.Status CheckCondition()
+    {
+        
+        if (Vector3.Distance(_player.transform.position, this.transform.position) > 0)
+        {
+            Debug.Log(TreeNode.Status.SUCCESS);
+            return TreeNode.Status.SUCCESS;
+        }
+        return TreeNode.Status.FAIL;
     }
 }

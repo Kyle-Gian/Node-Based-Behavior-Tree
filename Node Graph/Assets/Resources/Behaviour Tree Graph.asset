@@ -13,36 +13,36 @@ MonoBehaviour:
   m_Name: Behaviour Tree Graph
   m_EditorClassIdentifier: 
   NodeLink:
-  - BaseNodeGUID: e2f23aa3-fa2b-4f4a-a59b-50c740422baf
+  - BaseNodeGUID: e012d9fa-dd61-465e-b75e-ba6bf3958003
     PortName: Next
-    TargetNodeGUID: 2f6037b2-d4c7-49cc-bfb0-8441622ff8ba
-  - BaseNodeGUID: e2f23aa3-fa2b-4f4a-a59b-50c740422baf
+    TargetNodeGUID: 78f26472-f276-46ae-9f6c-277108d51523
+  - BaseNodeGUID: e012d9fa-dd61-465e-b75e-ba6bf3958003
     PortName: Next
-    TargetNodeGUID: 59ee1518-40f2-4ba6-9b41-3476e95a9f09
-  - BaseNodeGUID: 59ee1518-40f2-4ba6-9b41-3476e95a9f09
+    TargetNodeGUID: 05981e63-7062-4352-85bb-525a367579c2
+  - BaseNodeGUID: 78f26472-f276-46ae-9f6c-277108d51523
     PortName: Output
-    TargetNodeGUID: 00ff30d1-9a49-4d3c-aa2c-3fe1fa32888d
-  - BaseNodeGUID: 59ee1518-40f2-4ba6-9b41-3476e95a9f09
+    TargetNodeGUID: f5bab1fe-884e-48b3-aff1-69609daaa85b
+  - BaseNodeGUID: 78f26472-f276-46ae-9f6c-277108d51523
     PortName: Output
-    TargetNodeGUID: f80e035e-cac1-48b3-951c-8be562337fdd
+    TargetNodeGUID: 7af6e2b9-a4e5-4aa4-9f7b-853115dab3c2
   NodeData:
-  - NodeGUID: 2f6037b2-d4c7-49cc-bfb0-8441622ff8ba
-    Position: {x: 303, y: -228}
-    NodeType: LeafNode
+  - NodeGUID: 78f26472-f276-46ae-9f6c-277108d51523
+    Position: {x: 378, y: 86}
+    NodeType: SequenceNode
     NodeFunction: {fileID: 0}
-    FunctionName: TestCheck
-  - NodeGUID: 59ee1518-40f2-4ba6-9b41-3476e95a9f09
-    Position: {x: 199, y: 101}
+    FunctionName: Null
+  - NodeGUID: 05981e63-7062-4352-85bb-525a367579c2
+    Position: {x: 371, y: -91}
     NodeType: SelectorNode
     NodeFunction: {fileID: 0}
     FunctionName: Null
-  - NodeGUID: 00ff30d1-9a49-4d3c-aa2c-3fe1fa32888d
-    Position: {x: 624, y: 246}
+  - NodeGUID: f5bab1fe-884e-48b3-aff1-69609daaa85b
+    Position: {x: 906, y: 224}
     NodeType: LeafNode
-    NodeFunction: {fileID: 0}
+    NodeFunction: {fileID: 11500000, guid: 1a15840fb428db84dbab52e47bf2b778, type: 3}
     FunctionName: TestCheck
-  - NodeGUID: f80e035e-cac1-48b3-951c-8be562337fdd
-    Position: {x: 617, y: 135}
+  - NodeGUID: 7af6e2b9-a4e5-4aa4-9f7b-853115dab3c2
+    Position: {x: 893, y: 42}
     NodeType: LeafNode
-    NodeFunction: {fileID: 0}
-    FunctionName: TestCheck
+    NodeFunction: {fileID: 11500000, guid: 2b951dcd2d14dcb429703b36df8b33be, type: 3}
+    FunctionName: Chase

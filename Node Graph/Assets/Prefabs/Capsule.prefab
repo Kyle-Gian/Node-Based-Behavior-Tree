@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 2597894929674528468}
   - component: {fileID: -746439466833982274}
   - component: {fileID: 7430704234344882109}
+  - component: {fileID: -6872747142744922915}
+  - component: {fileID: -3813724922920368297}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -147,5 +149,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4cca8eac59242fd4699a88632c037771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-6872747142744922915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4212581915475808826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b951dcd2d14dcb429703b36df8b33be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-3813724922920368297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4212581915475808826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46311c979975fdf41a86bdd819806535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

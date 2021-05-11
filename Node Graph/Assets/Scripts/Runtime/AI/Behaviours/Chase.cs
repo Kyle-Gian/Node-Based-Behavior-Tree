@@ -1,8 +1,12 @@
-﻿using System.Collections;
+﻿//Author: Kyle Gian
+//Date Created: 23/04/2021
+//Last Modified: 11/05/2021
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Chase : MonoBehaviour
+public class Chase : Behaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -14,5 +18,10 @@ public class Chase : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public override Behaviour GetBehaviour()
+    {
+        return null;
     }
 }

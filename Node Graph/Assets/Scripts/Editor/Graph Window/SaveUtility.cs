@@ -63,7 +63,7 @@ public class SaveUtility
 
         foreach (var AINode in Nodes.Where(node => !node._entryPoint))
         {
-            NodeCheck scriptContainer = null;
+            MonoScript scriptContainer = null;
             string functionName = "Null";
 
             if (AINode.mainContainer.childCount == 3)
@@ -72,8 +72,8 @@ public class SaveUtility
 
                 if (function.value != null)
                 {
-                    scriptContainer = (NodeCheck)function.value;
-                    functionName = scriptContainer.GetType().Name;
+                    scriptContainer = (MonoScript)function.value;
+                    functionName = scriptContainer.GetClass().Name;
                 }
 
             }

@@ -11,7 +11,6 @@ public class NodeData
     public string NodeGUID;
     public Vector2 Position;
     public string NodeType;
-    [HideInInspector]
-    public MonoBehaviour NodeFunction;
+    public MonoScript NodeFunction;
     public string FunctionName;
 }

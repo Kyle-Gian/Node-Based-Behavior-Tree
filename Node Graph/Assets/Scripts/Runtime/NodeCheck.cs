@@ -11,9 +11,8 @@ using UnityEditor;
 [System.Serializable]
 public class NodeCheck : MonoBehaviour
 {
-    public void CheckCondition()
+    public TreeNode.Status CheckCondition()
     {
-        Debug.Log("Node Check Run");
-
+        return TreeNode.Status.PROCESSING;
     }
 }

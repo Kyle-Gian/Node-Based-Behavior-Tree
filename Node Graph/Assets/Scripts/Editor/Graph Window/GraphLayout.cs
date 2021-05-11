@@ -64,14 +64,14 @@ public class GraphLayout : GraphView
     //Add the node to graph
     public void CreateNode(string nodeName, Vector2 position)
     {
-        MonoBehaviour scriptContainer = null;
+        MonoScript scriptContainer = null;
         string guid = null;
         var newNode = node.CreateNode(nodeName, position, guid, scriptContainer);
         AddElement(newNode);
 
     }
 
-    public AINode LoadNode(string nodeName, Vector2 position, string a_guid, MonoBehaviour a_function)
+    public AINode LoadNode(string nodeName, Vector2 position, string a_guid, MonoScript a_function)
     {
         var newNode = node.CreateNode(nodeName, position, a_guid, a_function);
         AddElement(newNode);

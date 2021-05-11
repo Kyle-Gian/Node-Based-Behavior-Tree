@@ -12,5 +12,8 @@ public class LeafFunctionality : NodeFunctionality
     public override void RunFunction(LeafTreeNode node)
     {
         node._script.Invoke("CheckCondition",0f);
+
+        node._script.Invoke("GetBehaviour", 0f);
+
     }
 }
