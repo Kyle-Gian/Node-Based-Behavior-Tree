@@ -17,7 +17,7 @@ public class TreeNode
     public NodeFunctionality _function;
     public Status _currentStatus = Status.PROCESSING;
 
-    public virtual void NodeFunction()
+    public virtual void NodeFunction(Transform AI)
     {
 
     }

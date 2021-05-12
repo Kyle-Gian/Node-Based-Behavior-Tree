@@ -13,34 +13,53 @@ public class ActiveBehaviour : MonoBehaviour
     [SerializeField]
     Behaviour _defaultBehaviour;
 
+    Behaviour _runningBehaviour;
+
     Behaviour[] _behaviours;
     // Start is called before the first frame update
     void Start()
     {
+        _runningBehaviour = _defaultBehaviour;
         _behaviours = this.GetComponents<Behaviour>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        RunActiveBehaviour(_runningBehaviour);
+
     }
 
-    private Behaviour ActivatedBehaviour()
+    public void SetBehaviour(Behaviour newBehaviour)
     {
         foreach (var behaviour in _behaviours)
         {
-            if (behaviour.name == )
+            if (newBehaviour.GetType() == behaviour.GetType())
             {
-
+                _runningBehaviour = behaviour;
             }
 
         }
-        return _defaultBehaviour;
     }
 
     public string GetBehaviour()
     {
         return null;
+    }
+
+    private void RunActiveBehaviour(Behaviour activeBehaviour)
+    {
+        foreach (var behaviour in _behaviours)
+        {
+            if (behaviour != activeBehaviour)
+            {
+                behaviour.enabled = false;
+            }
+        }
+        if (!activeBehaviour.enabled)
+        {
+            activeBehaviour.enabled = true;
+
+        }
     }
 }

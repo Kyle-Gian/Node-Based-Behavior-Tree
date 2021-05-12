@@ -18,8 +18,9 @@ public class SelectorTreeNode : TreeNode
         _function = new SelectorFuncionality();
     }
 
-    public override void NodeFunction()
+    public override void NodeFunction(Transform AI)
     {
-        this._function.RunFunction(this._linksToChildren);
+        this._currentStatus = TreeNode.Status.PROCESSING;
+        this._function.RunFunction(this._linksToChildren, AI);
     }
 }

@@ -9,11 +9,28 @@ using UnityEngine;
 
 public class LeafFunctionality : NodeFunctionality
 {
-    public override void RunFunction(LeafTreeNode node)
+    public override void RunFunction(LeafTreeNode node, Transform AI)
     {
-        node._script.Invoke("CheckCondition",0f);
 
-        node._script.Invoke("GetBehaviour", 0f);
+        //If the script is a node check, it will run this code and return the status of this node
+        if (node._script.GetType().BaseType == typeof(NodeCheck))
+        {
+            NodeCheck nodeCheck;
+            nodeCheck = (NodeCheck)node._script;
 
+           node._currentStatus = nodeCheck.CheckCondition(AI);
+
+        }
+
+        //If the script is a behaviour, set the behaviour of the AI with the attached behaviour
+        if (node._script.GetType().BaseType == typeof(Behaviour))
+        {
+            Behaviour nodeType;
+            nodeType = (Behaviour)node._script;
+
+            AI.GetComponent<ActiveBehaviour>().SetBehaviour(nodeType.GetBehaviour());
+
+
+        }
     }
 }

@@ -69,6 +69,7 @@ public class BehaviourTree : MonoBehaviour
 
     void RunBehaviourTree()
     {
+        //Run each individual AI through the behaviour tree to get their action 
         foreach (var AI in _enemyList)
         {
 
@@ -84,13 +85,19 @@ public class BehaviourTree : MonoBehaviour
                         //Get the first node in list of roots child node
                         for (int j = 0; j < nodeToCheck._linksToChildren.Count; j++)
                         {
+                            nodeToCheck._currentStatus = TreeNode.Status.PROCESSING;
+
                             if (nodeToCheck._currentStatus == TreeNode.Status.PROCESSING)
                             {
                                 if (nodeToCheck._linksToChildren[j].Child != null)
                                 {
-                                    nodeToCheck.NodeFunction();
+                                    nodeToCheck.NodeFunction(AI);
                                 }
 
+                            }
+                            else
+                            {
+                                break;
                             }
 
                         }

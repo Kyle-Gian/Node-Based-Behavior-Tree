@@ -18,13 +18,21 @@ public class NodeFunctionality
         return TreeNode.Status.PROCESSING;
     }
 
-    public virtual void RunFunction(List<NodeEdge> nodeEdges)
+    public virtual void RunFunction(List<NodeEdge> nodeEdges, Transform AI)
     {
         
     }
-    public virtual void RunFunction(LeafTreeNode node)
+    public virtual void RunFunction(LeafTreeNode node, Transform AI)
     {
 
     }
 
+
+    public void ResetNodeStatus(List<NodeEdge> nodeEdges)
+    {
+        foreach (var edge in nodeEdges)
+        {
+            edge.Child._currentStatus = TreeNode.Status.PROCESSING;
+        }
+    }
 }

@@ -30,7 +30,7 @@ public class BuildBehaviorTree
         foreach (var node in _graph.NodeData)
         {
             var newNode = CreateNodeType(node);
-            
+
             _treeNodes.Add(newNode);
         }
         // get the edges and their data, add to edge list
@@ -39,25 +39,29 @@ public class BuildBehaviorTree
             _nodeLinks.Add(_graph.NodeLink[i]);
         }
 
-        //Connect each nod based of the target and base guid
-        foreach (var node in _treeNodes)
+        //Connect each node based of the target and base guid
+        foreach (var edge in _nodeLinks)
         {
 
-            foreach (var edge in _nodeLinks)
+            foreach (var node in _treeNodes)
             {
-                if (edge.PortName == "Next")
-                {
-                    edge.BaseNodeGUID = _rootTreeNode._GUID;
-                    _rootTreeNode._linksToChildren.Add(edge);
-                }
+
                 if (edge.BaseNodeGUID == node._GUID)
                 {
                     AddOutputEdgeToNode(node, edge);
-
+                    break;
                 }
                 if (edge.TargetNodeGUID == node._GUID)
                 {
                     AddInputEdgeToNode(node, edge);
+                    break;
+                }
+                if (edge.PortName == "Next")
+                {
+                    edge.BaseNodeGUID = _rootTreeNode._GUID;
+
+                    _rootTreeNode._linksToChildren.Add(edge);
+                    break;
                 }
             }
 
@@ -103,5 +107,9 @@ public class BuildBehaviorTree
         node._ParentEdge = edge;
         edge.Child = node;
 
+    }
+
+    private void RearrangeNodesInList(List<TreeNode> nodes)
+    {
     }
 }

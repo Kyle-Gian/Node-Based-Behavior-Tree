@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Behaviour Tree Graph
   m_EditorClassIdentifier: 
   NodeLink:
-  - BaseNodeGUID: e012d9fa-dd61-465e-b75e-ba6bf3958003
+  - BaseNodeGUID: 192a61ee-b8b2-4c90-9021-e9e0b72dd05e
     PortName: Next
     TargetNodeGUID: 78f26472-f276-46ae-9f6c-277108d51523
-  - BaseNodeGUID: e012d9fa-dd61-465e-b75e-ba6bf3958003
+  - BaseNodeGUID: 192a61ee-b8b2-4c90-9021-e9e0b72dd05e
     PortName: Next
     TargetNodeGUID: 05981e63-7062-4352-85bb-525a367579c2
   - BaseNodeGUID: 78f26472-f276-46ae-9f6c-277108d51523
@@ -25,12 +25,10 @@ MonoBehaviour:
   - BaseNodeGUID: 78f26472-f276-46ae-9f6c-277108d51523
     PortName: Output
     TargetNodeGUID: 7af6e2b9-a4e5-4aa4-9f7b-853115dab3c2
+  - BaseNodeGUID: 78f26472-f276-46ae-9f6c-277108d51523
+    PortName: Output
+    TargetNodeGUID: a364fb05-7a7b-45d1-94e5-d792e49bc41b
   NodeData:
-  - NodeGUID: 78f26472-f276-46ae-9f6c-277108d51523
-    Position: {x: 378, y: 86}
-    NodeType: SequenceNode
-    NodeFunction: {fileID: 0}
-    FunctionName: Null
   - NodeGUID: 05981e63-7062-4352-85bb-525a367579c2
     Position: {x: 371, y: -91}
     NodeType: SelectorNode
@@ -46,3 +44,13 @@ MonoBehaviour:
     NodeType: LeafNode
     NodeFunction: {fileID: 11500000, guid: 2b951dcd2d14dcb429703b36df8b33be, type: 3}
     FunctionName: Chase
+  - NodeGUID: 78f26472-f276-46ae-9f6c-277108d51523
+    Position: {x: 389, y: 129}
+    NodeType: SequenceNode
+    NodeFunction: {fileID: 0}
+    FunctionName: Null
+  - NodeGUID: a364fb05-7a7b-45d1-94e5-d792e49bc41b
+    Position: {x: 887, y: -119}
+    NodeType: LeafNode
+    NodeFunction: {fileID: 11500000, guid: 46311c979975fdf41a86bdd819806535, type: 3}
+    FunctionName: Flee

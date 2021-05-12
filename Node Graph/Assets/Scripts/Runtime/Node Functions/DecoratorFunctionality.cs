@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class DecoratorFunctionality : NodeFunctionality
 {
-    public override void RunFunction(List<NodeEdge> nodeEdges)
+    public override void RunFunction(List<NodeEdge> nodeEdges, Transform AI)
     {
 
     }

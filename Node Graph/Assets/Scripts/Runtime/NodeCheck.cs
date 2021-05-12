@@ -11,7 +11,7 @@ using UnityEditor;
 [System.Serializable]
 public class NodeCheck : MonoBehaviour
 {
-    public TreeNode.Status CheckCondition()
+    public virtual TreeNode.Status CheckCondition(Transform AI)
     {
         return TreeNode.Status.PROCESSING;
     }
