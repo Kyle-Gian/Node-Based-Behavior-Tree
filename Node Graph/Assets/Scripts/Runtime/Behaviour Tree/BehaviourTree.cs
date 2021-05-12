@@ -94,11 +94,13 @@ public class BehaviourTree : MonoBehaviour
                                     nodeToCheck.NodeFunction(AI);
                                 }
 
+
                             }
-                            else
+                            if (nodeToCheck._currentStatus == TreeNode.Status.FAIL)
                             {
                                 break;
                             }
+
 
                         }
                     }
