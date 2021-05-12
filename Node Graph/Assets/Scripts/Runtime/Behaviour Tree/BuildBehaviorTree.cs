@@ -49,12 +49,13 @@ public class BuildBehaviorTree
                 if (edge.BaseNodeGUID == node._GUID)
                 {
                     AddOutputEdgeToNode(node, edge);
-                    break;
+                    
+
                 }
                 if (edge.TargetNodeGUID == node._GUID)
                 {
                     AddInputEdgeToNode(node, edge);
-                    break;
+
                 }
                 if (edge.PortName == "Next")
                 {

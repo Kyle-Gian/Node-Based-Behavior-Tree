@@ -8,8 +8,10 @@ using UnityEngine;
 public class NodeEdge
 {
     public string BaseNodeGUID;
+    public string BaseNodeName;
     public string PortName;
     public string TargetNodeGUID;
+    public string TargetNodeName;
     [HideInInspector]
     public TreeNode Parent;
     [HideInInspector]

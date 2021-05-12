@@ -13,27 +13,37 @@ MonoBehaviour:
   m_Name: Behaviour Tree Graph
   m_EditorClassIdentifier: 
   NodeLink:
-  - BaseNodeGUID: 192a61ee-b8b2-4c90-9021-e9e0b72dd05e
+  - BaseNodeGUID: 2e304e73-f9b3-4de3-b20c-b302763855a9
+    BaseNodeName: Start
     PortName: Next
     TargetNodeGUID: 78f26472-f276-46ae-9f6c-277108d51523
-  - BaseNodeGUID: 192a61ee-b8b2-4c90-9021-e9e0b72dd05e
-    PortName: Next
-    TargetNodeGUID: 05981e63-7062-4352-85bb-525a367579c2
+    TargetNodeName: SequenceNode
   - BaseNodeGUID: 78f26472-f276-46ae-9f6c-277108d51523
+    BaseNodeName: SequenceNode
     PortName: Output
     TargetNodeGUID: f5bab1fe-884e-48b3-aff1-69609daaa85b
+    TargetNodeName: LeafNode
   - BaseNodeGUID: 78f26472-f276-46ae-9f6c-277108d51523
+    BaseNodeName: SequenceNode
     PortName: Output
     TargetNodeGUID: 7af6e2b9-a4e5-4aa4-9f7b-853115dab3c2
+    TargetNodeName: LeafNode
   - BaseNodeGUID: 78f26472-f276-46ae-9f6c-277108d51523
+    BaseNodeName: SequenceNode
     PortName: Output
     TargetNodeGUID: a364fb05-7a7b-45d1-94e5-d792e49bc41b
+    TargetNodeName: LeafNode
+  - BaseNodeGUID: 2e304e73-f9b3-4de3-b20c-b302763855a9
+    BaseNodeName: Start
+    PortName: Next
+    TargetNodeGUID: 63e55656-3210-4453-8ee3-30e8a4a3903e
+    TargetNodeName: SequenceNode
+  - BaseNodeGUID: 63e55656-3210-4453-8ee3-30e8a4a3903e
+    BaseNodeName: SequenceNode
+    PortName: Output
+    TargetNodeGUID: fb4e9106-32b1-4c75-a534-86c9ba2a2fba
+    TargetNodeName: LeafNode
   NodeData:
-  - NodeGUID: 05981e63-7062-4352-85bb-525a367579c2
-    Position: {x: 371, y: -91}
-    NodeType: SelectorNode
-    NodeFunction: {fileID: 0}
-    FunctionName: Null
   - NodeGUID: f5bab1fe-884e-48b3-aff1-69609daaa85b
     Position: {x: 906, y: 224}
     NodeType: LeafNode
@@ -54,3 +64,13 @@ MonoBehaviour:
     NodeType: LeafNode
     NodeFunction: {fileID: 11500000, guid: 46311c979975fdf41a86bdd819806535, type: 3}
     FunctionName: Flee
+  - NodeGUID: 63e55656-3210-4453-8ee3-30e8a4a3903e
+    Position: {x: 367, y: -103}
+    NodeType: SequenceNode
+    NodeFunction: {fileID: 0}
+    FunctionName: Null
+  - NodeGUID: fb4e9106-32b1-4c75-a534-86c9ba2a2fba
+    Position: {x: 761, y: -259}
+    NodeType: LeafNode
+    NodeFunction: {fileID: 0}
+    FunctionName: Null

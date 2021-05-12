@@ -56,8 +56,10 @@ public class SaveUtility
             container.NodeLink.Add(new NodeEdge
             {
                 BaseNodeGUID = outputNode._GUID,
+                BaseNodeName = outputNode._NodeType,
                 PortName = connectedSockets[i].output.portName,
-                TargetNodeGUID = inputNode._GUID
+                TargetNodeGUID = inputNode._GUID,
+                TargetNodeName = inputNode._NodeType
             });
         }
 
