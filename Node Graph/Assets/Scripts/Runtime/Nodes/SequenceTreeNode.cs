@@ -17,7 +17,7 @@ public class SequenceTreeNode : TreeNode
         _function = new SequenceFunctionality();
     }
 
-    public override void NodeFunction(Transform AI)
+    public override void NodeFunction(GameObject AI)
     {
         this._currentStatus = TreeNode.Status.PROCESSING;
         this._function.RunFunction(this._linksToChildren, AI);

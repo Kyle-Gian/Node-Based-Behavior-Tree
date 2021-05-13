@@ -1,6 +1,6 @@
 ﻿//Author: Kyle Gian
 //Date Created: 02/05/2021
-//Last Modified: 11/05/2021
+//Last Modified: 13/05/2021
 
 //This is used to run the tree from the root node checking waiting for the behaviour to pass through to the AI
 
@@ -24,7 +24,7 @@ public class BehaviourTree : MonoBehaviour
     GameObject _enemyTeam = null;
     static GameObject _brain;
 
-    List<Transform> _enemyList = new List<Transform>();
+    List<GameObject> _enemyList = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
@@ -48,7 +48,7 @@ public class BehaviourTree : MonoBehaviour
         {
             for (int i = 0; i < _enemyTeam.transform.childCount; i++)
             {
-                _enemyList.Add(_enemyTeam.transform.GetChild(i));
+                _enemyList.Add(_enemyTeam.transform.GetChild(i).gameObject);
             }
         }
         else
@@ -93,8 +93,6 @@ public class BehaviourTree : MonoBehaviour
                                 {
                                     nodeToCheck.NodeFunction(AI);
                                 }
-
-
                             }
                             if (nodeToCheck._currentStatus == TreeNode.Status.FAIL)
                             {

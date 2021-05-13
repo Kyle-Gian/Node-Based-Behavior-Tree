@@ -9,7 +9,7 @@ using UnityEngine;
 
 public class LeafFunctionality : NodeFunctionality
 {
-    public override void RunFunction(LeafTreeNode node, Transform AI)
+    public override void RunFunction(LeafTreeNode node, GameObject AI)
     {
 
         //If the script is a node check, it will run this code and return the status of this node

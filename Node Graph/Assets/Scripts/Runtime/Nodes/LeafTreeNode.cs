@@ -21,9 +21,9 @@ public class LeafTreeNode : TreeNode
         _script = BehaviourTree.GetScriptOnObject(a_attachedFunction);
         
     }
-    public override void NodeFunction(Transform AI)
+    public override void NodeFunction(GameObject AI)
     {
-        this._currentStatus = TreeNode.Status.PROCESSING;
-        this._function.RunFunction(this._linksToChildren, AI);
+        _currentStatus = TreeNode.Status.PROCESSING;
+        _function.RunFunction(this._linksToChildren, AI);
     }
 }

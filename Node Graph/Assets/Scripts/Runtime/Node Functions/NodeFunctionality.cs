@@ -18,11 +18,11 @@ public class NodeFunctionality
         return TreeNode.Status.PROCESSING;
     }
 
-    public virtual void RunFunction(List<NodeEdge> nodeEdges, Transform AI)
+    public virtual void RunFunction(List<NodeEdge> nodeEdges, GameObject AI)
     {
         
     }
-    public virtual void RunFunction(LeafTreeNode node, Transform AI)
+    public virtual void RunFunction(LeafTreeNode node, GameObject AI)
     {
 
     }

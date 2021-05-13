@@ -17,8 +17,9 @@ GameObject:
   - component: {fileID: 7430704234344882109}
   - component: {fileID: -6872747142744922915}
   - component: {fileID: -3813724922920368297}
+  - component: {fileID: -4709375757783787476}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Team Red Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -164,6 +165,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b951dcd2d14dcb429703b36df8b33be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentStatus: 0
+  _destinationReached: 0
 --- !u!114 &-3813724922920368297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,3 +179,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46311c979975fdf41a86bdd819806535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentStatus: 0
+--- !u!114 &-4709375757783787476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4212581915475808826}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bca8e6a630e778344b522bca281708a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentStatus: 0

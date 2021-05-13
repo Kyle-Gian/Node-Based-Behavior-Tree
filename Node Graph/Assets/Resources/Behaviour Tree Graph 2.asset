@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c34db39198860fd4bb7bba2499a21ccd, type: 3}
+  m_Name: Behaviour Tree Graph 2
+  m_EditorClassIdentifier: 
+  NodeLink:
+  - BaseNodeGUID: cdef3fa2-98b1-4bec-ba69-66b0a7b908be
+    BaseNodeName: Start
+    PortName: Next
+    TargetNodeGUID: 78f26472-f276-46ae-9f6c-277108d51523
+    TargetNodeName: SequenceNode
+  - BaseNodeGUID: cdef3fa2-98b1-4bec-ba69-66b0a7b908be
+    BaseNodeName: Start
+    PortName: Next
+    TargetNodeGUID: 63e55656-3210-4453-8ee3-30e8a4a3903e
+    TargetNodeName: SequenceNode
+  - BaseNodeGUID: 78f26472-f276-46ae-9f6c-277108d51523
+    BaseNodeName: SequenceNode
+    PortName: Output
+    TargetNodeGUID: f5bab1fe-884e-48b3-aff1-69609daaa85b
+    TargetNodeName: LeafNode
+  - BaseNodeGUID: 78f26472-f276-46ae-9f6c-277108d51523
+    BaseNodeName: SequenceNode
+    PortName: Output
+    TargetNodeGUID: 7af6e2b9-a4e5-4aa4-9f7b-853115dab3c2
+    TargetNodeName: LeafNode
+  - BaseNodeGUID: 63e55656-3210-4453-8ee3-30e8a4a3903e
+    BaseNodeName: SequenceNode
+    PortName: Output
+    TargetNodeGUID: a364fb05-7a7b-45d1-94e5-d792e49bc41b
+    TargetNodeName: LeafNode
+  - BaseNodeGUID: 63e55656-3210-4453-8ee3-30e8a4a3903e
+    BaseNodeName: SequenceNode
+    PortName: Output
+    TargetNodeGUID: 55e5ee30-b57b-455d-9ed7-dbaaee7c1be0
+    TargetNodeName: LeafNode
+  NodeData:
+  - NodeGUID: 78f26472-f276-46ae-9f6c-277108d51523
+    Position: {x: 389, y: 129}
+    NodeType: SequenceNode
+    NodeFunction: {fileID: 0}
+    FunctionName: Null
+  - NodeGUID: 63e55656-3210-4453-8ee3-30e8a4a3903e
+    Position: {x: 367, y: -103}
+    NodeType: SequenceNode
+    NodeFunction: {fileID: 0}
+    FunctionName: Null
+  - NodeGUID: f5bab1fe-884e-48b3-aff1-69609daaa85b
+    Position: {x: 908, y: 357}
+    NodeType: LeafNode
+    NodeFunction: {fileID: 11500000, guid: 1a15840fb428db84dbab52e47bf2b778, type: 3}
+    FunctionName: TestCheck
+  - NodeGUID: 7af6e2b9-a4e5-4aa4-9f7b-853115dab3c2
+    Position: {x: 915, y: 225}
+    NodeType: LeafNode
+    NodeFunction: {fileID: 11500000, guid: 2b951dcd2d14dcb429703b36df8b33be, type: 3}
+    FunctionName: Chase
+  - NodeGUID: 55e5ee30-b57b-455d-9ed7-dbaaee7c1be0
+    Position: {x: 892, y: -232}
+    NodeType: LeafNode
+    NodeFunction: {fileID: 11500000, guid: bca8e6a630e778344b522bca281708a6, type: 3}
+    FunctionName: Idle
+  - NodeGUID: a364fb05-7a7b-45d1-94e5-d792e49bc41b
+    Position: {x: 890, y: -106}
+    NodeType: LeafNode
+    NodeFunction: {fileID: 11500000, guid: 8950f18b1b9fb3d42b1e9ba5d910c6fd, type: 3}
+    FunctionName: CompletedBehaviour

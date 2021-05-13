@@ -10,7 +10,7 @@ using UnityEditor.Experimental.GraphView;
 
 public class SelectorFuncionality : NodeFunctionality
 {
-    public override void RunFunction(List<NodeEdge> nodeEdges, Transform AI)
+    public override void RunFunction(List<NodeEdge> nodeEdges, GameObject AI)
     {
         ResetNodeStatus(nodeEdges);
 

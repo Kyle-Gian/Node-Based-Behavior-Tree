@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Behaviour Tree Graph
   m_EditorClassIdentifier: 
   NodeLink:
-  - BaseNodeGUID: 81c3ca56-4b1c-4781-a4c0-63edc21d87f0
+  - BaseNodeGUID: 6e75f245-ba1d-4a2e-b83a-c7293e938a30
     BaseNodeName: Start
     PortName: Next
     TargetNodeGUID: 78f26472-f276-46ae-9f6c-277108d51523
     TargetNodeName: SequenceNode
-  - BaseNodeGUID: 81c3ca56-4b1c-4781-a4c0-63edc21d87f0
+  - BaseNodeGUID: 6e75f245-ba1d-4a2e-b83a-c7293e938a30
     BaseNodeName: Start
     PortName: Next
     TargetNodeGUID: 63e55656-3210-4453-8ee3-30e8a4a3903e
@@ -33,7 +33,7 @@ MonoBehaviour:
     PortName: Output
     TargetNodeGUID: 7af6e2b9-a4e5-4aa4-9f7b-853115dab3c2
     TargetNodeName: LeafNode
-  - BaseNodeGUID: 78f26472-f276-46ae-9f6c-277108d51523
+  - BaseNodeGUID: 63e55656-3210-4453-8ee3-30e8a4a3903e
     BaseNodeName: SequenceNode
     PortName: Output
     TargetNodeGUID: a364fb05-7a7b-45d1-94e5-d792e49bc41b
@@ -41,36 +41,36 @@ MonoBehaviour:
   - BaseNodeGUID: 63e55656-3210-4453-8ee3-30e8a4a3903e
     BaseNodeName: SequenceNode
     PortName: Output
-    TargetNodeGUID: fb4e9106-32b1-4c75-a534-86c9ba2a2fba
+    TargetNodeGUID: 55e5ee30-b57b-455d-9ed7-dbaaee7c1be0
     TargetNodeName: LeafNode
   NodeData:
-  - NodeGUID: f5bab1fe-884e-48b3-aff1-69609daaa85b
-    Position: {x: 906, y: 224}
-    NodeType: LeafNode
-    NodeFunction: {fileID: 11500000, guid: 1a15840fb428db84dbab52e47bf2b778, type: 3}
-    FunctionName: TestCheck
-  - NodeGUID: 7af6e2b9-a4e5-4aa4-9f7b-853115dab3c2
-    Position: {x: 893, y: 42}
-    NodeType: LeafNode
-    NodeFunction: {fileID: 11500000, guid: 2b951dcd2d14dcb429703b36df8b33be, type: 3}
-    FunctionName: Chase
   - NodeGUID: 78f26472-f276-46ae-9f6c-277108d51523
     Position: {x: 389, y: 129}
     NodeType: SequenceNode
     NodeFunction: {fileID: 0}
     FunctionName: Null
-  - NodeGUID: a364fb05-7a7b-45d1-94e5-d792e49bc41b
-    Position: {x: 887, y: -119}
-    NodeType: LeafNode
-    NodeFunction: {fileID: 11500000, guid: 46311c979975fdf41a86bdd819806535, type: 3}
-    FunctionName: Flee
   - NodeGUID: 63e55656-3210-4453-8ee3-30e8a4a3903e
     Position: {x: 367, y: -103}
     NodeType: SequenceNode
     NodeFunction: {fileID: 0}
     FunctionName: Null
-  - NodeGUID: fb4e9106-32b1-4c75-a534-86c9ba2a2fba
-    Position: {x: 761, y: -259}
+  - NodeGUID: f5bab1fe-884e-48b3-aff1-69609daaa85b
+    Position: {x: 908, y: 357}
     NodeType: LeafNode
-    NodeFunction: {fileID: 11500000, guid: 4e81850883e87fb4fb09b0a8afb27018, type: 3}
-    FunctionName: NodeCheck
+    NodeFunction: {fileID: 11500000, guid: 1a15840fb428db84dbab52e47bf2b778, type: 3}
+    FunctionName: TestCheck
+  - NodeGUID: 7af6e2b9-a4e5-4aa4-9f7b-853115dab3c2
+    Position: {x: 915, y: 225}
+    NodeType: LeafNode
+    NodeFunction: {fileID: 11500000, guid: 2b951dcd2d14dcb429703b36df8b33be, type: 3}
+    FunctionName: Chase
+  - NodeGUID: 55e5ee30-b57b-455d-9ed7-dbaaee7c1be0
+    Position: {x: 892, y: -232}
+    NodeType: LeafNode
+    NodeFunction: {fileID: 11500000, guid: bca8e6a630e778344b522bca281708a6, type: 3}
+    FunctionName: Idle
+  - NodeGUID: a364fb05-7a7b-45d1-94e5-d792e49bc41b
+    Position: {x: 890, y: -106}
+    NodeType: LeafNode
+    NodeFunction: {fileID: 11500000, guid: 8950f18b1b9fb3d42b1e9ba5d910c6fd, type: 3}
+    FunctionName: CompletedBehaviour

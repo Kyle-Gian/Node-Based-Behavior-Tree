@@ -7,6 +7,8 @@ public class Flee : Behaviour
 {
     NavMeshAgent _agent;
     GameObject _player;
+    Vector3 _destination;
+    bool _destinationReached = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,5 +26,16 @@ public class Flee : Behaviour
     public override Behaviour GetBehaviour()
     {
         return this.GetComponent<Chase>();
+    }
+
+    public override TreeNode.Status ReturnBehaviorStatus()
+    {
+        return TreeNode.Status.PROCESSING;
+    }
+
+    public override void SetBehaviourStatus(TreeNode.Status status)
+    {
+        _currentStatus = status;
+
     }
 }
