@@ -64,7 +64,6 @@ public class CanISeeTheEnemy : NodeCheck
                     }
                 }
             }
-
         }
         //Check if the AI can see the enemy target
         if (HasLineOfSight(AI ,_closestPlayer))
@@ -83,7 +82,6 @@ public class CanISeeTheEnemy : NodeCheck
             if (hit.collider.tag == target.tag)
             {
                 return true;
-
             }
         }
         return false;

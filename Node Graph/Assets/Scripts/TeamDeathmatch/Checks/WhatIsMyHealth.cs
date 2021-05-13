@@ -17,7 +17,14 @@ public class WhatIsMyHealth : NodeCheck
 
     public override TreeNode.Status CheckCondition(GameObject AI)
     {
+        int health = AI.GetComponent<AIHealth>().currentHealth;
 
-        return TreeNode.Status.FAIL;
+        if (health < health / 3)
+        {
+            return TreeNode.Status.FAIL;
+        }
+
+        return TreeNode.Status.SUCCESS;
+
     }
 }

@@ -13,44 +13,34 @@ MonoBehaviour:
   m_Name: Team Deathmatch
   m_EditorClassIdentifier: 
   NodeLink:
-  - BaseNodeGUID: cdef3fa2-98b1-4bec-ba69-66b0a7b908be
+  - BaseNodeGUID: e6b053c5-e829-4697-8f06-35f2696e2fea
     BaseNodeName: Start
     PortName: Next
     TargetNodeGUID: 583f1cb8-ce44-4b60-bf78-1706e09d8866
     TargetNodeName: SequenceNode
-  - BaseNodeGUID: cdef3fa2-98b1-4bec-ba69-66b0a7b908be
-    BaseNodeName: Start
-    PortName: Next
-    TargetNodeGUID: d2d34cf8-7507-493c-a2d3-a33f47c2a3ef
-    TargetNodeName: SelectorNode
   - BaseNodeGUID: 583f1cb8-ce44-4b60-bf78-1706e09d8866
     BaseNodeName: SequenceNode
     PortName: Output
     TargetNodeGUID: 92ebe68c-8d43-4768-8776-c74f1ca126a5
     TargetNodeName: LeafNode
-  - BaseNodeGUID: 583f1cb8-ce44-4b60-bf78-1706e09d8866
-    BaseNodeName: SequenceNode
-    PortName: Output
-    TargetNodeGUID: 2d9c1eb1-3403-4262-ae27-06e4f17ed1bd
-    TargetNodeName: LeafNode
+  - BaseNodeGUID: e6b053c5-e829-4697-8f06-35f2696e2fea
+    BaseNodeName: Start
+    PortName: Next
+    TargetNodeGUID: 70434997-50aa-454f-b371-91749187fe0d
+    TargetNodeName: SequenceNode
   NodeData:
   - NodeGUID: 583f1cb8-ce44-4b60-bf78-1706e09d8866
     Position: {x: 293, y: 226}
     NodeType: SequenceNode
     NodeFunction: {fileID: 0}
     FunctionName: Null
-  - NodeGUID: d2d34cf8-7507-493c-a2d3-a33f47c2a3ef
-    Position: {x: 291, y: -100}
-    NodeType: SelectorNode
-    NodeFunction: {fileID: 0}
-    FunctionName: Null
   - NodeGUID: 92ebe68c-8d43-4768-8776-c74f1ca126a5
     Position: {x: 612, y: 348}
     NodeType: LeafNode
-    NodeFunction: {fileID: 11500000, guid: 80bf609f971375d46ad7ea2f7d429da1, type: 3}
-    FunctionName: CanISeeTheEnemy
-  - NodeGUID: 2d9c1eb1-3403-4262-ae27-06e4f17ed1bd
-    Position: {x: 606, y: 231}
-    NodeType: LeafNode
-    NodeFunction: {fileID: 11500000, guid: b16984a5cf15e5247a045f46fd88f87c, type: 3}
-    FunctionName: WhatIsMyHealth
+    NodeFunction: {fileID: 11500000, guid: 9d0edc3998f38a74d946a69cfaf38f37, type: 3}
+    FunctionName: SeekEnemy
+  - NodeGUID: 70434997-50aa-454f-b371-91749187fe0d
+    Position: {x: 310, y: -99}
+    NodeType: SequenceNode
+    NodeFunction: {fileID: 0}
+    FunctionName: Null

@@ -7,29 +7,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Flee : Behaviour
+public class Shoot : Behaviour
 {
-    NavMeshAgent _agent;
-    GameObject _player;
-    Vector3 _destination;
-    bool _destinationReached = false;
+    NavMeshAgent agent;
+
     // Start is called before the first frame update
     void Start()
     {
-        _agent = GetComponent<NavMeshAgent>();
-        _player = GameObject.FindGameObjectWithTag("Player");
+        agent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        _agent.SetDestination(Vector3.zero);
-
+        
     }
 
     public override Behaviour GetBehaviour()
     {
-        return this.GetComponent<Chase>();
+        return null;
     }
 
     public override TreeNode.Status ReturnBehaviorStatus()
@@ -41,5 +37,10 @@ public class Flee : Behaviour
     {
         _currentStatus = status;
 
+    }
+
+    public override Vector3 GetObjectPosition()
+    {
+        return transform.position;
     }
 }

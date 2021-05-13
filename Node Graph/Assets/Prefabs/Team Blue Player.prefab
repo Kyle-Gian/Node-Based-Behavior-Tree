@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7775390302244155305}
   - component: {fileID: -8958012486593323046}
   - component: {fileID: 3187401316322056272}
+  - component: {fileID: -173808216857429743}
   m_Layer: 0
   m_Name: Team Blue Player
   m_TagString: Untagged
@@ -176,3 +177,16 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &-173808216857429743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6332778188813773185}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0edc3998f38a74d946a69cfaf38f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentStatus: 0
