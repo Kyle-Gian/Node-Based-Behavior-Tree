@@ -64,13 +64,13 @@ MonoBehaviour:
     NodeType: LeafNode
     NodeFunction: {fileID: 11500000, guid: 2b951dcd2d14dcb429703b36df8b33be, type: 3}
     FunctionName: Chase
-  - NodeGUID: 55e5ee30-b57b-455d-9ed7-dbaaee7c1be0
-    Position: {x: 892, y: -232}
-    NodeType: LeafNode
-    NodeFunction: {fileID: 11500000, guid: bca8e6a630e778344b522bca281708a6, type: 3}
-    FunctionName: Idle
   - NodeGUID: a364fb05-7a7b-45d1-94e5-d792e49bc41b
     Position: {x: 890, y: -106}
     NodeType: LeafNode
     NodeFunction: {fileID: 11500000, guid: 8950f18b1b9fb3d42b1e9ba5d910c6fd, type: 3}
     FunctionName: CompletedBehaviour
+  - NodeGUID: 55e5ee30-b57b-455d-9ed7-dbaaee7c1be0
+    Position: {x: 892, y: -232}
+    NodeType: LeafNode
+    NodeFunction: {fileID: 11500000, guid: 9d0edc3998f38a74d946a69cfaf38f37, type: 3}
+    FunctionName: SeekEnemy

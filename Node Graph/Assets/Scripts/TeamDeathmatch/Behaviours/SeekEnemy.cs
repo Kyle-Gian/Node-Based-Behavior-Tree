@@ -2,6 +2,7 @@
 //Date Created: 13/05/2021
 //Last Modified: 13/05/2021
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,8 @@ public class SeekEnemy : Behaviour
 {
     NavMeshAgent agent;
     Vector3 _location;
+    private float _distanceToDestination = 0;
+    private Vector3 _previousDestination;
 
     // Start is called before the first frame update
     void Start()
@@ -23,30 +26,39 @@ public class SeekEnemy : Behaviour
     void Update()
     {
         
-        if (_location == Vector3.zero)
+        _distanceToDestination = Vector3.Distance(gameObject.transform.localPosition, _location);
+
+        if (_location == Vector3.zero || _previousDestination == _location)
         {
-            _location = RandomNavSphere(gameObject.transform.position, 50, -1);
+            _location = RandomNavSphere(gameObject.transform.localPosition, 10, -1);
             agent.SetDestination(_location);
         }
-        if (Vector3.Distance(gameObject.transform.position,_location) <= 1)
+
+        if (_distanceToDestination <= 1)
         {
-            _location = RandomNavSphere(gameObject.transform.position, 50, -1);
+            _location = RandomNavSphere(gameObject.transform.localPosition, 10, -1);
             agent.SetDestination(_location);
         }
-        if (Physics.Raycast(gameObject.transform.position, gameObject.transform.TransformDirection(Vector3.forward), out RaycastHit hit,20))
+        if (Physics.Raycast(gameObject.transform.localPosition, gameObject.transform.TransformDirection(Vector3.forward), out RaycastHit hit,10))
         {
             if (hit.collider.tag == "Obstruction")
             {
-                _location = RandomNavSphere(gameObject.transform.position, 50, -1);
+                _location = RandomNavSphere(gameObject.transform.localPosition, 10, -1);
                 agent.SetDestination(_location);
             }
         }
 
     }
 
+    private void OnEnable()
+    {
+        //Used for the change of behaviour, so the position is changed when reactivated
+        _previousDestination = _location;
+    }
+
     public override Behaviour GetBehaviour()
     {
-        return this.GetComponent<SeekEnemy>();
+        return GetComponent<SeekEnemy>();
     }
 
     public static Vector3 RandomNavSphere(Vector3 origin, float distance, int layermask)

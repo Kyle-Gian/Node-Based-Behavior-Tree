@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Behaviour Tree Graph
   m_EditorClassIdentifier: 
   NodeLink:
-  - BaseNodeGUID: 6e75f245-ba1d-4a2e-b83a-c7293e938a30
+  - BaseNodeGUID: 7a41ede3-f45d-4be7-b8a7-176beff1dd88
     BaseNodeName: Start
     PortName: Next
     TargetNodeGUID: 78f26472-f276-46ae-9f6c-277108d51523
     TargetNodeName: SequenceNode
-  - BaseNodeGUID: 6e75f245-ba1d-4a2e-b83a-c7293e938a30
+  - BaseNodeGUID: 7a41ede3-f45d-4be7-b8a7-176beff1dd88
     BaseNodeName: Start
     PortName: Next
     TargetNodeGUID: 63e55656-3210-4453-8ee3-30e8a4a3903e
@@ -64,13 +64,13 @@ MonoBehaviour:
     NodeType: LeafNode
     NodeFunction: {fileID: 11500000, guid: 2b951dcd2d14dcb429703b36df8b33be, type: 3}
     FunctionName: Chase
-  - NodeGUID: 55e5ee30-b57b-455d-9ed7-dbaaee7c1be0
-    Position: {x: 892, y: -232}
-    NodeType: LeafNode
-    NodeFunction: {fileID: 11500000, guid: bca8e6a630e778344b522bca281708a6, type: 3}
-    FunctionName: Idle
   - NodeGUID: a364fb05-7a7b-45d1-94e5-d792e49bc41b
     Position: {x: 890, y: -106}
     NodeType: LeafNode
     NodeFunction: {fileID: 11500000, guid: 8950f18b1b9fb3d42b1e9ba5d910c6fd, type: 3}
     FunctionName: CompletedBehaviour
+  - NodeGUID: 55e5ee30-b57b-455d-9ed7-dbaaee7c1be0
+    Position: {x: 892, y: -232}
+    NodeType: LeafNode
+    NodeFunction: {fileID: 11500000, guid: 9d0edc3998f38a74d946a69cfaf38f37, type: 3}
+    FunctionName: SeekEnemy
