@@ -72,5 +72,5 @@ MonoBehaviour:
   - NodeGUID: 55e5ee30-b57b-455d-9ed7-dbaaee7c1be0
     Position: {x: 892, y: -232}
     NodeType: LeafNode
-    NodeFunction: {fileID: 11500000, guid: 9d0edc3998f38a74d946a69cfaf38f37, type: 3}
-    FunctionName: SeekEnemy
+    NodeFunction: {fileID: 11500000, guid: c7c0b35a5e1e61a43b0246a5f56c8ba6, type: 3}
+    FunctionName: Shoot

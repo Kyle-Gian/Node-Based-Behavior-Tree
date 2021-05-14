@@ -1,38 +1,47 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
     [SerializeField]
-     int _speed = 5;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+     private int _speed = 5;
+    [SerializeField]
+     private int _bulletDamage = 10;
 
-    // Update is called once per frame
+     private Vector3 _originalPosition;
+    [SerializeField]
+     private float _destroyDistance = 50;
+
+     private Vector3 _shootDistanceFromAI = new Vector3(1, 0, 0);
+
     void Update()
     {
-        
+        transform.position += new Vector3(_speed,0,0) * Time.deltaTime;
+
+        if (Vector3.Distance(_originalPosition, transform.position) > _destroyDistance)
+        {
+            DestroyBullet();
+        }
     }
-    
-    
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Red") ||other.gameObject.CompareTag("Blue"))
+        {
+            other.gameObject.GetComponent<AIHealth>().Hurt(_bulletDamage);
+        }
+        DestroyBullet();
+    }
 
     private void DestroyBullet()
     {
-        Destroy(this);
+        Destroy(this.gameObject);
     }
 
-    public void ShootFrom(Vector3 position)
+    public void ShootBullet(Vector3 startPosition, Vector3 direction)
     {
-        
-    }
-
-    private void CreateBullet(Vector3 startPosition, Vector3 direction)
-    {
-        Instantiate(this);
+        Instantiate(this, startPosition += _shootDistanceFromAI , Quaternion.LookRotation(direction));
     }
 }

@@ -10,22 +10,44 @@ using UnityEngine.AI;
 public class Shoot : Behaviour
 {
     NavMeshAgent agent;
+    [SerializeField]
+    private GameObject _bullet;
+
+    private GameObject _gun;
+
+    private bool _canFire = true;
+
+    private int _fireRate = 1;
 
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        _gun = transform.GetChild(0).gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (_canFire)
+        {
+            StartCoroutine("BulletSpawnTime");
+        }
+    }
+    
+    private IEnumerator BulletSpawnTime()
+    {
+        _canFire = false;
+        yield return new WaitForSeconds(_fireRate);
+        _bullet.GetComponent<Bullet>().ShootBullet(_gun.transform.position, _gun.transform.forward);
+        _canFire = true;
+
+
     }
 
     public override Behaviour GetBehaviour()
     {
-        return null;
+        return GetComponent<Shoot>();
     }
 
     public override TreeNode.Status ReturnBehaviorStatus()
