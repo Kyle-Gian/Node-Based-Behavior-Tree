@@ -13,7 +13,7 @@ public class CanISeeTheEnemy : NodeCheck
     GameObject[] _teamBlue;
     GameObject[] _teamRed;
 
-    GameObject _closestPlayer = null;
+    public GameObject _closestPlayer = null;
     float _distanceFromPreviousAI = 0;
     public LayerMask _enemy;
 
