@@ -3,45 +3,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Bullet : MonoBehaviour
 {
     [SerializeField]
-     private int _speed = 5;
+     private float _speed = 0.5f;
     [SerializeField]
      private int _bulletDamage = 10;
 
      private Vector3 _originalPosition;
     [SerializeField]
-     private float _destroyDistance = 50;
+     private float _destroyTime = 3;
+     
+     
 
-     private Vector3 _shootDistanceFromAI = new Vector3(1, 0, 0);
-
-    void Update()
+     void Update()
     {
-        transform.position += new Vector3(_speed,0,0) * Time.deltaTime;
+        transform.Translate(Vector3.forward * _speed * Time.deltaTime);
+        
+        StartCoroutine(DestroyTime());
 
-        if (Vector3.Distance(_originalPosition, transform.position) > _destroyDistance)
-        {
-            DestroyBullet();
-        }
     }
 
-    private void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.CompareTag("Red") ||other.gameObject.CompareTag("Blue"))
-        {
-            other.gameObject.GetComponent<AIHealth>().Hurt(_bulletDamage);
-        }
-        DestroyBullet();
-    }
+     private void OnTriggerEnter(Collider other)
+     {
+         if (other.gameObject.CompareTag("Red") ||other.gameObject.CompareTag("Blue"))
+         {
+             other.gameObject.GetComponent<AIHealth>().Hurt(_bulletDamage);
+         }
+         
+         DestroyBullet();
+     }
 
-    private void DestroyBullet()
+     private void DestroyBullet()
     {
         Destroy(this.gameObject);
     }
+    
 
-    public void ShootBullet(Vector3 startPosition, Vector3 direction)
+    IEnumerator DestroyTime()
     {
-        Instantiate(this, startPosition += _shootDistanceFromAI , Quaternion.LookRotation(direction));
+        yield return new WaitForSeconds(_destroyTime);
+        DestroyBullet();
     }
 }

@@ -23,7 +23,7 @@ public class Shoot : Behaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        _gun = transform.GetChild(0).gameObject;
+        _gun = transform.GetChild(1).gameObject;
     }
 
     // Update is called once per frame
@@ -39,7 +39,9 @@ public class Shoot : Behaviour
     {
         _canFire = false;
         yield return new WaitForSeconds(_fireRate);
-        _bullet.GetComponent<Bullet>().ShootBullet(_gun.transform.position, _gun.transform.forward);
+
+        GameObject newBullet = Instantiate(_bullet, _gun.transform.position, _gun.transform.rotation);
+
         _canFire = true;
 
 
