@@ -1,6 +1,6 @@
 ﻿//Author: Kyle Gian
 //Date Created: 02/05/2021
-//Last Modified: 13/05/2021
+//Last Modified: 15/05/2021
 
 //This is used to run the tree from the root node checking waiting for the behaviour to pass through to the AI
 
@@ -72,7 +72,10 @@ public class BehaviourTree : MonoBehaviour
         //Run each individual AI through the behaviour tree to get their action 
         foreach (var AI in _enemyList)
         {
-
+            if (AI == null)
+            {
+                continue;
+            }
             for (int i = 0; i < _rootTreeNode._linksToChildren.Count; i++)
             {
                 if (_rootTreeNode._linksToChildren != null)

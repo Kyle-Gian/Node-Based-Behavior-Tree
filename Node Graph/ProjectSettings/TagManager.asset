@@ -9,6 +9,7 @@ TagManager:
   - Obstruction
   - Red
   - Blue
+  - Health Pack
   layers:
   - Default
   - TransparentFX
