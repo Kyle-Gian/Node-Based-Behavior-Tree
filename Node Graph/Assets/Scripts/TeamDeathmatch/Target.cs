@@ -1,18 +1,35 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Target : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    //private NavMeshAgent _agent;
+
+    private GameObject _target;
+    // Update is called once per frame
+
+    private void Start()
     {
-        
+        throw new NotImplementedException();
     }
 
-    // Update is called once per frame
     void Update()
     {
         
     }
+
+    public void SetTarget(GameObject target)
+    {
+        _target = target;
+    }
+
+    public GameObject GetTarget()
+    {
+        return _target;
+    }
+    
+
 }

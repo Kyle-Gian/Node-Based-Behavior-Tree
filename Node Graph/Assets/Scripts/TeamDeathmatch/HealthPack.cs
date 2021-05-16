@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HealthPack : MonoBehaviour
 {
+    [SerializeField] private int _healthPack = 20;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Blue") || other.CompareTag("Red"))
@@ -12,4 +13,11 @@ public class HealthPack : MonoBehaviour
 
         }
     }
+
+    public float GiveHealth()
+    {
+        return _healthPack;
+    }
+    
+    
 }
