@@ -9,26 +9,35 @@ using UnityEngine.AI;
 
 public class Shoot : Behaviour
 {
-    NavMeshAgent agent;
+    NavMeshAgent _agent;
     [SerializeField]
     private GameObject _bullet;
 
     private GameObject _gun;
 
     private bool _canFire = true;
+    private GameObject _target;
 
-    private int _fireRate = 1;
+    private float _fireRate = 0.5f;
 
     // Start is called before the first frame update
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
+        _agent = GetComponent<NavMeshAgent>();
         _gun = transform.GetChild(1).gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
+        _target = GetComponent<Target>().GetTarget();
+        
+        if (_target != null)
+        {
+            _agent.transform.TransformDirection(_agent.transform.position);
+
+        }
+
         if (_canFire)
         {
             StartCoroutine("BulletSpawnTime");

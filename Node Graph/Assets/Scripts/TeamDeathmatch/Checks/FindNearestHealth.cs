@@ -26,9 +26,13 @@ public class FindNearestHealth: NodeCheck
                     _closestHealthPack = _nearbyHealthPacks[i];
                 }
 
-                if (Vector3.Distance(_closestHealthPack.transform.position, AI.transform.position) < distanceToHealthPack)
+                if (_closestHealthPack != null)
                 {
-                    _closestHealthPack = _nearbyHealthPacks[i];
+                    if (Vector3.Distance(_closestHealthPack.transform.position, AI.transform.position) <
+                        distanceToHealthPack)
+                    {
+                        _closestHealthPack = _nearbyHealthPacks[i];
+                    }
                 }
             }
             AI.GetComponent<GetHealth>().SetHealthPack(_closestHealthPack);

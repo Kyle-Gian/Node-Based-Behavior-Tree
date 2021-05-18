@@ -6,7 +6,6 @@ using UnityEngine.AI;
 public class GetHealth : Behaviour
 {
     private GameObject _healthPack;
-    public TreeNode.Status _currentStatus;
     private NavMeshAgent _agent;
 
     // Start is called before the first frame update
@@ -18,12 +17,16 @@ public class GetHealth : Behaviour
     // Update is called once per frame
     void Update()
     {
-        _agent.SetDestination(_healthPack.transform.position);
+        if (_healthPack != null)
+        {
+            _agent.SetDestination(_healthPack.transform.position);
+
+        }
     }
 
     public override Behaviour GetBehaviour()
     {
-        return null;
+        return GetComponent<GetHealth>();
     }
 
     public override TreeNode.Status ReturnBehaviorStatus()

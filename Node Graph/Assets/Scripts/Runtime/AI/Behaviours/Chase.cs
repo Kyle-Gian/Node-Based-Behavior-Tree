@@ -10,7 +10,7 @@ using UnityEngine.AI;
 public class Chase : Behaviour
 {
      NavMeshAgent _agent;
-     GameObject _player;
+     GameObject _target;
      Vector3 _destination;
      public bool _destinationReached = false;
 
@@ -19,18 +19,26 @@ public class Chase : Behaviour
     void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
-        _player = GameObject.FindGameObjectWithTag("Player");
-
-        _destination = _player.transform.position;
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        _destination = _player.transform.position;
+        
+        _target = GetComponent<Target>().GetTarget();
 
-        _agent.SetDestination(_destination);     
+        if (_target != null)
+        {
+            
+            float distanceToTarget = Vector3.Distance(transform.position, _target.transform.position);
+            if (_target != null && distanceToTarget > 8)
+            {
+                _destination = _target.transform.position;
+
+                _agent.SetDestination(_destination);
+            }
+        }
+
     }
 
     public override Behaviour GetBehaviour()

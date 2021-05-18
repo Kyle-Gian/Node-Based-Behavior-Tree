@@ -1,4 +1,8 @@
-﻿using System;
+﻿//Author: Kyle Gian
+//Date Created: 13/05/2021
+//Last Modified: 13/05/2021
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,19 +12,7 @@ public class Target : MonoBehaviour
 {
     //private NavMeshAgent _agent;
 
-    private GameObject _target;
-    // Update is called once per frame
-
-    private void Start()
-    {
-        throw new NotImplementedException();
-    }
-
-    void Update()
-    {
-        
-    }
-
+    private GameObject _target = null;
     public void SetTarget(GameObject target)
     {
         _target = target;

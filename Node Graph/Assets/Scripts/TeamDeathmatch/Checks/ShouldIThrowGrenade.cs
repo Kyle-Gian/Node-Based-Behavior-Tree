@@ -15,8 +15,8 @@ public class ShouldIThrowGrenade : NodeCheck
 
     private void Start()
     {
-        _teamBlue = GameObject.FindGameObjectsWithTag("TeamRed");
-        _teamRed = GameObject.FindGameObjectsWithTag("TeamBlue");
+        _teamBlue = GameObject.FindGameObjectsWithTag("Red");
+        _teamRed = GameObject.FindGameObjectsWithTag("Blue");
         _closestPlayer = this.GetComponent<CanISeeTheEnemy>()._closestPlayer;
 
     }

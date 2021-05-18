@@ -12,11 +12,12 @@ public class SelectorFuncionality : NodeFunctionality
 {
     public override void RunFunction(List<NodeEdge> nodeEdges, GameObject AI)
     {
+        //When this function is rerun, it sets all children back to Processing
         ResetNodeStatus(nodeEdges);
 
         for (int i = 0; i < nodeEdges.Count; i++)
         {
-            //if the child node is processing then run the function and get a reult of return of fail or success
+            //if the child node is processing then run the function and get a result of return of fail or success
 
             if (nodeEdges[i].Child._linksToChildren.Count == 0 & nodeEdges[i].Child._nodeType == "leafnode")
             {
@@ -38,7 +39,7 @@ public class SelectorFuncionality : NodeFunctionality
             //If all children nodes return FAIL, Parent returns FAIL
             if (i == nodeEdges.Count)
             {
-                nodeEdges[i].Parent._currentStatus = TreeNode.Status.FAIL;
+                nodeEdges[i].Parent._currentStatus = TreeNode.Status.SUCCESS;
             }
 
         }
