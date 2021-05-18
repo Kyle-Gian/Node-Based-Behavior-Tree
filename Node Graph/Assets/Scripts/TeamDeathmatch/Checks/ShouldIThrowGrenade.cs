@@ -17,8 +17,6 @@ public class ShouldIThrowGrenade : NodeCheck
     {
         _teamBlue = GameObject.FindGameObjectsWithTag("Red");
         _teamRed = GameObject.FindGameObjectsWithTag("Blue");
-        _closestPlayer = this.GetComponent<CanISeeTheEnemy>()._closestPlayer;
-
     }
 
     public override TreeNode.Status CheckCondition(GameObject AI)

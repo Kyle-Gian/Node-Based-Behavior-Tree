@@ -29,6 +29,6 @@ public class AIHealth : MonoBehaviour
     }
     public void Death()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

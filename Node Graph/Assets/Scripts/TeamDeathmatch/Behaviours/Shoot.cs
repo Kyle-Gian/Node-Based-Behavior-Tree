@@ -34,8 +34,7 @@ public class Shoot : Behaviour
         
         if (_target != null)
         {
-            _agent.transform.TransformDirection(_agent.transform.position);
-
+            _agent.transform.LookAt(_target.transform.position);
         }
 
         if (_canFire)

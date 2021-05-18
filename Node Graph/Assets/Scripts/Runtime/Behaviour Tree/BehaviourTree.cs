@@ -21,9 +21,9 @@ public class BehaviourTree : MonoBehaviour
     [SerializeField]
     public GraphContainer _savedGraph;
     [SerializeField]
-    GameObject _enemyTeam = null;
     static GameObject _brain;
-
+    
+    [SerializeField]
     List<GameObject> _enemyList = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
@@ -42,19 +42,6 @@ public class BehaviourTree : MonoBehaviour
         {
             Debug.LogError("No Graph Loaded");
         }
-
-        //Create the list of AI
-        if (_enemyTeam != null)
-        {
-            for (int i = 0; i < _enemyTeam.transform.childCount; i++)
-            {
-                _enemyList.Add(_enemyTeam.transform.GetChild(i).gameObject);
-            }
-        }
-        else
-        {
-            Debug.LogError("No AI have been added to the list");
-        }
     }
 
     // Update is called once per frame
@@ -72,42 +59,43 @@ public class BehaviourTree : MonoBehaviour
         //Run each individual AI through the behaviour tree to get their action 
         foreach (var AI in _enemyList)
         {
-            if (AI == null)
+            if (AI.activeSelf && AI != null)
             {
-                continue;
-            }
-            for (int i = 0; i < _rootTreeNode._linksToChildren.Count; i++)
-            {
-                if (_rootTreeNode._linksToChildren != null)
+                
+                for (int i = 0; i < _rootTreeNode._linksToChildren.Count; i++)
                 {
-                    //Get first node in list of root nodes outputs
-                    var nodeToCheck = ReturnChildNode(_rootTreeNode._linksToChildren[i].TargetNodeGUID);
-
-                    if (nodeToCheck._linksToChildren != null)
+                    if (_rootTreeNode._linksToChildren != null)
                     {
-                        //Get the first node in list of roots child node
-                        for (int j = 0; j < nodeToCheck._linksToChildren.Count; j++)
+                        //Get first node in list of root nodes outputs
+                        var nodeToCheck = ReturnChildNode(_rootTreeNode._linksToChildren[i].TargetNodeGUID);
+
+                        if (nodeToCheck._linksToChildren != null)
                         {
-                            nodeToCheck._currentStatus = TreeNode.Status.PROCESSING;
-
-                            if (nodeToCheck._currentStatus == TreeNode.Status.PROCESSING)
+                            //Get the first node in list of roots child node
+                            for (int j = 0; j < nodeToCheck._linksToChildren.Count; j++)
                             {
-                                if (nodeToCheck._linksToChildren[j].Child != null)
+                                nodeToCheck._currentStatus = TreeNode.Status.PROCESSING;
+
+                                if (nodeToCheck._currentStatus == TreeNode.Status.PROCESSING)
                                 {
-                                    nodeToCheck.NodeFunction(AI);
+                                    if (nodeToCheck._linksToChildren[j].Child != null)
+                                    {
+                                        nodeToCheck.NodeFunction(AI);
+                                    }
                                 }
-                            }
-                            if (nodeToCheck._currentStatus == TreeNode.Status.FAIL)
-                            {
-                                break;
-                            }
+
+                                if (nodeToCheck._currentStatus == TreeNode.Status.FAIL)
+                                {
+                                    break;
+                                }
 
 
+                            }
                         }
+
                     }
 
                 }
-
             }
         }
 
