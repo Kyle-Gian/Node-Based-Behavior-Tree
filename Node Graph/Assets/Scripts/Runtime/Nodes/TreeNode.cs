@@ -35,7 +35,6 @@ public class TreeNode
     {
         _linksToChildren.Sort((a,b) => a.Child._position.x.CompareTo(b.Child._position.x)) ;
         
-        Debug.Log(_linksToChildren.ToString());
         
         
     }

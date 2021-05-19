@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -12,11 +13,13 @@ public class FindNearestHealth: NodeCheck
     
     [SerializeField] private float _distanceCheck = 20;
 
+    private void Start()
+    {
+        _nearbyHealthPacks = GameObject.FindGameObjectsWithTag("Health Pack");
+    }
+
     public override TreeNode.Status CheckCondition(GameObject AI)
     {
-
-        
-        _nearbyHealthPacks = GameObject.FindGameObjectsWithTag("Health Pack");
         if (_nearbyHealthPacks != null)
         {
 
@@ -27,26 +30,33 @@ public class FindNearestHealth: NodeCheck
                 {
                     if (_nearbyHealthPacks[i].activeSelf)
                     {
-                        float distanceToHealthPack =
-                            Vector3.Distance(AI.transform.position, _nearbyHealthPacks[i].transform.position);
-
                         if (_closestHealthPack == null)
                         {
                             _closestHealthPack = _nearbyHealthPacks[i];
-                            _healthPackSet = true;
+
                         }
 
-                        if (_closestHealthPack != null)
+                        float distanceToHealthPackI =
+                        Vector3.Distance(AI.transform.position, _nearbyHealthPacks[i].transform.position);
+
+                        float distanceToHealthPackJ = 
+                            Vector3.Distance(AI.transform.position, _closestHealthPack.transform.position);
+                        
+                        if (distanceToHealthPackI <= distanceToHealthPackJ)
                         {
-                            if (Vector3.Distance(_closestHealthPack.transform.position, AI.transform.position) <
-                                distanceToHealthPack)
-                            {
-                                _closestHealthPack = _nearbyHealthPacks[i];
-                            }
+                            _closestHealthPack = _nearbyHealthPacks[i];
+                            _healthPackSet = true;
+
                         }
+                                
+                            
+                        
                     }
                 }
+
             }
+
+
 
             if (_closestHealthPack != null)
             {

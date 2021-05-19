@@ -16,7 +16,7 @@ public class DoINeedHealth: NodeCheck
         }
         float health = AI.GetComponent<AIHealth>()._currentHealth;
         
-        if (health < _maxHealth / 2 )
+        if (health <= _maxHealth / 2 )
         {
             return TreeNode.Status.SUCCESS;
         }
