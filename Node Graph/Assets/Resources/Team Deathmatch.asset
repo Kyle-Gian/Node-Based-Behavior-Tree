@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Team Deathmatch
   m_EditorClassIdentifier: 
   NodeLink:
-  - BaseNodeGUID: a272992f-cee6-453d-a196-306a1f725590
+  - BaseNodeGUID: 7d29684d-afbf-452b-8349-d0560935bcb0
     BaseNodeName: Start
     PortName: Next
     TargetNodeGUID: 0765a2e4-7868-458e-b774-0b51ddd37d75
     TargetNodeName: SelectorNode
-  - BaseNodeGUID: a272992f-cee6-453d-a196-306a1f725590
+  - BaseNodeGUID: 7d29684d-afbf-452b-8349-d0560935bcb0
     BaseNodeName: Start
     PortName: Next
     TargetNodeGUID: e9fc9f95-d8a0-4640-bb3b-c12ca9702743
@@ -33,21 +33,6 @@ MonoBehaviour:
     PortName: Output
     TargetNodeGUID: 002d8a77-a04c-47d4-b980-d959768cdd8a
     TargetNodeName: SequenceNode
-  - BaseNodeGUID: e9fc9f95-d8a0-4640-bb3b-c12ca9702743
-    BaseNodeName: SequenceNode
-    PortName: Output
-    TargetNodeGUID: 82035ad5-22d5-4eed-a524-25f6f6c8222b
-    TargetNodeName: LeafNode
-  - BaseNodeGUID: e9fc9f95-d8a0-4640-bb3b-c12ca9702743
-    BaseNodeName: SequenceNode
-    PortName: Output
-    TargetNodeGUID: 4b0134a1-5e45-4939-93ad-562ceb57ad14
-    TargetNodeName: LeafNode
-  - BaseNodeGUID: e9fc9f95-d8a0-4640-bb3b-c12ca9702743
-    BaseNodeName: SequenceNode
-    PortName: Output
-    TargetNodeGUID: f324dc47-4e8f-4352-a840-35e8f33d8646
-    TargetNodeName: SelectorNode
   - BaseNodeGUID: 1304703c-0a01-4966-a902-311c15cc7077
     BaseNodeName: SequenceNode
     PortName: Output
@@ -78,16 +63,6 @@ MonoBehaviour:
     PortName: Output
     TargetNodeGUID: 55fdaaad-a114-438d-a1c4-a8ece84280a7
     TargetNodeName: SelectorNode
-  - BaseNodeGUID: f324dc47-4e8f-4352-a840-35e8f33d8646
-    BaseNodeName: SelectorNode
-    PortName: Output
-    TargetNodeGUID: 78bb11f4-91ad-461b-bb1e-72a35cfa9694
-    TargetNodeName: LeafNode
-  - BaseNodeGUID: f324dc47-4e8f-4352-a840-35e8f33d8646
-    BaseNodeName: SelectorNode
-    PortName: Output
-    TargetNodeGUID: 244e7b02-66da-4123-ae0a-dcf65ec522cc
-    TargetNodeName: LeafNode
   - BaseNodeGUID: 55fdaaad-a114-438d-a1c4-a8ece84280a7
     BaseNodeName: SelectorNode
     PortName: Output
@@ -128,15 +103,45 @@ MonoBehaviour:
     PortName: Output
     TargetNodeGUID: 4cfc2386-97d0-4fdf-a3c1-1a0670e4e040
     TargetNodeName: LeafNode
+  - BaseNodeGUID: e9fc9f95-d8a0-4640-bb3b-c12ca9702743
+    BaseNodeName: SequenceNode
+    PortName: Output
+    TargetNodeGUID: 82035ad5-22d5-4eed-a524-25f6f6c8222b
+    TargetNodeName: LeafNode
+  - BaseNodeGUID: e9fc9f95-d8a0-4640-bb3b-c12ca9702743
+    BaseNodeName: SequenceNode
+    PortName: Output
+    TargetNodeGUID: 4b0134a1-5e45-4939-93ad-562ceb57ad14
+    TargetNodeName: LeafNode
+  - BaseNodeGUID: e9fc9f95-d8a0-4640-bb3b-c12ca9702743
+    BaseNodeName: SequenceNode
+    PortName: Output
+    TargetNodeGUID: 6125b3ab-6d03-4e2e-add6-6503ebfdb5c9
+    TargetNodeName: SequenceNode
+  - BaseNodeGUID: 6125b3ab-6d03-4e2e-add6-6503ebfdb5c9
+    BaseNodeName: SequenceNode
+    PortName: Output
+    TargetNodeGUID: f324dc47-4e8f-4352-a840-35e8f33d8646
+    TargetNodeName: SelectorNode
+  - BaseNodeGUID: 6125b3ab-6d03-4e2e-add6-6503ebfdb5c9
+    BaseNodeName: SequenceNode
+    PortName: Output
+    TargetNodeGUID: 31211a79-be91-49db-b4dc-7ebdf63e6011
+    TargetNodeName: LeafNode
+  - BaseNodeGUID: f324dc47-4e8f-4352-a840-35e8f33d8646
+    BaseNodeName: SelectorNode
+    PortName: Output
+    TargetNodeGUID: 78bb11f4-91ad-461b-bb1e-72a35cfa9694
+    TargetNodeName: LeafNode
+  - BaseNodeGUID: f324dc47-4e8f-4352-a840-35e8f33d8646
+    BaseNodeName: SelectorNode
+    PortName: Output
+    TargetNodeGUID: 244e7b02-66da-4123-ae0a-dcf65ec522cc
+    TargetNodeName: LeafNode
   NodeData:
   - NodeGUID: 0765a2e4-7868-458e-b774-0b51ddd37d75
     Position: {x: 331, y: 249}
     NodeType: SelectorNode
-    NodeFunction: {fileID: 0}
-    FunctionName: Null
-  - NodeGUID: e9fc9f95-d8a0-4640-bb3b-c12ca9702743
-    Position: {x: 315, y: -147}
-    NodeType: SequenceNode
     NodeFunction: {fileID: 0}
     FunctionName: Null
   - NodeGUID: 1304703c-0a01-4966-a902-311c15cc7077
@@ -174,31 +179,6 @@ MonoBehaviour:
     NodeType: LeafNode
     NodeFunction: {fileID: 11500000, guid: 992d8eca423c7ef4da87c9aab592369c, type: 3}
     FunctionName: TargetFound
-  - NodeGUID: f324dc47-4e8f-4352-a840-35e8f33d8646
-    Position: {x: 703, y: -255}
-    NodeType: SelectorNode
-    NodeFunction: {fileID: 0}
-    FunctionName: Null
-  - NodeGUID: 78bb11f4-91ad-461b-bb1e-72a35cfa9694
-    Position: {x: 1060, y: -186}
-    NodeType: LeafNode
-    NodeFunction: {fileID: 11500000, guid: fb9c9e0e2bcd49247b369fc742df9f45, type: 3}
-    FunctionName: FindNearestHealth
-  - NodeGUID: 244e7b02-66da-4123-ae0a-dcf65ec522cc
-    Position: {x: 1083, y: -339}
-    NodeType: LeafNode
-    NodeFunction: {fileID: 11500000, guid: d576e9800cb578a4f8cddd81db85d01c, type: 3}
-    FunctionName: GetHealth
-  - NodeGUID: 82035ad5-22d5-4eed-a524-25f6f6c8222b
-    Position: {x: 693, y: 2}
-    NodeType: LeafNode
-    NodeFunction: {fileID: 11500000, guid: 720535f1bca627d4ea7908142d642a49, type: 3}
-    FunctionName: DoINeedHealth
-  - NodeGUID: 4b0134a1-5e45-4939-93ad-562ceb57ad14
-    Position: {x: 698, y: -128}
-    NodeType: LeafNode
-    NodeFunction: {fileID: 11500000, guid: 3995448462dbf784592b181506bafa01, type: 3}
-    FunctionName: IsHealthAvailable
   - NodeGUID: 55fdaaad-a114-438d-a1c4-a8ece84280a7
     Position: {x: 1687, y: 244}
     NodeType: SelectorNode
@@ -244,3 +224,43 @@ MonoBehaviour:
     NodeType: LeafNode
     NodeFunction: {fileID: 11500000, guid: c7c0b35a5e1e61a43b0246a5f56c8ba6, type: 3}
     FunctionName: Shoot
+  - NodeGUID: e9fc9f95-d8a0-4640-bb3b-c12ca9702743
+    Position: {x: 361, y: -278}
+    NodeType: SequenceNode
+    NodeFunction: {fileID: 0}
+    FunctionName: Null
+  - NodeGUID: 82035ad5-22d5-4eed-a524-25f6f6c8222b
+    Position: {x: 739, y: -129}
+    NodeType: LeafNode
+    NodeFunction: {fileID: 11500000, guid: 720535f1bca627d4ea7908142d642a49, type: 3}
+    FunctionName: DoINeedHealth
+  - NodeGUID: 4b0134a1-5e45-4939-93ad-562ceb57ad14
+    Position: {x: 744, y: -259}
+    NodeType: LeafNode
+    NodeFunction: {fileID: 11500000, guid: 3995448462dbf784592b181506bafa01, type: 3}
+    FunctionName: IsHealthAvailable
+  - NodeGUID: 6125b3ab-6d03-4e2e-add6-6503ebfdb5c9
+    Position: {x: 748, y: -413}
+    NodeType: SequenceNode
+    NodeFunction: {fileID: 0}
+    FunctionName: Null
+  - NodeGUID: 78bb11f4-91ad-461b-bb1e-72a35cfa9694
+    Position: {x: 1476, y: -403}
+    NodeType: LeafNode
+    NodeFunction: {fileID: 11500000, guid: fb9c9e0e2bcd49247b369fc742df9f45, type: 3}
+    FunctionName: FindNearestHealth
+  - NodeGUID: f324dc47-4e8f-4352-a840-35e8f33d8646
+    Position: {x: 1120, y: -523}
+    NodeType: SelectorNode
+    NodeFunction: {fileID: 0}
+    FunctionName: Null
+  - NodeGUID: 244e7b02-66da-4123-ae0a-dcf65ec522cc
+    Position: {x: 1516, y: -568}
+    NodeType: LeafNode
+    NodeFunction: {fileID: 11500000, guid: d576e9800cb578a4f8cddd81db85d01c, type: 3}
+    FunctionName: GetHealth
+  - NodeGUID: 31211a79-be91-49db-b4dc-7ebdf63e6011
+    Position: {x: 1118, y: -327}
+    NodeType: LeafNode
+    NodeFunction: {fileID: 11500000, guid: 75d906784d163a249ba11aba1fc68150, type: 3}
+    FunctionName: EnemyInMyArea

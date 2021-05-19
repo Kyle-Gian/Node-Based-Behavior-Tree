@@ -29,6 +29,7 @@ GameObject:
   - component: {fileID: 5089867028215839623}
   - component: {fileID: -8321674152257996532}
   - component: {fileID: 473895633524574637}
+  - component: {fileID: -8448053917112567365}
   m_Layer: 0
   m_Name: AI Brain
   m_TagString: Untagged
@@ -305,5 +306,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3995448462dbf784592b181506bafa01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-8448053917112567365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2604522004508773873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d906784d163a249ba11aba1fc68150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
