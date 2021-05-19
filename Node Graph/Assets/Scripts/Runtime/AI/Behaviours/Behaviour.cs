@@ -6,7 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
+// Base class for behaviours
 public class Behaviour : NodeCheck
 {
     public TreeNode.Status _currentStatus;

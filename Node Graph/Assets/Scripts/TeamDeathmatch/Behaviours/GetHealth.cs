@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿//Author: Kyle Gian
+//Date Created: 16/05/2021
+//Last Modified: 19/05/2021
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;

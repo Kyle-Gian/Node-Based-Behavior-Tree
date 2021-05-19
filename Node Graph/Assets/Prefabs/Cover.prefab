@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7240419098703679788}
   - component: {fileID: 4107735736077196995}
   - component: {fileID: -2990880189865494995}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cover
   m_TagString: Obstruction
   m_Icon: {fileID: 0}

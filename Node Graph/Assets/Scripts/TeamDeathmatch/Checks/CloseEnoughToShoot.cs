@@ -1,8 +1,13 @@
-﻿using System.Collections;
+﻿//Author: Kyle Gian
+//Date Created: 10/05/2021
+//Last Modified: 16/05/2021
+
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-
+//Checks if the entity is within range to shoot
 [System.Serializable]
 public class CloseEnoughToShoot: NodeCheck
 {

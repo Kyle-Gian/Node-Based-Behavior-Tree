@@ -1,7 +1,11 @@
-﻿using System.Collections;
+﻿//Author: Kyle Gian
+//Date Created: 10/05/2021
+//Last Modified: 10/05/2021
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+
 
 [System.Serializable]
 public class IsTargetNull: NodeCheck

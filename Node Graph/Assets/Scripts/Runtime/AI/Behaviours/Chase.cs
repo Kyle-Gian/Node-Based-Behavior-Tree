@@ -12,7 +12,7 @@ public class Chase : Behaviour
      NavMeshAgent _agent;
      GameObject _target;
      Vector3 _destination;
-     private Vector3 _distanceAroundTarget = new Vector3(5,0,5);
+     private Vector3 _distanceAroundTarget = new Vector3(2,0,2);
      public bool _destinationReached = false;
 
 
@@ -34,7 +34,10 @@ public class Chase : Behaviour
             if (_target != null && distanceToTarget > 8)
             {
                 _destination = _target.transform.position + _distanceAroundTarget;
-
+                if (LineOfSightBlocked())
+                {
+                    _destination = _target.transform.position - _distanceAroundTarget;
+                }
                 _agent.SetDestination(_destination);
             }
         }
@@ -55,5 +58,26 @@ public class Chase : Behaviour
     {
         _currentStatus = status;
 
+    }
+
+    public bool LineOfSightBlocked()
+    {
+        string enemytag;
+        if (this.CompareTag("Blue"))
+        {
+            enemytag = "Red";
+        }
+        else
+        {
+            enemytag = "Blue";
+        }
+        if (Physics.Raycast(transform.position,transform.forward,out RaycastHit hit, 5, 10))
+        {
+            if (hit.collider.CompareTag(enemytag))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }

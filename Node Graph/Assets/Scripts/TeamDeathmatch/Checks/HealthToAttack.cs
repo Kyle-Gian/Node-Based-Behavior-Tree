@@ -1,9 +1,13 @@
-﻿using System;
+﻿//Author: Kyle Gian
+//Date Created: 10/05/2021
+//Last Modified: 12/05/2021
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-
+//Check the entity has enough health to attack
 [System.Serializable]
 public class HealthToAttack: NodeCheck
 {

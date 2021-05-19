@@ -1,9 +1,13 @@
-﻿using System;
+﻿//Author: Kyle Gian
+//Date Created: 18/05/2021
+//Last Modified: 18/05/2021
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+//Checks if any health packs available
 [System.Serializable]
 public class IsHealthAvailable: NodeCheck
 {

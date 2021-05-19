@@ -1,7 +1,13 @@
-﻿using System.Collections;
+﻿//Author: Kyle Gian
+//Date Created: 19/05/2021
+//Last Modified: 19/05/2021
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+
+//Checks for an enemy in the near area by checking the overlapping sphere
 
 [System.Serializable]
 public class EnemyInMyArea: NodeCheck

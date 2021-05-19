@@ -1,7 +1,13 @@
-﻿using System.Collections;
+﻿//Author: Kyle Gian
+//Date Created: 16/05/2021
+//Last Modified: 20/05/2021
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+
+//Checks if the entity is at the health level where it needs health
 
 [System.Serializable]
 public class DoINeedHealth: NodeCheck
