@@ -15,10 +15,16 @@ public class SequenceTreeNode : TreeNode
         _position = a_position;
         _linksToChildren = new List<NodeEdge>();
         _function = new SequenceFunctionality();
+        _childrenHaveBeenSorted = false;
     }
 
     public override void NodeFunction(GameObject AI)
     {
+        if (!_childrenHaveBeenSorted)
+        {
+            RearrangeChildren();
+            _childrenHaveBeenSorted = true;
+        }
         this._currentStatus = TreeNode.Status.PROCESSING;
         this._function.RunFunction(this._linksToChildren, AI);
     }

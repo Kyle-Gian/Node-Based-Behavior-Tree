@@ -14,6 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NodeLink:
   - BaseNodeGUID: b2bb85ec-96a6-444d-b6d3-8cf43bd4bcc5
+    BaseNodeName: Start
+    PortName: Next
+    TargetNodeGUID: cbfe605f-e533-493d-8644-5c1426fd7039
+    TargetNodeName: SelectorNode
+  - BaseNodeGUID: b2bb85ec-96a6-444d-b6d3-8cf43bd4bcc5
+    BaseNodeName: Start
+    PortName: Next
+    TargetNodeGUID: 63e55656-3210-4453-8ee3-30e8a4a3903e
+    TargetNodeName: SequenceNode
+  - BaseNodeGUID: b2bb85ec-96a6-444d-b6d3-8cf43bd4bcc5
+    BaseNodeName: SequenceNode
+    PortName: Output
+    TargetNodeGUID: 63e55656-3210-4453-8ee3-30e8a4a3903e
+    TargetNodeName: SequenceNode
+  - BaseNodeGUID: b2bb85ec-96a6-444d-b6d3-8cf43bd4bcc5
     BaseNodeName: SequenceNode
     PortName: Output
     TargetNodeGUID: b4e3aa06-7c22-476b-891b-ceb401e81a5a
@@ -88,26 +103,6 @@ MonoBehaviour:
     PortName: Output
     TargetNodeGUID: 92449ea4-d541-4c85-a5f3-0adfc566112a
     TargetNodeName: LeafNode
-  - BaseNodeGUID: b2bb85ec-96a6-444d-b6d3-8cf43bd4bcc5
-    BaseNodeName: Start
-    PortName: Next
-    TargetNodeGUID: cbfe605f-e533-493d-8644-5c1426fd7039
-    TargetNodeName: SelectorNode
-  - BaseNodeGUID: b2bb85ec-96a6-444d-b6d3-8cf43bd4bcc5
-    BaseNodeName: Start
-    PortName: Next
-    TargetNodeGUID: 63e55656-3210-4453-8ee3-30e8a4a3903e
-    TargetNodeName: SequenceNode
-  - BaseNodeGUID: cbfe605f-e533-493d-8644-5c1426fd7039
-    BaseNodeName: SelectorNode
-    PortName: Output
-    TargetNodeGUID: b2bb85ec-96a6-444d-b6d3-8cf43bd4bcc5
-    TargetNodeName: SequenceNode
-  - BaseNodeGUID: cbfe605f-e533-493d-8644-5c1426fd7039
-    BaseNodeName: SelectorNode
-    PortName: Output
-    TargetNodeGUID: af26a395-b3e5-4151-8f79-e9c373123847
-    TargetNodeName: SequenceNode
   NodeData:
   - NodeGUID: b4e3aa06-7c22-476b-891b-ceb401e81a5a
     Position: {x: 999, y: 706}
@@ -200,7 +195,7 @@ MonoBehaviour:
     NodeFunction: {fileID: 11500000, guid: 9d0edc3998f38a74d946a69cfaf38f37, type: 3}
     FunctionName: SeekEnemy
   - NodeGUID: cbfe605f-e533-493d-8644-5c1426fd7039
-    Position: {x: 265, y: 274}
+    Position: {x: 265, y: 293}
     NodeType: SelectorNode
     NodeFunction: {fileID: 0}
     FunctionName: Null

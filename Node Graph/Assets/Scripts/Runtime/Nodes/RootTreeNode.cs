@@ -16,6 +16,7 @@ public class RootTreeNode : TreeNode
         _entryPoint = true;
         _linksToChildren = new List<NodeEdge>();
         _function = new RootFunctionality();
+        _childrenHaveBeenSorted = false;
     }
 
     public RootTreeNode()
@@ -29,6 +30,11 @@ public class RootTreeNode : TreeNode
 
     public override void NodeFunction(GameObject AI)
     {
+        if (!_childrenHaveBeenSorted)
+        {
+            RearrangeChildren();
+            _childrenHaveBeenSorted = true;
+        }
         this._currentStatus = TreeNode.Status.PROCESSING;
         this._function.RunFunction(this._linksToChildren, AI);
     }

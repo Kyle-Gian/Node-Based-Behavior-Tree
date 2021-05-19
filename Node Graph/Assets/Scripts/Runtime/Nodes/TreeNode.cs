@@ -12,6 +12,7 @@ public class TreeNode
     public string _nodeType;
     public Vector2 _position;
     public bool _entryPoint = false;
+    public bool _childrenHaveBeenSorted = false;
     public List<NodeEdge> _linksToChildren;
     public NodeEdge _ParentEdge;
     public NodeFunctionality _function;
@@ -28,6 +29,15 @@ public class TreeNode
         FAIL,
         PROCESSING
 
+    }
+
+    public void RearrangeChildren()
+    {
+        _linksToChildren.Sort((a,b) => a.Child._position.x.CompareTo(b.Child._position.x)) ;
+        
+        Debug.Log(_linksToChildren.ToString());
+        
+        
     }
 
 }
