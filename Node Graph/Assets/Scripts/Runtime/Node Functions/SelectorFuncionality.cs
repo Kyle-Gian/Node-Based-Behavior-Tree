@@ -30,12 +30,6 @@ public class SelectorFuncionality : NodeFunctionality
 
             }
 
-            //After the function is run, check if the status is a fail. If so the Parent node returns fail
-            if (nodeEdges[i].Child._currentStatus == TreeNode.Status.SUCCESS)
-            {
-                nodeEdges[i].Parent._currentStatus = TreeNode.Status.SUCCESS;
-                break;
-            }
             //If all children nodes return FAIL, Parent returns FAIL
             if (i == nodeEdges.Count)
             {

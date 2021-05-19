@@ -12,6 +12,7 @@ public class Chase : Behaviour
      NavMeshAgent _agent;
      GameObject _target;
      Vector3 _destination;
+     private Vector3 _distanceAroundTarget = new Vector3(5,0,5);
      public bool _destinationReached = false;
 
 
@@ -29,11 +30,10 @@ public class Chase : Behaviour
 
         if (_target != null)
         {
-            
             float distanceToTarget = Vector3.Distance(transform.position, _target.transform.position);
             if (_target != null && distanceToTarget > 8)
             {
-                _destination = _target.transform.position;
+                _destination = _target.transform.position + _distanceAroundTarget;
 
                 _agent.SetDestination(_destination);
             }

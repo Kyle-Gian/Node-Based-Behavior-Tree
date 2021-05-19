@@ -31,4 +31,15 @@ public class AIHealth : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Health Pack") && _currentHealth != _maxHealth)
+        {
+            HealthPack healthPack = other.GetComponent<HealthPack>();
+            _currentHealth += healthPack.GiveHealth();
+            _healthBar.SetHealth(_currentHealth);
+            other.gameObject.SetActive(false);
+        }
+    }
 }
