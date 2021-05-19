@@ -48,6 +48,12 @@ public class SeekEnemy : Behaviour
             }
         }
 
+        if (agent.velocity == Vector3.zero)
+        {
+            _location = RandomNavSphere(gameObject.transform.localPosition, 10, -1);
+            agent.SetDestination(_location);
+        }
+
     }
 
     private void OnEnable()
