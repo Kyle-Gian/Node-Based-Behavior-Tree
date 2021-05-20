@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using NodeBasedBehaviourTree;
 
 //Checks if any health packs available
 [System.Serializable]

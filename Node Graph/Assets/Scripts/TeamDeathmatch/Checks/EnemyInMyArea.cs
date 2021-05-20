@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using NodeBasedBehaviourTree;
 
 //Checks for an enemy in the near area by checking the overlapping sphere
 

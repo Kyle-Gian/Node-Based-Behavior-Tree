@@ -6,8 +6,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using NodeBasedBehaviourTree;
 
-public class Shoot : Behaviour
+public class Shoot : AIBehaviour
 {
     NavMeshAgent _agent;
     [SerializeField]
@@ -55,7 +56,7 @@ public class Shoot : Behaviour
 
     }
 
-    public override Behaviour GetBehaviour()
+    public override AIBehaviour GetBehaviour()
     {
         return GetComponent<Shoot>();
     }

@@ -7,6 +7,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using NodeBasedBehaviourTree;
+
 //Check the entity has enough health to attack
 [System.Serializable]
 public class HealthToAttack: NodeCheck

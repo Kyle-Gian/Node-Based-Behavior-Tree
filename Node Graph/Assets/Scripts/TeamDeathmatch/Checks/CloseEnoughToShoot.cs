@@ -7,6 +7,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using NodeBasedBehaviourTree;
+
 //Checks if the entity is within range to shoot
 [System.Serializable]
 public class CloseEnoughToShoot: NodeCheck

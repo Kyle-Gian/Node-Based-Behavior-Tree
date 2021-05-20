@@ -6,8 +6,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using NodeBasedBehaviourTree;
 
-public class GetHealth : Behaviour
+public class GetHealth : AIBehaviour
 {
     private GameObject _healthPack;
     private NavMeshAgent _agent;
@@ -28,7 +29,7 @@ public class GetHealth : Behaviour
         }
     }
 
-    public override Behaviour GetBehaviour()
+    public override AIBehaviour GetBehaviour()
     {
         return GetComponent<GetHealth>();
     }

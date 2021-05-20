@@ -7,9 +7,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using NodeBasedBehaviourTree;
 
 
-public class Idle : Behaviour
+public class Idle : AIBehaviour
 {
     NavMeshAgent _agent;
 
@@ -28,7 +29,7 @@ public class Idle : Behaviour
         _agent.SetDestination(_destination);
     }
 
-    public override Behaviour GetBehaviour()
+    public override AIBehaviour GetBehaviour()
     {
         return this.GetComponent<Idle>();
     }

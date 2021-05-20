@@ -7,9 +7,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using NodeBasedBehaviourTree;
 
 
-public class SeekEnemy : Behaviour
+public class SeekEnemy : AIBehaviour
 {
     NavMeshAgent agent;
     Vector3 _location;
@@ -62,7 +63,7 @@ public class SeekEnemy : Behaviour
         _previousDestination = _location;
     }
 
-    public override Behaviour GetBehaviour()
+    public override AIBehaviour GetBehaviour()
     {
         return GetComponent<SeekEnemy>();
     }

@@ -6,8 +6,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using NodeBasedBehaviourTree;
 
-public class Chase : Behaviour
+public class Chase : AIBehaviour
 {
      NavMeshAgent _agent;
      GameObject _target;
@@ -44,7 +45,7 @@ public class Chase : Behaviour
 
     }
 
-    public override Behaviour GetBehaviour()
+    public override AIBehaviour GetBehaviour()
     {
         return GetComponent<Chase>();
     }
