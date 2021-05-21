@@ -51,12 +51,30 @@ namespace NodeBasedBehaviourTree
         public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
         {
             var compatiblePorts = new List<Port>();
+            
+
             ports.ForEach(funcCall: (port) =>
             {
                 if (startPort != port && startPort.node != port.node)
                 {
-                    compatiblePorts.Add(port);
+                    //Check if the output port is a leaf node
+                    //If it is a leaf on allows for the decorator node to be attached
+                    if (startPort.node.ToString().Contains("LeafNode"))
+                    {               
+                        if (port.node.ToString().Contains("DecoratorNode"))
+                        {
+                            compatiblePorts.Add(port);
+
+                        }
+                    }
+                    else
+                    {
+                        compatiblePorts.Add(port);
+                    }
+
                 }
+
+
             });
             return compatiblePorts;
 

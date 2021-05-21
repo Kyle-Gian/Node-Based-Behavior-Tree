@@ -135,7 +135,15 @@ namespace NodeBasedBehaviourTree
             newNode.styleSheets.Add(Resources.Load<StyleSheet>("Node"));
 
             var textField = new TextField(string.Empty);
-            textField.SetValueWithoutNotify("Node Name");
+
+            textField.RegisterValueChangedCallback(evt =>
+            {
+                textField.value = evt.newValue;
+            });
+
+            textField.SetValueWithoutNotify(textField.value.ToString());
+
+
 
             if (nodeName == "LeafNode" || nodeName == "DecoratorNode")
             {
