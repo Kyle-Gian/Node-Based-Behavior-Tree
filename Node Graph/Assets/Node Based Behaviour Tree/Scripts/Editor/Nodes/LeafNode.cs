@@ -29,7 +29,6 @@ namespace NodeBasedBehaviourTree
 
         public AINode CreateNode(Vector2 position, string guid)
         {
-            nt = NodeType.Leaf;
             return this;
         }
 

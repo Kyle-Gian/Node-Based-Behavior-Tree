@@ -22,17 +22,6 @@ namespace NodeBasedBehaviourTree
         public Vector2 _position;
         public bool _entryPoint = false;
 
-        public enum NodeType
-        {
-            Null = 0,
-            Leaf,
-            Sequence,
-            Selector,
-            Decorator,
-            Root
-        }
-        public NodeType nt;
-
         enum NodeStatus
         {
             Success,
@@ -69,26 +58,6 @@ namespace NodeBasedBehaviourTree
 
         }
 
-        public NodeType NodeSetter(string nodeName)
-        {
-
-            switch (nodeName.ToLower())
-            {
-                case "leafnode":
-                    return NodeType.Leaf;
-                case "selector":
-                    return NodeType.Selector;
-                case "sequence":
-                    return NodeType.Sequence;
-                case "decorator":
-                    return NodeType.Decorator;
-                default:
-                    Debug.LogError("Bad Node Creation");
-                    return NodeType.Null;
-            }
-
-        }
-
         public AINode NodeClass(string nodeName)
         {
 
@@ -108,19 +77,20 @@ namespace NodeBasedBehaviourTree
             }
         }
 
-        public AINode CreateNode(string nodeName, Vector2 position, string guid, MonoScript a_function)
+        public AINode CreateNode(string nodeName, Vector2 position, string guid, MonoScript a_function, string a_title)
         {
-            //Removes the namespace from the recieved node name
+            //Removes the namespace from the received node name
             if (nodeName.Contains("NodeBasedBehaviourTree"))
             {
                 nodeName = nodeName.Remove(0, 23);
 
             }
 
+            //Create the node type
             AINode newNode = NodeClass(nodeName);
-
             newNode.title = nodeName;
 
+            //if the node has no ID give it one
             if (guid == null)
             {
                 newNode._GUID = Guid.NewGuid().ToString();
@@ -136,21 +106,20 @@ namespace NodeBasedBehaviourTree
 
             var textField = new TextField(string.Empty);
 
+            textField.value = a_title;
+            
             textField.RegisterValueChangedCallback(evt =>
             {
                 textField.value = evt.newValue;
             });
 
             textField.SetValueWithoutNotify(textField.value.ToString());
-
-
-
+            
             if (nodeName == "LeafNode" || nodeName == "DecoratorNode")
             {
                 newNode.mainContainer.Add(AddObjectField(a_function));
             }
-
-
+            
             newNode.titleContainer.Add(textField);
 
             var addOutput = GeneratePort(newNode, Direction.Output);

@@ -5,15 +5,12 @@
 // Creates the window and handles the toolbar, minimap and blackboard
 namespace NodeBasedBehaviourTree
 {
-    using System.Collections;
-    using System.Collections.Generic;
     using UnityEngine;
     using UnityEditor;
     using UnityEditor.Experimental.GraphView;
     using UnityEngine.UIElements;
     using UnityEditor.UIElements;
-    using System;
-    using System.Linq;
+
 
     public class GraphWindow : EditorWindow
     {

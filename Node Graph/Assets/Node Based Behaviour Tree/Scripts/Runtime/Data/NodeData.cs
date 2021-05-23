@@ -18,5 +18,6 @@ namespace NodeBasedBehaviourTree
         public MonoScript NodeFunction;
 #endif
         public string FunctionName;
+        public string NodeTitle;
     }
 }

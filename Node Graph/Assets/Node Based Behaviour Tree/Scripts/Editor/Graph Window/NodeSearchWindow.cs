@@ -4,6 +4,9 @@
 
 //This script has the funcionality of the pop up window inside the graph view and gives the user the ability to find a node on right click 
 //To add the selected node from the list to the graph
+
+using System;
+
 namespace NodeBasedBehaviourTree
 {
     using System.Collections;
@@ -64,7 +67,7 @@ namespace NodeBasedBehaviourTree
             switch (searchTreeEntry.userData)
             {
                 case AINode AINode:
-                    _graphView.CreateNode(AINode.GetType().ToString(), localMousePosition);
+                    _graphView.CreateNode(AINode.GetType().ToString(), localMousePosition, String.Empty);
                     return true;
                 default:
                     return false;

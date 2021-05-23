@@ -1,6 +1,10 @@
 ﻿//Author: Kyle Gian
 //Date Created: 25/04/2021
 //Last Modified: 29/04/2021
+
+using System;
+using UnityEngine.UI;
+
 namespace NodeBasedBehaviourTree
 {
     //Saves/Loads nodes and edges to scriptable objects to and from the graph view
@@ -63,34 +67,46 @@ namespace NodeBasedBehaviourTree
                 });
             }
 
+            //Run through each node in the graph and 
             foreach (var AINode in Nodes.Where(node => !node._entryPoint))
             {
-                MonoScript scriptContainer = null;
+                //Gets the script that is attached to the object field and saves it
+                MonoScript script = null;
                 string functionName = "Null";
 
-                if (AINode.mainContainer.childCount == 3)
+                for (int i = 0; i < AINode.mainContainer.childCount; i++)
                 {
-                    ObjectField function = (ObjectField)AINode.mainContainer.ElementAt(2);
-
-                    if (function.value != null)
+                    if (AINode.mainContainer.ElementAt(i).GetType() == typeof(ObjectField))
                     {
-                        scriptContainer = (MonoScript)function.value;
-                        functionName = scriptContainer.GetClass().Name;
+                        ObjectField objectField = (ObjectField)AINode.mainContainer.ElementAt(i);
+                        script = (MonoScript)objectField.value;
+                        functionName = script.GetClass().Name;
                     }
-
+                    
                 }
-                else
+                
+                //Get the textfield data and save it to a string
+                string nodeTitle = "";
+                
+                for (int i = 0; i < AINode.titleContainer.childCount; i++)
                 {
-                    Debug.Log("No function Attached");
+                    if (AINode.titleContainer.ElementAt(i).GetType() == typeof(TextField))
+                    {
+                        TextField title = (TextField)AINode.titleContainer.ElementAt(i);
+                        nodeTitle = title.value.ToString();
+                    }
+                    
                 }
 
+                //Save the node with the given data
                 container.NodeData.Add(item: new NodeData
                 {
                     NodeGUID = AINode._GUID,
                     Position = AINode.GetPosition().position,
                     NodeType = AINode._NodeType,
                     FunctionName = functionName,
-                    NodeFunction = scriptContainer
+                    NodeFunction = script,
+                    NodeTitle = nodeTitle
 
                 });
             }
@@ -151,7 +167,7 @@ namespace NodeBasedBehaviourTree
             foreach (var nodeData in _containerCache.NodeData)
             {
                 //Pass position on later, so vec2 used as position for now
-                var tempNode = _targetGraphView.LoadNode(nodeData.NodeType, nodeData.Position, nodeData.NodeGUID, nodeData.NodeFunction);
+                var tempNode = _targetGraphView.LoadNode(nodeData.NodeType, nodeData.Position, nodeData.NodeGUID, nodeData.NodeFunction, nodeData.NodeTitle);
 
                 var nodePorts = _containerCache.NodeLink.Where(x => x.BaseNodeGUID == nodeData.NodeGUID).ToList();
                 tempNode._GUID = nodeData.NodeGUID;

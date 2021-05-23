@@ -81,18 +81,18 @@ namespace NodeBasedBehaviourTree
         }
 
         //Add the node to graph
-        public void CreateNode(string nodeName, Vector2 position)
+        public void CreateNode(string nodeName, Vector2 position, string a_title)
         {
             MonoScript scriptContainer = null;
             string guid = null;
-            var newNode = node.CreateNode(nodeName, position, guid, scriptContainer);
+            var newNode = node.CreateNode(nodeName, position, guid, scriptContainer, a_title);
             AddElement(newNode);
 
         }
 
-        public AINode LoadNode(string nodeName, Vector2 position, string a_guid, MonoScript a_function)
+        public AINode LoadNode(string nodeName, Vector2 position, string a_guid, MonoScript a_function, string a_title)
         {
-            var newNode = node.CreateNode(nodeName, position, a_guid, a_function);
+            var newNode = node.CreateNode(nodeName, position, a_guid, a_function, a_title);
             AddElement(newNode);
 
             return newNode;

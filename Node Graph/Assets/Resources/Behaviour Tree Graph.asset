@@ -13,69 +13,15 @@ MonoBehaviour:
   m_Name: Behaviour Tree Graph
   m_EditorClassIdentifier: 
   NodeLink:
-  - BaseNodeGUID: b2bb85ec-96a6-444d-b6d3-8cf43bd4bcc5
+  - BaseNodeGUID: c3c1b945-e06c-4c77-afa6-777bb535e59a
     BaseNodeName: Start
     PortName: Next
-    TargetNodeGUID: cbfe605f-e533-493d-8644-5c1426fd7039
-    TargetNodeName: SelectorNode
-  - BaseNodeGUID: b2bb85ec-96a6-444d-b6d3-8cf43bd4bcc5
-    BaseNodeName: Start
-    PortName: Next
-    TargetNodeGUID: 63e55656-3210-4453-8ee3-30e8a4a3903e
-    TargetNodeName: SequenceNode
-  - BaseNodeGUID: b2bb85ec-96a6-444d-b6d3-8cf43bd4bcc5
-    BaseNodeName: Start
-    PortName: Next
-    TargetNodeGUID: 63e55656-3210-4453-8ee3-30e8a4a3903e
-    TargetNodeName: SequenceNode
-  - BaseNodeGUID: 63e55656-3210-4453-8ee3-30e8a4a3903e
-    BaseNodeName: SequenceNode
-    PortName: Output
-    TargetNodeGUID: 260d2b8c-47e6-4f42-953c-2cae3ea0e309
-    TargetNodeName: LeafNode
-  - BaseNodeGUID: 63e55656-3210-4453-8ee3-30e8a4a3903e
-    BaseNodeName: SequenceNode
-    PortName: Output
-    TargetNodeGUID: dc6d49a0-908c-42e8-83c7-b2cfce9319df
-    TargetNodeName: SelectorNode
-  - BaseNodeGUID: dc6d49a0-908c-42e8-83c7-b2cfce9319df
-    BaseNodeName: SelectorNode
-    PortName: Output
-    TargetNodeGUID: 735f26df-340a-49e6-9634-e427973928ac
-    TargetNodeName: LeafNode
-  - BaseNodeGUID: dc6d49a0-908c-42e8-83c7-b2cfce9319df
-    BaseNodeName: SelectorNode
-    PortName: Output
-    TargetNodeGUID: 92449ea4-d541-4c85-a5f3-0adfc566112a
+    TargetNodeGUID: ddcf31d4-4d4e-478f-846e-9bbc5edd9ec0
     TargetNodeName: LeafNode
   NodeData:
-  - NodeGUID: 63e55656-3210-4453-8ee3-30e8a4a3903e
-    Position: {x: 319, y: -224}
-    NodeType: SequenceNode
-    NodeFunction: {fileID: 0}
-    FunctionName: Null
-  - NodeGUID: 260d2b8c-47e6-4f42-953c-2cae3ea0e309
-    Position: {x: 653, y: -86}
+  - NodeGUID: ddcf31d4-4d4e-478f-846e-9bbc5edd9ec0
+    Position: {x: 527, y: 290}
     NodeType: LeafNode
-    NodeFunction: {fileID: 11500000, guid: 720535f1bca627d4ea7908142d642a49, type: 3}
-    FunctionName: DoINeedHealth
-  - NodeGUID: dc6d49a0-908c-42e8-83c7-b2cfce9319df
-    Position: {x: 738, y: -289}
-    NodeType: SelectorNode
-    NodeFunction: {fileID: 0}
-    FunctionName: Null
-  - NodeGUID: 735f26df-340a-49e6-9634-e427973928ac
-    Position: {x: 1096, y: -218}
-    NodeType: LeafNode
-    NodeFunction: {fileID: 11500000, guid: fb9c9e0e2bcd49247b369fc742df9f45, type: 3}
-    FunctionName: FindNearestHealth
-  - NodeGUID: 92449ea4-d541-4c85-a5f3-0adfc566112a
-    Position: {x: 1090, y: -377}
-    NodeType: LeafNode
-    NodeFunction: {fileID: 11500000, guid: d576e9800cb578a4f8cddd81db85d01c, type: 3}
-    FunctionName: GetHealth
-  - NodeGUID: cbfe605f-e533-493d-8644-5c1426fd7039
-    Position: {x: 265, y: 293}
-    NodeType: SelectorNode
-    NodeFunction: {fileID: 0}
-    FunctionName: Null
+    NodeFunction: {fileID: 11500000, guid: 9d0edc3998f38a74d946a69cfaf38f37, type: 3}
+    FunctionName: SeekEnemy
+    NodeTitle: srsagh
