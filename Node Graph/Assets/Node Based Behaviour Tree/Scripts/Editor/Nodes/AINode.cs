@@ -26,7 +26,7 @@ namespace NodeBasedBehaviourTree
         {
             Success,
             Failure,
-            Processing
+            Running
         }
         public Port GeneratePort(AINode node, Direction portDirection)
         {
@@ -106,21 +106,22 @@ namespace NodeBasedBehaviourTree
 
             var textField = new TextField(string.Empty);
 
-            textField.value = a_title;
             
             textField.RegisterValueChangedCallback(evt =>
             {
                 textField.value = evt.newValue;
             });
 
-            textField.SetValueWithoutNotify(textField.value.ToString());
+            //textField.SetValueWithoutNotify(textField.value.ToString());
             
             if (nodeName == "LeafNode" || nodeName == "DecoratorNode")
             {
                 newNode.mainContainer.Add(AddObjectField(a_function));
+                newNode.titleContainer.Add(textField);
+                textField.value = a_title;
+
             }
             
-            newNode.titleContainer.Add(textField);
 
             var addOutput = GeneratePort(newNode, Direction.Output);
             addOutput.portName = "Output";

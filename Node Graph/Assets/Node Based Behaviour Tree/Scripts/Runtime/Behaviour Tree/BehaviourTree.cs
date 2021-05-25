@@ -4,6 +4,9 @@
 
 //This is used to run the tree from the root node checking waiting for the behaviour to pass through to the AI
 
+using System.Linq;
+using UnityEditor.Build.Content;
+
 namespace NodeBasedBehaviourTree
 {
     using System.Collections;
@@ -26,6 +29,8 @@ namespace NodeBasedBehaviourTree
 
         [SerializeField]
         List<GameObject> _enemyList = new List<GameObject>();
+
+        public List<AIBehaviour> _listOfBehaviours = new List<AIBehaviour>();
         // Start is called before the first frame update
         void Start()
         {
@@ -34,6 +39,9 @@ namespace NodeBasedBehaviourTree
             {
                 //Get the scripts attached to this object
                 _scripts = this.GetComponents<MonoBehaviour>();
+                //_listOfBehaviours = Resources.FindObjectsOfTypeAll<AIBehaviour>().ToList();
+                
+
 
                 //Make the tree
                 buildTree.LoadTree(_savedGraph, _rootTreeNode, _treeNodes, _nodeLinks);
@@ -75,22 +83,15 @@ namespace NodeBasedBehaviourTree
                                 //Get the first node in list of roots child node
                                 for (int j = 0; j < nodeToCheck._linksToChildren.Count; j++)
                                 {
-                                    nodeToCheck._currentStatus = TreeNode.Status.PROCESSING;
-
-                                    if (nodeToCheck._currentStatus == TreeNode.Status.PROCESSING)
+                                    if (nodeToCheck._linksToChildren[j].Child != null)
                                     {
-                                        if (nodeToCheck._linksToChildren[j].Child != null)
-                                        {
                                             nodeToCheck.NodeFunction(AI);
-                                        }
                                     }
 
                                     if (nodeToCheck._currentStatus == TreeNode.Status.FAIL)
                                     {
                                         break;
                                     }
-
-
                                 }
                             }
 
@@ -124,6 +125,9 @@ namespace NodeBasedBehaviourTree
                 }
             }
             return null;
+        }
+        public void GetAllBehaviours(string className)
+        {
         }
     }
 }

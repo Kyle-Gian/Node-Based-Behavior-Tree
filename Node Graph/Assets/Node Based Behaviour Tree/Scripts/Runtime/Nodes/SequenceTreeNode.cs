@@ -26,7 +26,6 @@ namespace NodeBasedBehaviourTree
                 RearrangeChildren();
                 _childrenHaveBeenSorted = true;
             }
-            this._currentStatus = TreeNode.Status.PROCESSING;
             this._function.RunFunction(this._linksToChildren, AI);
         }
     }

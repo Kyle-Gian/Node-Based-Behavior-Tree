@@ -18,7 +18,7 @@ namespace NodeBasedBehaviourTree
             for (int i = 0; i < nodeEdges.Count; i++)
             {
 
-                //if the child node is processing then run the function and get a reult of return of fail or success
+                //if the child node is processing then run the function and get a result of return of fail or success
                 if (nodeEdges[i].Child._currentStatus == TreeNode.Status.PROCESSING)
                 {
                     if (nodeEdges[i].Child._linksToChildren.Count == 0 & nodeEdges[i].Child._nodeType == "leafnode")
@@ -42,6 +42,12 @@ namespace NodeBasedBehaviourTree
                 if (i == nodeEdges.Count || nodeEdges[i].Child._currentStatus == TreeNode.Status.FAIL)
                 {
                     nodeEdges[i].Parent._currentStatus = TreeNode.Status.FAIL;
+                    break;
+                }
+                
+                if (nodeEdges[i].Child._currentStatus == TreeNode.Status.PROCESSING)
+                {
+                    nodeEdges[i].Parent._currentStatus = TreeNode.Status.PROCESSING;
                     break;
                 }
 

@@ -24,7 +24,6 @@ namespace NodeBasedBehaviourTree
         }
         public override void NodeFunction(GameObject AI)
         {
-            _currentStatus = TreeNode.Status.PROCESSING;
             _function.RunFunction(this._linksToChildren, AI);
         }
     }
