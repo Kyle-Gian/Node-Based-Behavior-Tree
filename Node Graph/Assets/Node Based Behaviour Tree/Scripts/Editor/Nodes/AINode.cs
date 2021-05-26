@@ -121,7 +121,8 @@ namespace NodeBasedBehaviourTree
                 textField.value = a_title;
 
             }
-            
+
+            newNode.tooltip = AddToolTipToNode(nodeName);
 
             var addOutput = GeneratePort(newNode, Direction.Output);
             addOutput.portName = "Output";
@@ -140,6 +141,7 @@ namespace NodeBasedBehaviourTree
             objectField.label = "Script to Check:";
             objectField.name = "Function";
             objectField.objectType = typeof(MonoScript);
+            objectField.tooltip = "Add a Node Check Or AIBehaviour Script Here";
 
             if (function != null)
             {
@@ -147,6 +149,28 @@ namespace NodeBasedBehaviourTree
             }
 
             return objectField;
+        }
+
+        public string AddToolTipToNode(string nodeType)
+        {
+            string toolTip = "";
+            switch (nodeType.ToLower())
+            {
+                case "leafnode":
+                    toolTip = "Action or Check node. Used to run a Behaviour or return Success/Failure based off given script";
+                    break;
+                case "decoratornode":
+                    toolTip = "Decorator Node, also known as Inverter. Can change the outcome based off the script attached!";
+                    break;
+                case "sequencenode":
+                    toolTip = "Selector Node, It runs through the children nodes until a child returns Fail or all children return Success";
+                    break;
+                case "selectornode":
+                    toolTip = "Sequence Node, This node will run through it's children until one returns Success.";
+                    break;
+            }
+
+            return toolTip;
         }
 
     }
